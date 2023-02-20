@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\ReservationController;
-use App\Http\Controllers\Admin\TableController;
+use App\Http\Controllers\Admin\HompageController;
+use App\Http\Controllers\Admin\OrdersController;
+use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\ProviderController;
 
 use App\Http\Controllers\ProfileController;
@@ -33,12 +33,25 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Route::get('/admin.homepage.index', function () {
+//     return view('admin.homepage.index');
+// })->name('admin.homepage.index');
+// Route::get('/admin.products.index', function () {
+//     return view('admin.products.index');
+// })->name('admin.products.index');
+// Route::get('/admin.orders.index', function () {
+//     return view('admin.orders.index');
+// })->name('admin.orders.index');
+// Route::get('/admin.users.index', function () {
+//     return view('admin.users.index');
+// })->name('admin.users.index');
+
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::resource('/categories', CategoryController::class);
-    Route::resource('/menus', MenuController::class);
-    Route::resource('/tables', TableController::class);
-    Route::resource('/reservation', ReservationController::class);
+    Route::resource('/homepage', HompageController::class);
+    Route::resource('/products', ProductsController::class);
+    Route::resource('/orders', OrdersController::class);
+    Route::resource('/users', UsersController::class);
 });
 
 Route::middleware('auth')->group(function () {
