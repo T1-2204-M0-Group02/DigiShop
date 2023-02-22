@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\HompageController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\UsersController;
@@ -25,30 +26,18 @@ Route::get('/', function () {
     return view('fe.home');
 });
 
-Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
+Route::get('/shop', function () {
+    return view('fe.shop.index');
+});
+
+Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::get('/admin.homepage.index', function () {
-//     return view('admin.homepage.index');
-// })->name('admin.homepage.index');
-// Route::get('/admin.products.index', function () {
-//     return view('admin.products.index');
-// })->name('admin.products.index');
-// Route::get('/admin.orders.index', function () {
-//     return view('admin.orders.index');
-// })->name('admin.orders.index');
-// Route::get('/admin.users.index', function () {
-//     return view('admin.users.index');
-// })->name('admin.users.index');
-
-Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function() {
+Route::middleware(['auth', 'admin', 'verified'])->name('admin.')->prefix('admin')->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::resource('/homepage', HompageController::class);
+    Route::resource('/dashboard', DashboardController::class);
+    Route::resource('/categories', CategoryController::class);
     Route::resource('/products', ProductsController::class);
     Route::resource('/orders', OrdersController::class);
     Route::resource('/users', UsersController::class);

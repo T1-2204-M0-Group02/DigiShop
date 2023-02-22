@@ -29,6 +29,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if (Auth::user()->is_admin) {
+            return redirect('/admin');
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -37,11 +41,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        $is_admin = Auth::user()->is_admin;
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        if ($is_admin) return redirect('/login');
 
         return redirect('/');
     }

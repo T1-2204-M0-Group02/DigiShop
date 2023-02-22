@@ -1,30 +1,83 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+    <head>  
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Font Awesome-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.css') }}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themify.css') }}">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+    <!-- slick icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/slick.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/slick-theme.css') }}">
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+    <!-- jsgrid css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jsgrid.css') }}">
+
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
+
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/admin.css') }}">
+</head>
+
+<body>
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper">
+        <div class="authentication-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col p-0 card-right">
+                        <div class="card tab2-card">
+                            <div class="card-body">
+                                {{ $slot }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </body>
+    </div>
+
+    <!-- latest jquery-->
+    <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+
+    <!-- Bootstrap js-->
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+
+    <!-- feather icon js-->
+    <script src="{{ asset('assets/js/icons/feather-icon/feather.min.js') }}"></script>
+    <script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
+
+    <!-- Sidebar jquery-->
+    <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
+    <script src="{{ asset('assets/js/slick.js') }}"></script>
+
+    <!-- Jsgrid js-->
+    <script src="{{ asset('assets/js/jsgrid/jsgrid.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jsgrid/griddata-invoice.js') }}"></script>
+    <script src="{{ asset('assets/js/jsgrid/jsgrid-invoice.js') }}"></script>
+
+    <!-- lazyload js-->
+    <script src="{{ asset('assets/js/lazysizes.min.js') }}"></script>
+
+    <!--right sidebar js-->
+    <script src="{{ asset('assets/js/chat-menu.js') }}"></script>
+
+    <!--script admin-->
+    <script src="{{ asset('assets/js/admin-script.js') }}"></script>
+    <script>
+        $('.single-item').slick({
+            arrows: false,
+            dots: true
+        });
+    </script>
+</body>
 </html>

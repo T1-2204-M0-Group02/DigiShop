@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TableController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class TableController extends Controller
      */
     public function index()
     {
-        return view('admin.tables.index');
+        return view('admin.dashboard.index');
     }
 
     /**
