@@ -57,7 +57,7 @@
         </div>
         <div class="col-xl-7 col-md-5 col-sm-6">
           <div class="top-header-right">
-            <div class="top-menu-block">
+            <div class="language-block">
               <ul>
                 @if (Auth::user())
                     <li><a href="javascript:void(0)">Hi, {{ Auth::user()->name }}</a></li>

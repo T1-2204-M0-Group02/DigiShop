@@ -1,4 +1,4 @@
-.top-header .top-header-right .top-menu-block ul li .logout {
+.top-header .top-header-right .language-block ul li .logout, .top-header .top-header-right .language-block ul li a {
     color: #ffffff;
     text-transform: capitalize;
     font-family: "Raleway", sans-serif, "PT Sans", sans-serif;
