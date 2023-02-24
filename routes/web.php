@@ -31,7 +31,6 @@ Route::get('/shop', function () {
 });
 
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
-
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
 Route::middleware(['auth', 'admin', 'verified'])->name('admin.')->prefix('admin')->group(function() {

@@ -32,7 +32,9 @@
   <!-- Theme css -->
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color2.css') }}" media="screen" id="color">
 
-  @vite(['resources/css/custom.css'])
+  <!-- Digishop css -->
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/digishop.css') }}">
+
 </head>
 <body>
 
@@ -58,7 +60,7 @@
             <div class="top-menu-block">
               <ul>
                 @if (Auth::user())
-                    <li><a href="javascript:void(0)">Hi, {{Auth::user()->name }}</a></li>
+                    <li><a href="javascript:void(0)">Hi, {{ Auth::user()->name }}</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="post">@csrf<input class="logout" type="submit" value="Logout"></form>
                     </li>
@@ -88,12 +90,12 @@
                     back <i class="fa fa-angle-right ps-2"></i>
                   </div>
                 </li>
-                <li><a href="category-page(left-sidebar).html">western ware</a></li>
-                <li><a href="category-page(left-sidebar).html">TV, Appliances</a></li>
-                <li><a href="category-page(left-sidebar).html">Pets Products</a></li>
-                <li><a href="category-page(left-sidebar).html">Car, Motorbike</a></li>
-                <li><a href="category-page(left-sidebar).html">Industrial Products</a></li>
-                <li><a href="category-page(left-sidebar).html">Beauty, Health Products</a></li>
+                <li><a href="javascript:void(0)">western ware</a></li>
+                <li><a href="javascript:void(0)">TV, Appliances</a></li>
+                <li><a href="javascript:void(0)">Pets Products</a></li>
+                <li><a href="javascript:void(0)">Car, Motorbike</a></li>
+                <li><a href="javascript:void(0)">Industrial Products</a></li>
+                <li><a href="javascript:void(0)">Beauty, Health Products</a></li>
               </ul>
             </div>
             <div class="brand-logo logo-sm-center">
@@ -231,11 +233,11 @@
                 </nav>
                 <div class="collapse collapsed show active nav-desk" id="navbarToggleExternalContent">
                   <ul class="nav-cat title-font">
-                    <li> <a href="category-page(left-sidebar).html"><img src="{{ asset('assets/images/layout-1/nav-img/01.png') }}" alt="category-product"> western ware</a></li>
-                    <li> <a href="category-page(left-sidebar).html"><img src="{{ asset('assets/images/layout-1/nav-img/02.png') }}" alt="category-product"> TV, Appliances</a></li>
-                    <li> <a href="category-page(left-sidebar).html"><img src="{{ asset('assets/images/layout-1/nav-img/03.png') }}" alt="category-product"> Pets Products</a></li>
-                    <li> <a href="category-page(left-sidebar).html"><img src="{{ asset('assets/images/layout-1/nav-img/04.png') }}" alt="category-product"> Car, Motorbike</a></li>
-                    <li> <a href="category-page(left-sidebar).html"><img src="{{ asset('assets/images/layout-1/nav-img/05.png') }}" alt="category-product"> Industrial Products</a></li>
+                    <li> <a href="javascript:void(0)"><img src="{{ asset('assets/images/layout-1/nav-img/01.png') }}" alt="category-product"> western ware</a></li>
+                    <li> <a href="javascript:void(0)"><img src="{{ asset('assets/images/layout-1/nav-img/02.png') }}" alt="category-product"> TV, Appliances</a></li>
+                    <li> <a href="javascript:void(0)"><img src="{{ asset('assets/images/layout-1/nav-img/03.png') }}" alt="category-product"> Pets Products</a></li>
+                    <li> <a href="javascript:void(0)"><img src="{{ asset('assets/images/layout-1/nav-img/04.png') }}" alt="category-product"> Car, Motorbike</a></li>
+                    <li> <a href="javascript:void(0)"><img src="{{ asset('assets/images/layout-1/nav-img/05.png') }}" alt="category-product"> Industrial Products</a></li>
                   </ul>
                 </div>
               </div>
