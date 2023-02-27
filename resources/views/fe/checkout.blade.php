@@ -139,7 +139,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="text-right"><a href="javascript:void(0)" class="btn-normal btn">Place Order</a></div>
+                                    <div class="text-right"><a href="{{ Route("ordersuccess") }}" class="btn-normal btn">Place Order</a></div>
                                 </div>
                             </div>
                         </div>
