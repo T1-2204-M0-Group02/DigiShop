@@ -34,6 +34,10 @@ Route::get('/cart', function () {
     return view('fe.cart');
 })->name('cart');
 
+Route::get('/checkout', function () {
+    return view('fe.checkout');
+})->name('checkout');
+
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
