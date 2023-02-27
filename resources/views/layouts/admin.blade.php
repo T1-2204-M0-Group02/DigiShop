@@ -22,6 +22,9 @@
     <!-- Flag icon-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flag-icon.css') }}">
 
+    <!-- jsgrid css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jsgrid.css') }}">
+
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/icofont.css') }}">
 
@@ -157,8 +160,10 @@
 <!-- Sidebar jquery-->
 <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
 
-<!--height equal js-->
-<script src="{{ asset('assets/js/equal-height.js') }}"></script>
+<!-- Jsgrid js-->
+<script src="{{ asset('assets/js/jsgrid/jsgrid.min.js')}}"></script>
+<script src="{{ asset('assets/js/jsgrid/griddata-productlist-digital.js')}}"></script>
+<script src="{{ asset('assets/js/jsgrid/jsgrid-list.js')}}"></script>
 
 <!--script admin-->
 <script src="{{ asset('assets/js/admin-script.js') }}"></script>
