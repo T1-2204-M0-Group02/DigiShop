@@ -38,6 +38,10 @@ Route::get('/checkout', function () {
     return view('fe.checkout');
 })->name('checkout');
 
+Route::get('/ordersuccess', function () {
+    return view('fe.order.success');
+})->name('ordersuccess');
+
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
