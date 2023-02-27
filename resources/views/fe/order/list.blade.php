@@ -14,9 +14,9 @@
                     <div>
                         <h2>order-list</h2>
                         <ul>
-                            <li><a href="index.html">home</a></li>
+                            <li><a href="{{ Route('home') }}">home</a></li>
                             <li><i class="fa fa-angle-double-right"></i></li>
-                            <li><a href="javascript:void(0)">order-list</a></li>
+                            <li><a href="{{ Route('orders') }}">order-list</a></li>
                         </ul>
                     </div>
                 </div>
