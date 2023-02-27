@@ -25,6 +25,9 @@
     <!-- jsgrid css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jsgrid.css') }}">
 
+    <!-- Dropzone css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/dropzone.css')}}">
+
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/icofont.css') }}">
 
@@ -164,6 +167,16 @@
 <script src="{{ asset('assets/js/jsgrid/jsgrid.min.js')}}"></script>
 <script src="{{ asset('assets/js/jsgrid/griddata-productlist-digital.js')}}"></script>
 <script src="{{ asset('assets/js/jsgrid/jsgrid-list.js')}}"></script>
+
+<!--dropzone js-->
+<script src="{{asset('/assets/js/dropzone/dropzone.js')}}"></script>
+<script src="{{asset('/assets/js/dropzone/dropzone-script.js')}}"></script>
+
+<!--ckeditor js-->
+<script src="{{asset('/assets/js/editor/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('/assets/js/editor/ckeditor/styles.js')}}"></script>
+<script src="{{asset('/assets/js/editor/ckeditor/adapters/jquery.js')}}"></script>
+<script src="{{asset('/assets/js/editor/ckeditor/ckeditor.custom.js')}}"></script>
 
 <!--script admin-->
 <script src="{{ asset('assets/js/admin-script.js') }}"></script>

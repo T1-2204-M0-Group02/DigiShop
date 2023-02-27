@@ -13,7 +13,7 @@
                                 <input class="form-control" id="validationCustom01" type="text" required="">
                             </div>
                             <div class="form-group">
-                                <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> SKU</label>
+                                <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> Slug</label>
                                 <input class="form-control" id="validationCustomtitle" type="text" required="">
                             </div>
                             <div class="form-group">
@@ -27,27 +27,12 @@
                                     <option value="5">Websites</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label class="col-form-label">Sort Summary</label>
-                                <textarea rows="5" cols="12"></textarea>
-                            </div>
+                           
                             <div class="form-group">
                                 <label for="validationCustom02" class="col-form-label"><span>*</span> Product Price</label>
                                 <input class="form-control" id="validationCustom02" type="text" required="">
                             </div>
-                            <div class="form-group">
-                                <label class="col-form-label"><span>*</span> Status</label>
-                                <div class="m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">
-                                    <label class="d-block" for="edo-ani">
-                                        <input class="radio_animated" id="edo-ani" type="radio" name="rdo-ani">
-                                        Enable
-                                    </label>
-                                    <label class="d-block" for="edo-ani1">
-                                        <input class="radio_animated" id="edo-ani1" type="radio" name="rdo-ani">
-                                        Disable
-                                    </label>
-                                </div>
-                            </div>
+                          
                             <label class="col-form-label pt-0"> Product Upload</label>
                             <form class="dropzone digits" id="singleFileUpload" action="/upload.php">
                                 <div class="dz-message needsclick"><i class="fa fa-cloud-upload"></i>
@@ -64,39 +49,24 @@
                         <h5>Add Description</h5>
                     </div>
                     <div class="card-body">
-                        <div class="digital-add needs-validation">
+                        <div class="digital-add needs-validation mb-5">
                             <div class="form-group mb-0">
                                 <div class="description-sm">
                                     <textarea id="editor1" name="editor1" cols="10" rows="4"></textarea>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Meta Data</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="digital-add needs-validation">
-                            <div class="form-group">
-                                <label for="validationCustom05" class="col-form-label pt-0"> Meta Title</label>
-                                <input class="form-control" id="validationCustom05" type="text" required="">
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">Meta Description</label>
-                                <textarea rows="4" cols="12"></textarea>
-                            </div>
-                            <div class="form-group mb-0">
-                                <div class="product-buttons text-center">
-                                    <button type="button" class="btn btn-primary">Add</button>
-                                    <button type="button" class="btn btn-light">Discard</button>
-                                </div>
+                        <div class="form-group mb-0">
+                            <div class="product-buttons text-center">
+                                <button type="button" class="btn btn-primary">Add</button>
+                                <button type="button" class="btn btn-light">Discard</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
+        
     </div>
 </x-admin-layout>
