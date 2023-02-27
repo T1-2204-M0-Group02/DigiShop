@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 Route::get('/shop', function () {
     return view('fe.shop.index');
-});
+})->name('shop');
 
 Route::get('/cart', function () {
     return view('fe.cart');
@@ -41,6 +41,10 @@ Route::get('/checkout', function () {
 Route::get('/ordersuccess', function () {
     return view('fe.order.success');
 })->name('ordersuccess');
+
+Route::get('/profileDashboard', function () {
+    return view('fe.profile');
+})->name('profile');
 
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);

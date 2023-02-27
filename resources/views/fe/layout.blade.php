@@ -40,12 +40,12 @@
     {
         $goalPage = '';
         $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
-        $url = end($url_array);  
+        $url = end($url_array);
 
         if($url == ''){
             echo 'collapse collapsed show active nav-desk';
-        }  
-        else 
+        }
+        else
         {
             echo 'collapse collapsed nav-desk';
         }
@@ -129,7 +129,7 @@
             </div>
             <div class="brand-logo logo-sm-center">
               <a href="{{ Route('home') }}">
-                <img src="{{ asset('assets/images/layout-2/logo/logo.png') }}" class="img-fluid  " alt="logo">
+                <img src="{{ asset('assets/images/layout-2/logo/logo1.png') }}" class="header_logo img-fluid  " alt="logo">
               </a>
             </div>
           </div>
@@ -272,19 +272,19 @@
                     <div class="mobile-back text-right">Back<i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                   </li>
                   <li>
-                    <a class="dark-menu-item" href="javascript:void(0)">Home</a>
+                    <a class="dark-menu-item" href="{{ Route("home") }}">Home</a>
                   </li>
                   <li>
-                    <a class="dark-menu-item" href="javascript:void(0)">Shop</a>
+                    <a class="dark-menu-item" href="{{ Route("shop") }}">Shop</a>
                   </li>
                   <li>
-                    <a class="dark-menu-item" href="javascript:void(0)">Orders</a>
+                    <a class="dark-menu-item" href="">Orders</a>
                   </li>
                   <li>
-                    <a class="dark-menu-item" href="javascript:void(0)">Cart</a>
+                    <a class="dark-menu-item" href="{{ Route("cart") }}">Cart</a>
                   </li>
                   <li>
-                    <a class="dark-menu-item" href="javascript:void(0)">Profile</a>
+                    <a class="dark-menu-item" href="{{ Route("profile") }}">Profile</a>
                   </li>
                 </ul>
               </nav>
