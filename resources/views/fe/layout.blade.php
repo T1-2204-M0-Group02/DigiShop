@@ -829,7 +829,7 @@
         <li>
           <div class="buttons">
             <a href="{{ Route('cart') }}" class="btn btn-solid btn-sm">view cart</a>
-            <a href="checkout.html" class="btn btn-solid btn-sm ">checkout</a>
+            <a href="{{ Route('checkout') }}" class="btn btn-solid btn-sm ">checkout</a>
           </div>
         </li>
       </ul>
