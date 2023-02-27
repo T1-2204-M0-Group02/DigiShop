@@ -129,7 +129,7 @@
             </div>
             <div class="brand-logo logo-sm-center">
               <a href="{{ Route('home') }}">
-                <img src="{{ asset('assets/images/layout-2/logo/logo.png') }}" class="img-fluid  " alt="logo">
+                <img src="{{ asset('assets/images/layout-2/logo/logo1.png') }}"  class="header_logo img-fluid  " alt="logo">
               </a>
             </div>
           </div>
