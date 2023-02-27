@@ -35,6 +35,22 @@
   <!-- Digishop css -->
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/digishop.css') }}">
 
+  <?php
+    function getNavBar()
+    {
+        $goalPage = '';
+        $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
+        $url = end($url_array);  
+
+        if($url == ''){
+            echo 'collapse collapsed show active nav-desk';
+        }  
+        else 
+        {
+            echo 'collapse collapsed nav-desk';
+        }
+    }
+  ?>
 </head>
 <style>
     .theme-pannel-main{
@@ -112,8 +128,8 @@
               </ul>
             </div>
             <div class="brand-logo logo-sm-center">
-              <a href="index.html">
-                <img src="{{ asset('assets/images/layout-2/logo/logo1.png') }}"  class="header_logo img-fluid  " alt="logo">
+              <a href="{{ Route('home') }}">
+                <img src="{{ asset('assets/images/layout-2/logo/logo.png') }}" class="img-fluid  " alt="logo">
               </a>
             </div>
           </div>
@@ -237,7 +253,7 @@
                   </button>
                   <h5 class="mb-0  text-white title-font">Shop by category</h5>
                 </nav>
-                <div class="collapse collapsed show active nav-desk" id="navbarToggleExternalContent">
+                <div class="{{ getNavBar() }}" id="navbarToggleExternalContent">
                   <ul class="nav-cat title-font">
                     <li> <a href="javascript:void(0)"><img src="{{ asset('assets/images/layout-1/nav-img/01.png') }}" alt="category-product"> western ware</a></li>
                     <li> <a href="javascript:void(0)"><img src="{{ asset('assets/images/layout-1/nav-img/02.png') }}" alt="category-product"> TV, Appliances</a></li>
@@ -643,7 +659,7 @@
         </div>
         <div class="pro-group mb-0">
           <div class="modal-btn">
-            <a href="cart.html" class="btn btn-solid btn-sm">
+            <a href="{{ Route('cart') }}" class="btn btn-solid btn-sm">
               add to cart
             </a>
             <a href="product-page(left-sidebar).html" class="btn btn-solid btn-sm">
@@ -785,7 +801,7 @@
         </li>
         <li>
           <div class="buttons">
-            <a href="cart.html" class="btn btn-solid btn-sm">view cart</a>
+            <a href="{{ Route('cart') }}" class="btn btn-solid btn-sm">view cart</a>
             <a href="checkout.html" class="btn btn-solid btn-sm ">checkout</a>
           </div>
         </li>
