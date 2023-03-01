@@ -168,6 +168,9 @@
 <script src="{{ asset('assets/js/jsgrid/griddata-productlist-digital.js')}}"></script>
 <script src="{{ asset('assets/js/jsgrid/jsgrid-list.js')}}"></script>
 
+<script src="{{asset('assets/js/jsgrid/griddata-users.js')}}"></script>
+<script src="{{asset('assets/js/jsgrid/jsgrid-users.js')}}"></script>
+
 <!--dropzone js-->
 <script src="{{asset('/assets/js/dropzone/dropzone.js')}}"></script>
 <script src="{{asset('/assets/js/dropzone/dropzone-script.js')}}"></script>
