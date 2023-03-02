@@ -24,14 +24,29 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('fe.home');
-});
+})->name('home');
 
 Route::get('/shop', function () {
     return view('fe.shop.index');
 });
 
-Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
+Route::get('/cart', function () {
+    return view('fe.cart');
+})->name('cart');
 
+Route::get('/checkout', function () {
+    return view('fe.checkout');
+})->name('checkout');
+
+Route::get('/orders', function () {
+    return view('fe.order.list');
+})->name('orders');
+
+Route::get('/ordersuccess', function () {
+    return view('fe.order.success');
+})->name('ordersuccess');
+
+Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
 Route::middleware(['auth', 'admin', 'verified'])->name('admin.')->prefix('admin')->group(function() {

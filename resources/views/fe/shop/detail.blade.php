@@ -62,7 +62,7 @@
                         </div>
                         <div class="pro-group mb-0">
                           <div class="modal-btn">
-                            <a href="cart.html" class="btn btn-solid btn-sm">
+                            <a href="{{ Route('cart') }}" class="btn btn-solid btn-sm">
                               add to cart
                             </a>
                           </div>

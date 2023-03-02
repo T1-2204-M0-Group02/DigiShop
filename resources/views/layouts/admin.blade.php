@@ -1,90 +1,188 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bigdeal admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Bigdeal admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <link rel="icon" href="{{ asset('assets/images/favicon/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon/favicon.png') }}" type="image/x-icon">
+    <title>Digi Shop Admin</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="flex-col w-full md:flex md:flex-row md:min-h-screen">
-            <div @click.away="open = false"
-                 class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-slate-100 md:w-64 dark:text-gray-200 dark:bg-gray-800"
-                 x-data="{ open: false }">
-                <div class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4">
-                    <a href="#"
-                       class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark:text-white focus:outline-none focus:shadow-outline">Admin Dashboard</a>
-                    <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
-                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-                            <path x-show="!open" fill-rule="evenodd"
-                                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                                  clip-rule="evenodd"></path>
-                            <path x-show="open" fill-rule="evenodd"
-                                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                </div>
-                <?php
-                    function getClass($goalPage)
-                    {
-                        $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
-                        $url = end($url_array);  
-                        if($goalPage == $url){
-                            echo 'block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline';
-                        }  
-                        else 
-                        {
-                            echo 'block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline';
-                        }
-                    }
-                ?>
-                <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
-                    <a class="<?php getClass('dashboard');?>"
-                       href="{{ route('admin.dashboard.index') }}">Dashboard</a>
-                    <a class="<?php getClass('products');?>"
-                       href="{{ route('admin.products.index') }}">Products</a>
-                    <a class="<?php getClass('orders');?>"
-                       href="{{ route('admin.orders.index') }}">Orders</a>
-                    <a class="<?php getClass('users');?>"
-                       href="{{ route('admin.users.index') }}">Users</a>
-                    <form method="POST" action="{{ route('logout') }}">
-                                    @csrf   
-                        <button class="<?php getClass('logout');?>"
-                        type="submit">Log out</button>
-                    </form>
+    <!-- Font Awesome-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.css') }}">
 
-                    {{-- <div @click.away="open = true" class="relative" x-data="{ open: true }">
-                        <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                            <span>{{ Auth::user()->name }}</span>
-                            <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        </button>
-                        <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg">
-                            <div class="px-2 py-2 bg-white rounded-md shadow dark:bg-gray-700">
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flag-icon.css') }}">
 
-                                    <x-dropdown-link :href="route('logout')"
-                                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                                        {{ __('Log Out') }}
-                                    </x-dropdown-link>
-                                </form>
-                            </div>
-                        </div>
-                    </div> --}}
-                </nav>
-            </div>
-            <main class="m-2 p-8">
-                {{ $slot }}
-            </main>
+    <!-- jsgrid css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jsgrid.css') }}">
+
+    <!-- Dropzone css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/dropzone.css')}}">
+
+    <!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/icofont.css') }}">
+
+    <!-- Prism css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
+
+    <!-- Chartist css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
+
+    <!-- vector map css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vector-map.css') }}">
+
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
+
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/admin.css') }}">
+</head>
+
+<body>
+
+<!-- page-wrapper Start-->
+<div class="page-wrapper">
+    
+    <!-- Page Header Start-->
+    <div class="page-main-header">
+        <div class="main-header-left">
+            <div class="logo-wrapper"><a href="index.html"><img class="blur-up lazyloaded" src="{{ asset('assets/images/layout-2/logo/logo.png') }}" alt=""></a></div>
         </div>
-    </body>
+        <div class="main-header-right ">
+            <div class="mobile-sidebar">
+                <div class="media-body text-end switch-sm">
+                    <label class="switch">
+                        <input id="sidebar-toggle" type="checkbox" checked="checked"><span class="switch-state"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="nav-right col">
+                <ul class="nav-menus">
+                    <li>
+                        <form class="form-inline search-form">
+                            <div class="form-group">
+                                <input class="form-control-plaintext" type="search" placeholder="Search.."><span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+                <div class="d-lg-none mobile-toggle pull-right"><i data-feather="more-horizontal"></i></div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header Ends -->
+
+    <!-- Page Body Start-->
+    <div class="page-body-wrapper">
+
+        <!-- Page Sidebar Start-->
+        <div class="page-sidebar">
+            <div class="sidebar custom-scrollbar">
+                <div class="sidebar-user text-center">
+                    <h6 class="mt-3 f-14">Administrator</h6>
+                </div>
+
+                <ul class="sidebar-menu">
+                    <li><a class="sidebar-header" href="{{ Route('admin.dashboard.index') }}"><i data-feather="home"></i><span>Dashboard</span></a></li>
+                    <li><a class="sidebar-header" href="{{ Route('admin.categories.index') }}"><i data-feather="home"></i><span>Categories</span></a></li>
+                    <li><a class="sidebar-header" href="javascript:void(0)"><i data-feather="box"></i> <span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
+                        <ul class="sidebar-submenu">
+                            <li>
+                                <a href="{{ Route('admin.products.index') }}"><i class="fa fa-circle"></i>
+                                    <span>Product List</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ Route('admin.products.create') }}"><i class="fa fa-circle"></i>
+                                    <span>Add Product</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="sidebar-header" href="{{ Route('admin.orders.index') }}"><i data-feather="home"></i><span>Orders</span></a></li>
+                    <li><a class="sidebar-header" href="{{ Route('admin.users.index') }}"><i data-feather="home"></i><span>Users</span></a></li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button class="sidebar-header" 
+                                    type="submit" 
+                                    style="background: transparent;
+                                           border: 0px;
+                                           text-align: left;
+                                           width: 100%;"
+                            ><i data-feather="log-out"></i><span>Logout</span></button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Page Sidebar Ends-->
+
+        <div class="page-body">
+                {{ $slot }}
+        </div>
+
+        <!-- footer start-->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 footer-copyright">
+                        <p class="mb-0">Copyright 2019 © DigiShop All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="pull-right mb-0">Hand crafted & made with<i class="fa fa-heart"></i></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end-->
+    </div>
+
+</div>
+
+<!-- latest jquery-->
+<script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+
+<!-- Bootstrap js-->
+<script src="{{ asset('assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+
+<!-- feather icon js-->
+<script src="{{ asset('assets/js/icons/feather-icon/feather.min.js') }}"></script>
+<script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
+
+<!-- Sidebar jquery-->
+<script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
+
+<!-- Jsgrid js-->
+<script src="{{ asset('assets/js/jsgrid/jsgrid.min.js')}}"></script>
+<script src="{{ asset('assets/js/jsgrid/griddata-productlist-digital.js')}}"></script>
+<script src="{{ asset('assets/js/jsgrid/jsgrid-list.js')}}"></script>
+
+<script src="{{asset('assets/js/jsgrid/griddata-users.js')}}"></script>
+<script src="{{asset('assets/js/jsgrid/jsgrid-users.js')}}"></script>
+
+<!--dropzone js-->
+<script src="{{asset('/assets/js/dropzone/dropzone.js')}}"></script>
+<script src="{{asset('/assets/js/dropzone/dropzone-script.js')}}"></script>
+
+<!--ckeditor js-->
+<script src="{{asset('/assets/js/editor/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('/assets/js/editor/ckeditor/styles.js')}}"></script>
+<script src="{{asset('/assets/js/editor/ckeditor/adapters/jquery.js')}}"></script>
+<script src="{{asset('/assets/js/editor/ckeditor/ckeditor.custom.js')}}"></script>
+
+<!--script admin-->
+<script src="{{ asset('assets/js/admin-script.js') }}"></script>
+
+</body>
 </html>
