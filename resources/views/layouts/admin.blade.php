@@ -174,6 +174,8 @@
 <!-- lazyload js-->
 <script src="{{ asset('assets/js/lazysizes.min.js') }}"></script>
 
+<!--Customizer admin-->
+<script src="{{ asset('assets/js/admin-customizer.js')}}"></script>
 
 <!--dropzone js-->
 <script src="{{asset('/assets/js/dropzone/dropzone.js')}}"></script>
@@ -183,8 +185,7 @@
 <script src="{{ asset('assets/js/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{ asset('assets/js/datatables/custom-basic.js')}}"></script>
 
-<!--Customizer admin-->
-<script src="{{ asset('assets/js/admin-customizer.js')}}"></script>
+
 
 <!--ckeditor js-->
 <script src="{{asset('/assets/js/editor/ckeditor/ckeditor.js')}}"></script>
@@ -194,6 +195,7 @@
 
 <!--script admin-->
 <script src="{{ asset('assets/js/admin-script.js') }}"></script>
+
 
 </body>
 </html>
