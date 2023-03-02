@@ -37,6 +37,7 @@
             "Product": "../assets/images/digital-product/web-dev.jpg",
             "Product Title": "Websites",
             "Entry Type": "Add",
+            "Sale(%)": "10",
             "Quantity": "5",
         },
         {

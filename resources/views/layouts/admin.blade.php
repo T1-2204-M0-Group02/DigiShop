@@ -22,6 +22,12 @@
     <!-- Flag icon-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flag-icon.css') }}">
 
+    <!-- jsgrid css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jsgrid.css') }}">
+
+    <!-- Dropzone css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/dropzone.css')}}">
+
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/icofont.css') }}">
 
@@ -34,6 +40,9 @@
     <!-- vector map css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vector-map.css') }}">
 
+    <!-- Datatables css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
+
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
 
@@ -45,7 +54,7 @@
 
 <!-- page-wrapper Start-->
 <div class="page-wrapper">
-    
+
     <!-- Page Header Start-->
     <div class="page-main-header">
         <div class="main-header-left">
@@ -107,8 +116,8 @@
                     <li>
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
-                            <button class="sidebar-header" 
-                                    type="submit" 
+                            <button class="sidebar-header"
+                                    type="submit"
                                     style="background: transparent;
                                            border: 0px;
                                            text-align: left;
@@ -157,8 +166,31 @@
 <!-- Sidebar jquery-->
 <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
 
-<!--height equal js-->
-<script src="{{ asset('assets/js/equal-height.js') }}"></script>
+<!-- Jsgrid js-->
+<script src="{{ asset('assets/js/jsgrid/jsgrid.min.js')}}"></script>
+<script src="{{ asset('assets/js/jsgrid/griddata-productlist-digital.js')}}"></script>
+<script src="{{ asset('assets/js/jsgrid/jsgrid-list.js')}}"></script>
+
+<!-- lazyload js-->
+<script src="{{ asset('assets/js/lazysizes.min.js') }}"></script>
+
+
+<!--dropzone js-->
+<script src="{{asset('/assets/js/dropzone/dropzone.js')}}"></script>
+<script src="{{asset('/assets/js/dropzone/dropzone-script.js')}}"></script>
+
+<!-- Datatable js-->
+<script src="{{ asset('assets/js/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('assets/js/datatables/custom-basic.js')}}"></script>
+
+<!--Customizer admin-->
+<script src="{{ asset('assets/js/admin-customizer.js')}}"></script>
+
+<!--ckeditor js-->
+<script src="{{asset('/assets/js/editor/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('/assets/js/editor/ckeditor/styles.js')}}"></script>
+<script src="{{asset('/assets/js/editor/ckeditor/adapters/jquery.js')}}"></script>
+<script src="{{asset('/assets/js/editor/ckeditor/ckeditor.custom.js')}}"></script>
 
 <!--script admin-->
 <script src="{{ asset('assets/js/admin-script.js') }}"></script>

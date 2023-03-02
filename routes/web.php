@@ -38,6 +38,10 @@ Route::get('/checkout', function () {
     return view('fe.checkout');
 })->name('checkout');
 
+Route::get('/orders', function () {
+    return view('fe.order.list');
+})->name('orders');
+
 Route::get('/ordersuccess', function () {
     return view('fe.order.success');
 })->name('ordersuccess');

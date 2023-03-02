@@ -33,6 +33,7 @@
                 width: 50
             },
             { name: "Product Title", type: "text", width: 100},
+            { name: "Sale(%)", type: "number", width: 30},
             { name: "Entry Type", type: "text", width: 50},
             { name: "Quantity", type: "number", width: 50},
         { type: "control" }
