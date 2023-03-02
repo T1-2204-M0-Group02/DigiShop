@@ -8,11 +8,11 @@
       <div class="col">
         <div class="breadcrumb-contain">
           <div>
-            <h2>category</h2>
+            <h2>Product</h2>
             <ul>
               <li><a href="index.html">home</a></li>
               <li><i class="fa fa-angle-double-right"></i></li>
-              <li><a href="javascript:void(0)">category</a></li>
+              <li><a href="javascript:void(0)">Product</a></li>
             </ul>
           </div>
         </div>
@@ -39,19 +39,19 @@
                 <div class="collection-brand-filter">
                   <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
                     <input type="checkbox" class="custom-control-input form-check-input" id="zara">
-                    <label class="custom-control-label form-check-label" for="zara">zara</label>
+                    <label class="custom-control-label form-check-label" for="zara">Iphone</label>
                   </div>
                   <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
                     <input type="checkbox" class="custom-control-input form-check-input" id="vera-moda">
-                    <label class="custom-control-label form-check-label" for="vera-moda">vera-moda</label>
+                    <label class="custom-control-label form-check-label" for="vera-moda">SamSung</label>
                   </div>
                   <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
                     <input type="checkbox" class="custom-control-input form-check-input" id="forever-21">
-                    <label class="custom-control-label form-check-label" for="forever-21">forever-21</label>
+                    <label class="custom-control-label form-check-label" for="forever-21">Xiomi</label>
                   </div>
                   <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
                     <input type="checkbox" class="custom-control-input form-check-input" id="roadster">
-                    <label class="custom-control-label form-check-label" for="roadster">roadster</label>
+                    <label class="custom-control-label form-check-label" for="roadster">Google Pixel</label>
                   </div>
                   <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
                     <input type="checkbox" class="custom-control-input form-check-input" id="only">
@@ -99,10 +99,10 @@
                         <div class="product-box">
                           <div class="product-imgbox">
                             <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/1.jpg') }}" class="img-fluid  " alt="product"> </a>
+                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/r7.jpg') }}" class="img-fluid  " alt="product"> </a>
                             </div>
                             <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/a1.jpg') }}" class="img-fluid  " alt="product"> </a>
+                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/r7.jpg') }}" class="img-fluid  " alt="product"> </a>
                             </div>
 
 
@@ -137,10 +137,10 @@
                         <div class="product-box">
                           <div class="product-imgbox">
                             <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/2.jpg" class="img-fluid  " alt="product"> </a>
+                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/13.jpg')}}" class="img-fluid  " alt="product"> </a>
                             </div>
                             <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/a2.jpg" class="img-fluid  " alt="product"> </a>
+                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/13.jpg')}}" class="img-fluid  " alt="product"> </a>
                             </div>
 
 
@@ -152,7 +152,7 @@
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                 <a href="product-page(left-sidebar).html">
                                   <h6 class="price-title">
-                                    wireless speaker
+                                  13 ProMax
                                   </h6> </a>
                               </div>
                               <div class="detail-right">
@@ -162,7 +162,15 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="icon-detail">
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                               <div class="icon-detail">
                                <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
                               <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
                               <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
@@ -175,10 +183,10 @@
                         <div class="product-box">
                           <div class="product-imgbox">
                             <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/3.jpg" class="img-fluid  " alt="product"> </a>
+                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/ss.jpg')}}" class="img-fluid  " alt="product"> </a>
                             </div>
                             <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/a3.jpg" class="img-fluid  " alt="product"> </a>
+                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/ss.jpg')}}" class="img-fluid  " alt="product"> </a>
                             </div>
                           </div>
                           <div class="product-detail detail-center detail-inverse">
@@ -188,7 +196,7 @@
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                 <a href="product-page(left-sidebar).html">
                                   <h6 class="price-title">
-                                    Travel Backpack
+                                    SamSUng Glaxy 21
                                   </h6> </a>
                               </div>
                               <div class="detail-right">
@@ -211,10 +219,10 @@
                         <div class="product-box">
                           <div class="product-imgbox">
                             <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/4.jpg" class="img-fluid  " alt="product"> </a>
+                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/sn.jpg')}}" class="img-fluid  " alt="product"> </a>
                             </div>
                             <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/a4.jpg" class="img-fluid  " alt="product"> </a>
+                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/sn.jpg')}}" class="img-fluid  " alt="product"> </a>
                             </div>
 
                           </div>
@@ -225,7 +233,7 @@
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                 <a href="product-page(left-sidebar).html">
                                   <h6 class="price-title">
-                                    Modern Shoes
+                                    Sony Xp
                                   </h6> </a>
                               </div>
                               <div class="detail-right">
@@ -248,10 +256,10 @@
                         <div class="product-box">
                           <div class="product-imgbox">
                             <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/5.jpg" class="img-fluid  " alt="product"> </a>
+                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/14.jpg')}}" class="img-fluid  " alt="product"> </a>
                             </div>
                             <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/a5.jpg" class="img-fluid  " alt="product"> </a>
+                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/14.jpg')}}" class="img-fluid  " alt="product"> </a>
                             </div>
 
 
@@ -263,7 +271,7 @@
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                 <a href="product-page(left-sidebar).html">
                                   <h6 class="price-title">
-                                    sleeve fress
+                                   Iphone 14ProMAx
                                   </h6> </a>
                               </div>
                               <div class="detail-right">
@@ -286,10 +294,10 @@
                         <div class="product-box">
                           <div class="product-imgbox">
                             <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/6.jpg" class="img-fluid  " alt="product"> </a>
+                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/px.jpg')}}" class="img-fluid  " alt="product"> </a>
                             </div>
                             <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/a5.jpg" class="img-fluid  " alt="product"> </a>
+                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/px.jpg')}}" class="img-fluid  " alt="product"> </a>
                             </div>
 
 
@@ -301,7 +309,7 @@
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                 <a href="product-page(left-sidebar).html">
                                   <h6 class="price-title">
-                                    Acer Swift laptop
+                                     Pixel 7
                                   </h6> </a>
                               </div>
                               <div class="detail-right">
@@ -320,251 +328,12 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
-                        <div class="product-box">
-                          <div class="product-imgbox">
-                            <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/7.jpg" class="img-fluid  " alt="product"> </a>
-                            </div>
-                            <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/a7.jpg" class="img-fluid  " alt="product"> </a>
-                            </div>
-
-
-                          </div>
-                          <div class="product-detail detail-center detail-inverse">
-                            <div class="detail-title">
-                              <div class="detail-left">
-                                <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                <a href="product-page(left-sidebar).html">
-                                  <h6 class="price-title">
-                                    fastrack watch
-                                  </h6> </a>
-                              </div>
-                              <div class="detail-right">
-                                <div class="check-price"> $ 88.21 </div>
-                                <div class="price">
-                                  <div class="price"> $65.05 </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="icon-detail">
-                               <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                              <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                              <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                              <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
-                        <div class="product">
-                          <div class="product-box">
-                            <div class="product-imgbox">
-                              <div class="product-front">
-                                <img src="{{asset('assets/images/layout-1/product/3.jpg') }}" class="img-fluid  " alt="product">
-                              </div>
-                              <div class="product-back">
-                                <img src="{{asset('assets/images/layout-1/product/a3.jpg') }}" class="img-fluid  " alt="product">
-                              </div>
-                            </div>
-                            <div class="product-detail detail-center ">
-                              <div class="detail-title">
-                                <div class="detail-left">
-                                  <div class="rating-star">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                  </div>
-                                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                  <a href="">
-                                    <h6 class="price-title">
-                                      reader will be distracted.
-                                    </h6>
-                                  </a>
-                                </div>
-                                <div class="detail-right">
-                                  <div class="check-price">
-                                    $ 56.21
-                                  </div>
-                                  <div class="price">
-                                    <div class="price">
-                                      $ 24.05
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="icon-detail">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart"  onclick="openCart()" class="tooltip-top" data-tippy-content="Add to cart" >
-                                  <i  data-feather="shopping-cart"></i>
-                                </button>
-                                <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" >
-                                  <i  data-feather="heart"></i>
-                                </a>
-                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View">
-                                  <i  data-feather="eye"></i>
-                                </a>
-                                <a href="compare.html" class="tooltip-top" data-tippy-content="Compare">
-                                  <i  data-feather="refresh-cw"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
-                        <div class="product-box">
-                          <div class="product-imgbox">
-                            <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/8.jpg') }}" class="img-fluid  " alt="product"> </a>
-                            </div>
-                            <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/a8.jpg') }}" class="img-fluid  " alt="product"> </a>
-                            </div>
-
-
-                          </div>
-                          <div class="product-detail detail-center detail-inverse">
-                            <div class="detail-title">
-                              <div class="detail-left">
-                                <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                <a href="product-page(left-sidebar).html">
-                                  <h6 class="price-title">
-                                    dressing mirror
-                                  </h6> </a>
-                              </div>
-                              <div class="detail-right">
-                                <div class="check-price"> $ 97.21 </div>
-                                <div class="price">
-                                  <div class="price"> $ 84.05 </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="icon-detail">
-                               <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                              <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                              <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                              <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
-                        <div class="product-box">
-                          <div class="product-imgbox">
-                            <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/1.jpg') }}" class="img-fluid  " alt="product"> </a>
-                            </div>
-                            <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/a1.jpg') }}" class="img-fluid  " alt="product"> </a>
-                            </div>
-
-
-                          </div>
-                          <div class="product-detail detail-center detail-inverse">
-                            <div class="detail-title">
-                              <div class="detail-left">
-                                <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                <a href="product-page(left-sidebar).html">
-                                  <h6 class="price-title">
-                                    realme not 7
-                                  </h6> </a>
-                              </div>
-                              <div class="detail-right">
-                                <div class="check-price"> $60.21 </div>
-                                <div class="price">
-                                  <div class="price"> $50.05 </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="icon-detail">
-                               <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                              <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                              <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                              <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
-                        <div class="product-box">
-                          <div class="product-imgbox">
-                            <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/2.jpg') }}" class="img-fluid  " alt="product"> </a>
-                            </div>
-                            <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/a2.jpg') }}" class="img-fluid  " alt="product"> </a>
-                            </div>
-
-
-                          </div>
-                          <div class="product-detail detail-center detail-inverse">
-                            <div class="detail-title">
-                              <div class="detail-left">
-                                <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                <a href="product-page(left-sidebar).html">
-                                  <h6 class="price-title">
-                                    wireless speaker
-                                  </h6> </a>
-                              </div>
-                              <div class="detail-right">
-                                <div class="check-price"> $56.21 </div>
-                                <div class="price">
-                                  <div class="price"> $ 24.05 </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="icon-detail">
-                               <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                              <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                              <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                              <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
-                        <div class="product-box">
-                          <div class="product-imgbox">
-                            <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/3.jpg') }}" class="img-fluid  " alt="product"> </a>
-                            </div>
-                            <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/a3.jpg') }}" class="img-fluid  " alt="product"> </a>
-                            </div>
-                          </div>
-                          <div class="product-detail detail-center detail-inverse">
-                            <div class="detail-title">
-                              <div class="detail-left">
-                                <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                <a href="product-page(left-sidebar).html">
-                                  <h6 class="price-title">
-                                    Travel Backpack
-                                  </h6> </a>
-                              </div>
-                              <div class="detail-right">
-                                <div class="check-price"> $90.21 </div>
-                                <div class="price">
-                                  <div class="price"> $70.05 </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="icon-detail">
-                               <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                              <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                              <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                              <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                    
+                      
+                     
+                     
+                    
+                      
                     </div>
                   </div>
                   <div class="product-pagination">
