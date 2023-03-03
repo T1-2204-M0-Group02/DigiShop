@@ -1,8 +1,31 @@
 <x-admin-layout>
+    <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <div class="row product-adding">
-            <form action="{{ Route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>ADD Product
+                            <small>Bigdeal Admin panel</small>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">Digital</li>
+                        <li class="breadcrumb-item active">Add Product</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+    <div class="container-fluid">
+          <form class="row product-adding" action="{{Route('admin.products.store')}}" method="put" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="col-xl-6">
                     <div class="card">
                         <div class="card-header">
@@ -20,15 +43,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label"><span>*</span> Categories</label>
-                                    <select name="category_id   " class="custom-select form-control" required="">
+                                    <select name="category_id"class="custom-select form-control" required="">
                                         <option value="">--Select--</option>
                                         <option value="1">eBooks</option>
                                         <option value="2">Graphic Design</option>
                                         <option value="3">3D Impact</option>
                                         <option value="4">Application</option>
                                         <option value="5">Websites</option>
-                                    </select>
-                                </div>
+                                            </select>
+                        </div>
                             
                                 <div class="form-group">
                                     <label for="validationCustom02" class="col-form-label"><span>*</span> Product Price</label>
@@ -37,11 +60,7 @@
                             
                                 <label class="col-form-label pt-0"> Product Upload</label>
                                 <input type="file" name="photo">
-                                {{-- <form  class="dropzone digits" id="singleFileUpload" action="/upload.php">
-                                    <div class="dz-message needsclick"><i class="fa fa-cloud-upload"></i>
-                                        <h4 class="mb-0 f-w-600">Drop files here or click to upload.</h4>
-                                    </div>
-                                </form> --}}
+                                
                             </div>
                         </div>
                     </div>
@@ -55,9 +74,7 @@
                             <div class="digital-add needs-validation mb-5">
                                 <div class="form-group mb-0">
                                     <div class="description-sm">
-                                        <input type="text" name="description">
-                                        
-                                        {{-- <textarea id="editor1" name="editor1" cols="10" rows="4"></textarea> --}}
+                                          <textarea id="editor1" name="description" cols="10" rows="4"></textarea> 
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +89,5 @@
                     
                 </div>
             </form>
-        </div>
-        
     </div>
 </x-admin-layout>
