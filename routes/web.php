@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 Route::get('/shop', function () {
     return view('fe.shop.index');
-});
+})->name('shop');
 
 Route::get('/cart', function () {
     return view('fe.cart');

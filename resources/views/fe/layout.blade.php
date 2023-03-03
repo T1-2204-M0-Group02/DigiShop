@@ -272,16 +272,16 @@
                     <div class="mobile-back text-right">Back<i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                   </li>
                   <li>
-                    <a class="dark-menu-item" href="javascript:void(0)">Home</a>
+                    <a class="dark-menu-item" href="{{ Route('home') }}">Home</a>
                   </li>
                   <li>
-                    <a class="dark-menu-item" href="javascript:void(0)">Shop</a>
+                    <a class="dark-menu-item" href="{{ Route('shop') }}">Shop</a>
                   </li>
                   <li>
-                    <a class="dark-menu-item" href="javascript:void(0)">Orders</a>
+                    <a class="dark-menu-item" href="{{ Route('orders') }}">Orders</a>
                   </li>
                   <li>
-                    <a class="dark-menu-item" href="javascript:void(0)">Cart</a>
+                    <a class="dark-menu-item" href="{{ Route('cart') }}">Cart</a>
                   </li>
                   <li>
                     <a class="dark-menu-item" href="javascript:void(0)">Profile</a>
