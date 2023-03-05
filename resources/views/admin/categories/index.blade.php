@@ -7,7 +7,7 @@
                     <div class="col-lg-6">
                         <div class="page-header-left">
                             <h3>Category
-                                <small>Bigdeal Admin panel</small>
+                                <small>DigiShop Admin panel</small>
                             </h3>
                         </div>
                     </div>

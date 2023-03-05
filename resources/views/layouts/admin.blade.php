@@ -58,7 +58,7 @@
     <!-- Page Header Start-->
     <div class="page-main-header">
         <div class="main-header-left">
-            <div class="logo-wrapper"><a href="index.html"><img class="blur-up lazyloaded" src="{{ asset('assets/images/layout-2/logo/logo.png') }}" alt=""></a></div>
+            <div class="logo-wrapper"><a href="{{ Route('home') }}"><img class="blur-up lazyloaded" src="{{ asset('assets/images/layout-2/logo/logo1.png') }}" width="100px" alt=""></a></div>
         </div>
         <div class="main-header-right ">
             <div class="mobile-sidebar">
@@ -96,7 +96,7 @@
 
                 <ul class="sidebar-menu">
                     <li><a class="sidebar-header" href="{{ Route('admin.dashboard.index') }}"><i data-feather="home"></i><span>Dashboard</span></a></li>
-                    <li><a class="sidebar-header" href="{{ Route('admin.categories.index') }}"><i data-feather="home"></i><span>Categories</span></a></li>
+                    <li><a class="sidebar-header" href="{{ Route('admin.categories.index') }}"><i data-feather="grid"></i><span>Categories</span></a></li>
                     <li><a class="sidebar-header" href="javascript:void(0)"><i data-feather="box"></i> <span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
                             <li>
@@ -111,8 +111,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-header" href="{{ Route('admin.orders.index') }}"><i data-feather="home"></i><span>Orders</span></a></li>
-                    <li><a class="sidebar-header" href="{{ Route('admin.users.index') }}"><i data-feather="home"></i><span>Users</span></a></li>
+                    <li><a class="sidebar-header" href="{{ Route('admin.orders.index') }}"><i data-feather="file"></i><span>Orders</span></a></li>
+                    <li><a class="sidebar-header" href="{{ Route('admin.users.index') }}"><i data-feather="users"></i><span>Users</span></a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
@@ -177,9 +177,6 @@
 <!-- lazyload js-->
 <script src="{{ asset('assets/js/lazysizes.min.js') }}"></script>
 
-<!--Customizer admin-->
-<script src="{{ asset('assets/js/admin-customizer.js')}}"></script>
-
 <!--dropzone js-->
 <script src="{{asset('/assets/js/dropzone/dropzone.js')}}"></script>
 <script src="{{asset('/assets/js/dropzone/dropzone-script.js')}}"></script>
@@ -187,8 +184,6 @@
 <!-- Datatable js-->
 <script src="{{ asset('assets/js/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{ asset('assets/js/datatables/custom-basic.js')}}"></script>
-
-
 
 <!--ckeditor js-->
 <script src="{{asset('/assets/js/editor/ckeditor/ckeditor.js')}}"></script>

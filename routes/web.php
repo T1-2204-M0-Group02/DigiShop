@@ -30,6 +30,10 @@ Route::get('/shop', function () {
     return view('fe.shop.index');
 })->name('shop');
 
+Route::get('/detail', function () {
+  return view('fe.shop.detail');
+})->name('detail')->name('shop');
+
 Route::get('/cart', function () {
     return view('fe.cart');
 })->name('cart');
@@ -53,7 +57,7 @@ Route::get('/profileDashboard', function () {
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
-Route::middleware(['auth', 'admin', 'verified'])->name('admin.')->prefix('admin')->group(function() {
+Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/categories', CategoryController::class);
@@ -62,7 +66,7 @@ Route::middleware(['auth', 'admin', 'verified'])->name('admin.')->prefix('admin'
     Route::resource('/users', UsersController::class);
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'verified')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
