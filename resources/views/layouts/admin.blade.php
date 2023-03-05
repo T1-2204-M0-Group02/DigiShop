@@ -171,6 +171,9 @@
 <script src="{{ asset('assets/js/jsgrid/griddata-productlist-digital.js')}}"></script>
 <script src="{{ asset('assets/js/jsgrid/jsgrid-list.js')}}"></script>
 
+<script src="{{asset('assets/js/jsgrid/griddata-users.js')}}"></script>
+<script src="{{asset('assets/js/jsgrid/jsgrid-users.js')}}"></script>
+
 <!-- lazyload js-->
 <script src="{{ asset('assets/js/lazysizes.min.js') }}"></script>
 
