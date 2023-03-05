@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -35,7 +36,16 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product();
+        $product->name = $request->name;
+        $product->slug = $request->slug;
+        $product->category_id = $request->category;
+        $product->price = $request->price;
+        $product->description = $request->description;
+       
+        $product->save();
+        return redirect('admin/products');
+      
     }
 
     /**
