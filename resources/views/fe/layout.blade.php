@@ -76,7 +76,7 @@
 <!-- loader end -->
 
 <!--header start-->
-<header id="stickyheader">
+<header>
   <div class="mobile-fix-option"></div>
   <div class="top-header">
     <div class="container">
@@ -427,19 +427,18 @@
 <script src="{{ asset('assets/js/slick.js') }}"></script>
 
 <!-- tool tip js -->
-<script src="{{ asset('assets/js/tippy-popper.min.js') }}"></script>
-<script src="{{ asset('assets/js/tippy-bundle.iife.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/tippy-popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/tippy-bundle.iife.min.js') }}"></script> --}}
 
 <!-- popper js-->
 <script src="{{ asset('assets/js/popper.min.js') }}" ></script>
 
 <!-- father icon -->
-<script src="assets/js/feather.min.js') }}"></script>
 <script src="{{ asset('assets/js/feather-icon.js') }}"></script>
 
 <!-- range sldier -->
-<script src="{{ asset('assets/js/ion.rangeSlider.js') }}"></script>
-<script src="{{ asset('assets/js/rangeslidermain.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/ion.rangeSlider.js') }}"></script>
+<script src="{{ asset('assets/js/rangeslidermain.js') }}"></script> --}}
 
 <!-- Bootstrap js-->
 <script src="{{ asset('assets/js/bootstrap-notify.min.js') }}"></script>
