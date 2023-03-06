@@ -13,8 +13,7 @@
                     </div>
                     <div class="col-lg-6">
                         <ol class="breadcrumb pull-right">
-                            <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item">Digital</li>
+                            <li class="breadcrumb-item"><a href="{{ Route('admin.index') }}"><i data-feather="home"></i></a></li>
                             <li class="breadcrumb-item active">Category</li>
                         </ol>
                     </div>
@@ -29,43 +28,66 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Digital Products</h5>
+                            <h5>Categories</h5>
                         </div>
                         <div class="card-body">
-                            <div class="btn-popup pull-right">
-                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Category</button>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Digital Product</h5>
-                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form class="needs-validation">
-                                                    <div class="form">
-                                                        <div class="form-group">
-                                                            <label for="validationCustom01" class="mb-1">Category Name :</label>
-                                                            <input class="form-control" id="validationCustom01" type="text">
-                                                        </div>
-                                                        <div class="form-group mb-0">
-                                                            <label for="validationCustom02" class="mb-1">Category Image :</label>
-                                                            <input class="form-control" id="validationCustom02" type="file">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button class="btn btn-primary" type="button">Save</button>
-                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
+
+                            <form class="mb-3" action="{{ Route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="category-image" class="form-label">Image</label>
+                                        <input name="photo" class="form-control" id="category-image" type="file">
+                                    </div>
+                                    <div class="col">
+                                        <label for="category-name" class="form-label">Category name</label>
+                                        <input id="category-name" type="text" class="form-control" placeholder="Name">
+                                    </div>
+                                    <div class="col d-flex">
+                                        <button type="submit" class="btn btn-secondary mt-auto mb-3">Add Category</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="table-responsive">
+                                <div id="basicScenario" class="product-physical jsgrid"
+                                     style="position: relative; height: auto; width: 100%;">
+                                    <div class="jsgrid-grid-header jsgrid-header-scrollbar">
+                                        <table class="jsgrid-table">
+                                            <tbody>
+                                            <tr class="jsgrid-header-row">
+                                                <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header"
+                                                    style="width: 50px;">ID
+                                                </th>
+                                                <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header"
+                                                    style="width: 100px;">Category
+                                                </th>
+                                                <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header"
+                                                    style="width: 100px;">Image
+                                                </th>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="jsgrid-grid-body">
+                                        <table class="jsgrid-table">
+                                            <tbody>
+                                            @foreach($categories as $category)
+                                            <tr class="jsgrid-row jsgrid-selected-row">
+                                                <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{ $category->id }}</td>
+                                                <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{ $category->name }}</td>
+                                                <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
+                                                    @if (!empty($category->image))
+                                                        <img src="{{ asset('images/' .$category->image) }}" alt="{{ $category->name }}" style="width:100px; height:auto;">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive">
-                                <div id="basicScenario" class="product-physical"></div>
-                            </div>
+
                         </div>
                     </div>
                 </div>

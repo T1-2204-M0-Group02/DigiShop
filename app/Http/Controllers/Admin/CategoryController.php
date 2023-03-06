@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index');
+        $categories = Category::all();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -35,7 +37,28 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = $request->all();
+
+        if($request->hasFile('photo'))
+        {
+            $file=$request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
+            {
+                return view('admin.product.create')
+                    ->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
+            }
+            $imageName = $file->getClientOriginalName();
+            $file->move("images",$imageName);
+        }
+        else
+        {
+            $imageName = null;
+        }
+        $category['image'] = $imageName;
+        Category::create($category);
+
+        return;
     }
 
     /**
