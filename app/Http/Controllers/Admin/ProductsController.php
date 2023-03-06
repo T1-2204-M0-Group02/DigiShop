@@ -15,7 +15,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $prods = Product::all();
+        return view('admin.products.index',compact('prods'));
     }
 
     /**
@@ -36,14 +37,27 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product();
-        $product->name = $request->name;
-        $product->slug = $request->slug;
-        $product->category_id = $request->category;
-        $product->price = $request->price;
-        $product->description = $request->description;
-       
-        $product->save();
+        $product = $request->all();
+        $product['slug'] = \Str::slug($request->name);
+        if($request->hasFile('photo'))
+        {
+            $file=$request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
+            {
+                return view('admin.product.create')
+                    ->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
+            }
+            $imageName = $file->getClientOriginalName();
+            $file->move("images",$imageName);
+        }
+        else
+        {
+            $imageName = null;
+        }
+        $product['image'] = $imageName;
+
+        Product::create($product);
         return redirect('admin/products');
       
     }

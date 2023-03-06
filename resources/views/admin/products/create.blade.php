@@ -46,10 +46,6 @@
                                     <select name="category_id"class="custom-select form-control" required="">
                                         <option value="">--Select--</option>
                                         <option value="1">eBooks</option>
-                                        <option value="2">Graphic Design</option>
-                                        <option value="3">3D Impact</option>
-                                        <option value="4">Application</option>
-                                        <option value="5">Websites</option>
                                             </select>
                         </div>
                             
