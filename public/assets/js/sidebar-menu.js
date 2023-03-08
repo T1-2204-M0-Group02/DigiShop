@@ -65,16 +65,13 @@ $( ".sidebar-menu" ).find( "a" ).removeClass("active");
 $( ".sidebar-menu" ).find( "li" ).removeClass("active");
 
 var current = window.location.href
-console.log(current);
 $(".sidebar-menu>li a").filter(function() {
 
-    var link = $(this).attr("href");
-    console.log(link);
+  var link = $(this).attr("href");
   if(link) {
-    if (current.indexOf(link) != -1) {
+    if (current === link) {
       $(this).parents('li').addClass('active');
       $(this).addClass('active');
-      console.log(link + " found");
     }
   }
 });

@@ -9,4 +9,12 @@
     background: transparent;
     outline: transparent;
     border: 1px;
+    margin-left: 1rem;
+}
+
+@media (max-width: 1199px){
+  .layout-header2 {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dadada;
+  }
 }
