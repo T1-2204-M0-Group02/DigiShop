@@ -36,12 +36,12 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col mb-3">
-                                        <label for="category-image" class="form-label">Image</label>
-                                        <input name="photo" class="form-control" id="category-image" type="file">
+                                        <label for="category-image" class="form-label">Category Image</label>
+                                        <input id="photo" name="photo" class="form-control" type="file">
                                     </div>
                                     <div class="col">
-                                        <label for="category-name" class="form-label">Category name</label>
-                                        <input id="category-name" type="text" class="form-control" placeholder="Name">
+                                        <label for="name" class="form-label">Category name</label>
+                                        <input id="name" name="name" type="text" class="form-control" placeholder="Name">
                                     </div>
                                     <div class="col d-flex">
                                         <button type="submit" class="btn btn-secondary mt-auto mb-3">Add Category</button>
@@ -55,15 +55,16 @@
                                         <table class="jsgrid-table">
                                             <tbody>
                                             <tr class="jsgrid-header-row">
-                                                <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header"
+                                                <th class="jsgrid-header-cell jsgrid-header"
                                                     style="width: 50px;">ID
                                                 </th>
                                                 <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header"
-                                                    style="width: 100px;">Category
+                                                    style="width: 50px;">Image
                                                 </th>
                                                 <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header"
-                                                    style="width: 100px;">Image
+                                                    style="width: 100px;">Categories
                                                 </th>
+                                                <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header" style="width: 30px;"></th>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -72,14 +73,24 @@
                                         <table class="jsgrid-table">
                                             <tbody>
                                             @foreach($categories as $category)
-                                            <tr class="jsgrid-row jsgrid-selected-row">
-                                                <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{ $category->id }}</td>
-                                                <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{ $category->name }}</td>
-                                                <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
+                                            <tr class="jsgrid-row jsgrid-selected-row ">
+                                                <td class="jsgrid-cell" style="width: 50px;">{{ $category->id }}</td>
+                                                <td class="jsgrid-cell" style="width: 50px;">
                                                     @if (!empty($category->image))
                                                         <img src="{{ asset('images/' .$category->image) }}" alt="{{ $category->name }}" style="width:100px; height:auto;">
                                                     @endif
                                                 </td>
+                                                <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{ $category->name }}</td>
+                                                <td class="jsgrid-cell jsgrid-align-center" style="width: 30px;">
+                                                    <form action="{{ Route('admin.categories.destroy', $category->id) }}" method="post" style="display:inline-block">
+                                                        @csrf
+                                                        @method("delete")
+                                                        <button type="submit" class="btn " style="padding: 0.2rem 0.5rem;">
+                                                            <i data-feather="trash-2" style="width: 20px; height: 20px; color: black;"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+
                                             </tr>
                                             @endforeach
                                             </tbody>

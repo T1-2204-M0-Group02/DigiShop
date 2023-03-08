@@ -131,7 +131,7 @@
               <a href="{{ Route('home') }}">
 
                 <img src="{{ asset('assets/images/layout-2/logo/logo1.png') }}" class="header_logo img-fluid  " alt="logo">
-                
+
               </a>
             </div>
           </div>
@@ -434,7 +434,8 @@
 <script src="{{ asset('assets/js/popper.min.js') }}" ></script>
 
 <!-- father icon -->
-<script src="{{ asset('assets/js/feather-icon.js') }}"></script>
+<script src="{{ asset('assets/js/icons/feather-icon/feather.min.js') }}"></script>
+<script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
 
 <!-- range sldier -->
 {{-- <script src="{{ asset('assets/js/ion.rangeSlider.js') }}"></script>
