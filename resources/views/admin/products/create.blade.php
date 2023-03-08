@@ -6,7 +6,7 @@
                 <div class="col-lg-6">
                     <div class="page-header-left">
                         <h3>ADD Product
-                            <small>Bigdeal Admin panel</small>
+                            <small>Digishop Admin panel</small>
                         </h3>
                     </div>
                 </div>
@@ -23,9 +23,8 @@
     <!-- Container-fluid Ends-->
 
     <div class="container-fluid">
-          <form class="row product-adding" action="{{Route('admin.products.store')}}" method="put" enctype="multipart/form-data">
+          <form class="row product-adding" action="{{Route('admin.products.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
                 <div class="col-xl-6">
                     <div class="card">
                         <div class="card-header">
@@ -38,20 +37,24 @@
                                     <input name="name" class="form-control" id="validationCustom01" type="text" required="">
                                 </div>
                                 <div class="form-group">
-                                    <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> Slug</label>
-                                    <input name="slug" class="form-control" id="validationCustomtitle" type="text" required="">
-                                </div>
-                                <div class="form-group">
                                     <label class="col-form-label"><span>*</span> Categories</label>
-                                    <select name="category_id"class="custom-select form-control" required="">
+                                    <select id="category_id" name="category_id"class="custom-select form-control" required="">
                                         <option value="">--Select--</option>
-                                        <option value="1">eBooks</option>
+                                       @foreach ($category as $item )
+                                    
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                             
+                                       @endforeach
                                             </select>
                         </div>
                             
                                 <div class="form-group">
                                     <label for="validationCustom02" class="col-form-label"><span>*</span> Product Price</label>
-                                    <input name="price" class="form-control" id="validationCustom02" type="text" required="">
+                                    <input name="price" class="form-control" id="validationCustom02" type="number" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom02" class="col-form-label"><span>*</span> Sale(%)</label>
+                                    <input name="sale" class="form-control" id="validationCustom03" type="number" required="">
                                 </div>
                             
                                 <label class="col-form-label pt-0"> Product Upload</label>
@@ -77,7 +80,6 @@
                             <div class="form-group mb-0">
                                 <div class="product-buttons text-center">
                                     <button type="submit" class="btn btn-primary">Add</button>
-                                    <button type="button" class="btn btn-light">Discard</button>
                                 </div>
                             </div>
                         </div>
