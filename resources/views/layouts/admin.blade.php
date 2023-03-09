@@ -168,14 +168,8 @@
 
 <!-- Jsgrid js-->
 <script src="{{ asset('assets/js/jsgrid/jsgrid.min.js')}}"></script>
-{{--<script src="{{ asset('assets/js/jsgrid/griddata-digital.js')}}"></script>--}}
-{{--<script src="{{ asset('assets/js/jsgrid/jsgrid-manage-product.js')}}"></script>--}}
-
-<script src="{{asset('assets/js/jsgrid/griddata-users.js')}}"></script>
-<script src="{{asset('assets/js/jsgrid/jsgrid-users.js')}}"></script>
-
-<!-- lazyload js-->
-<script src="{{ asset('assets/js/lazysizes.min.js') }}"></script>
+<script src="{{ asset('assets/js/jsgrid/griddata-productlist-digital.js')}}"></script>
+<script src="{{ asset('assets/js/jsgrid/jsgrid-list.js')}}"></script>
 
 <!--dropzone js-->
 <script src="{{asset('/assets/js/dropzone/dropzone.js')}}"></script>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -14,7 +16,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $prods = Product::all();
+        return view('admin.products.index',compact('prods'));
     }
 
     /**
@@ -23,8 +26,8 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.products.create');
+    {   $category = Category::all();
+        return view('admin.products.create',compact('category'));
     }
 
     /**
@@ -35,7 +38,29 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = $request->all();
+        $product['slug'] = \Str::slug($request->name);
+        if($request->hasFile('photo'))
+        {
+            $file=$request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
+            {
+                return view('admin.products.create')
+                    ->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
+            }
+            $imageName = $file->getClientOriginalName();
+            $file->move("images",$imageName);
+        }
+        else
+        {
+            $imageName = null;  
+        }
+        $product['image'] = $imageName;
+
+        Product::create($product);
+        return redirect('admin/products');
+      
     }
 
     /**
@@ -55,9 +80,11 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        
+        $category = Category::all();
+        return view('admin.products.edit', compact('product','category'));
     }
 
     /**
@@ -67,9 +94,27 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Product $product)
     {
-        //
+        if($request->hasFile('photo'))
+        {
+            $file=$request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
+            {
+                return view('admin.products.create')
+                    ->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
+            }
+            $imageName = $file->getClientOriginalName();
+            $file->move("images",$imageName);
+        }
+        else
+        {
+            $imageName = null;  
+        }
+        $request['image'] = $imageName;
+        $product->update($request->all());
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -78,8 +123,10 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('admin.products.index');
     }
-}
+    }
+
