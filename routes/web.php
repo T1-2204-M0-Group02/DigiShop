@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\FE\HomeController;
 use App\Http\Controllers\Auth\ProviderController;
 
 use App\Http\Controllers\ProfileController;
@@ -24,13 +25,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('fe.home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/shop', function () {
     return view('fe.shop.index');
-});
+})->name('shop');
+
+Route::get('/detail', function () {
+  return view('fe.shop.detail');
+})->name('detail')->name('shop');
 
 Route::get('/cart', function () {
     return view('fe.cart');
@@ -48,6 +51,10 @@ Route::get('/ordersuccess', function () {
     return view('fe.order.success');
 })->name('ordersuccess');
 
+Route::get('/profileDashboard', function () {
+    return view('fe.profile');
+})->name('profile');
+
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
@@ -59,7 +66,8 @@ Route::get('/clear-cart', [CartController::class, 'clearCart'])->name('clearCart
 Route::post('/change-cart-item', [CartController::class, 'changeCartItem'])->name('changeCart');
 Route::post('/remove-cart-item', [CartController::class, 'removeCartItem'])->name('removeCart');
 
-Route::middleware(['auth', 'admin', 'verified'])->name('admin.')->prefix('admin')->group(function() {
+Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function() {
+
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/categories', CategoryController::class);
@@ -68,7 +76,7 @@ Route::middleware(['auth', 'admin', 'verified'])->name('admin.')->prefix('admin'
     Route::resource('/users', UsersController::class);
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'verified')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
