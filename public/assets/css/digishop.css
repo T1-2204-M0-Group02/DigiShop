@@ -18,3 +18,9 @@
     border-bottom: 1px solid #dadada;
   }
 }
+
+.theme-slider .slider-banner .slider-img {
+    background-image: url("../images/layout-1/slider/1.5.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

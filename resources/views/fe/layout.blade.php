@@ -50,6 +50,7 @@
             echo 'collapse collapsed nav-desk';
         }
     }
+    $categories = \App\Models\Category::all();
   ?>
 </head>
 <style>
@@ -65,6 +66,7 @@
     }
 
 </style>
+
 <body>
 
 <!-- loader start -->
@@ -119,12 +121,11 @@
                     back <i class="fa fa-angle-right ps-2"></i>
                   </div>
                 </li>
-                <li><a href="javascript:void(0)">western ware</a></li>
-                <li><a href="javascript:void(0)">TV, Appliances</a></li>
-                <li><a href="javascript:void(0)">Pets Products</a></li>
-                <li><a href="javascript:void(0)">Car, Motorbike</a></li>
-                <li><a href="javascript:void(0)">Industrial Products</a></li>
-                <li><a href="javascript:void(0)">Beauty, Health Products</a></li>
+                      @if($categories)
+                          @foreach($categories as $category)
+                              <li> <a href="#"><img src="{{ asset('images/' .$category->image) }}" alt="category-product" width="50px" height="50px"> {{ $category->name }}</a></li>
+                          @endforeach
+                      @endif
               </ul>
             </div>
             <div class="brand-logo logo-sm-center">
@@ -252,11 +253,11 @@
                 </nav>
                 <div class="{{ getNavBar() }}" id="navbarToggleExternalContent">
                   <ul class="nav-cat title-font">
-                    <li> <a href="javascript:void(0)"><img src="{{ asset('assets/images/layout-1/nav-img/01.png') }}" alt="category-product"> western ware</a></li>
-                    <li> <a href="javascript:void(0)"><img src="{{ asset('assets/images/layout-1/nav-img/02.png') }}" alt="category-product"> TV, Appliances</a></li>
-                    <li> <a href="javascript:void(0)"><img src="{{ asset('assets/images/layout-1/nav-img/03.png') }}" alt="category-product"> Pets Products</a></li>
-                    <li> <a href="javascript:void(0)"><img src="{{ asset('assets/images/layout-1/nav-img/04.png') }}" alt="category-product"> Car, Motorbike</a></li>
-                    <li> <a href="javascript:void(0)"><img src="{{ asset('assets/images/layout-1/nav-img/05.png') }}" alt="category-product"> Industrial Products</a></li>
+                      @if($categories)
+                      @foreach($categories as $category)
+                          <li> <a href="#"><img src="{{ asset('images/' .$category->image) }}" alt="category-product" width="50px" height="50px"> {{ $category->name }}</a></li>
+                      @endforeach
+                      @endif
                   </ul>
                 </div>
               </div>
@@ -393,10 +394,9 @@
                 </div>
                 <div class="footer-contant">
                     <ul class="contact-list">
-                        <li><i class="fa fa-map-marker"></i>big deal store demo store <br> india-<span>3654123</span></li>
+                        <li><i class="fa fa-map-marker"></i>Digi Shop store <br> </li>
                         <li><i class="fa fa-phone"></i>call us: <span>123-456-7898</span></li>
-                        <li><i class="fa fa-envelope-o"></i>email us: support@bigdeal.com</li>
-                        <li><i class="fa fa-fax"></i>fax <span>123456</span></li>
+                        <li><i class="fa fa-envelope-o"></i>email us: dighop@gmail.com</li>
                     </ul>
                 </div>
             </div>
