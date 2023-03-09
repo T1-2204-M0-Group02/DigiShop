@@ -427,8 +427,8 @@
 <script src="{{ asset('assets/js/slick.js') }}"></script>
 
 <!-- tool tip js -->
-{{-- <script src="{{ asset('assets/js/tippy-popper.min.js') }}"></script>
-<script src="{{ asset('assets/js/tippy-bundle.iife.min.js') }}"></script> --}}
+<script src="{{ asset('assets/js/tippy-popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/tippy-bundle.iife.min.js') }}"></script>
 
 <!-- popper js-->
 <script src="{{ asset('assets/js/popper.min.js') }}" ></script>
@@ -438,8 +438,8 @@
 <script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
 
 <!-- range sldier -->
-{{-- <script src="{{ asset('assets/js/ion.rangeSlider.js') }}"></script>
-<script src="{{ asset('assets/js/rangeslidermain.js') }}"></script> --}}
+<script src="{{ asset('assets/js/ion.rangeSlider.js') }}"></script>
+<script src="{{ asset('assets/js/rangeslidermain.js') }}"></script>
 
 <!-- Bootstrap js-->
 <script src="{{ asset('assets/js/bootstrap-notify.min.js') }}"></script>
