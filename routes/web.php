@@ -11,7 +11,7 @@ use App\Http\Controllers\Auth\ProviderController;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Cart\CartController;
-
+use App\Http\Controllers\FE\ShopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,13 +27,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/shop', function () {
-    return view('fe.shop.index');
-})->name('shop');
+Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 
-Route::get('/detail', function () {
-  return view('fe.shop.detail');
-})->name('detail')->name('shop');
+Route::get('/shop/{slug}', [ShopController::class, 'product'])->name('product.details');
+
+
 
 Route::get('/cart', function () {
     return view('fe.cart');
@@ -58,7 +56,13 @@ Route::get('/profileDashboard', function () {
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
-Route::post('/add-cart', [CartController::class, 'addCart'])->name('addCart');
+Route::post('/add-cart', [CartController::class, 'addCart'])->name('
+
+
+
+
+
+');
 
 Route::get('/view-cart', [CartController::class, 'viewCart'])->name('viewCart');
 Route::get('/clear-cart', [CartController::class, 'clearCart'])->name('clearCart');
