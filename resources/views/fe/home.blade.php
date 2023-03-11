@@ -100,17 +100,12 @@
                                     <div class="product-imgbox">
                                         <div class="product-front">
                                             <a href="product-page(left-sidebar).html">
-                                                <img src="{{ asset('assets/images/layout-4/product/'.$product->image) }}" class="img-fluid  " alt="product">
+                                                <img src="{{ asset('images/'.$product->image) }}" class="img-fluid  " alt="product">
                                             </a>
                                         </div>
-                                        {{--                                        <div class="product-back">--}}
-                                        {{--                                            <a href="product-page(left-sidebar).html">--}}
-                                        {{--                                                <img src="../assets/images/layout-2/product/a1.jpg" class="img-fluid  " alt="product">--}}
-                                        {{--                                            </a>--}}
-                                        {{--                                        </div>--}}
-                                        <div class="product-icon icon-inline">
-                                            <button  onclick="openCart()" class="tooltip-top" data-tippy-content="Add to cart" >
-                                                <i  data-feather="shopping-cart"></i>
+                                        <div class="product-icon icon-inline ">
+                                            <button class="tooltip-top w-100 add-to-cart" data-id="{{ $product->id }}">
+                                                <i data-feather="shopping-cart"></i>
                                             </button>
 
                                         </div>
@@ -194,23 +189,18 @@
                             @foreach($categories as $category)
                             <div id="tab-{{ $category->id }}" class="tab-content {{ $category->id == $categories[0]->id ? 'active default' : '' }}">
                                 <div class="product-slide-6 product-m no-arrow">
-                                    <div>
                                         @foreach($products as $product)
                                             @if($product->category_id == $category->id)
+                                            <div>
                                             <div class="product-box">
                                                     <div class="product-imgbox">
                                                         <div class="product-front">
-                                                            <a href="product-page(left-sidebar).html">
-                                                                <img src="{{ asset('assets/images/layout-4/product/'.$product->image) }}" class="img-fluid" alt="{{ $product->name }}">
+                                                            <a href="#">
+                                                                <img src="{{ asset('images/'.$product->image) }}" class="img-fluid" alt="{{ $product->name }}">
                                                             </a>
                                                         </div>
-                                                        {{--<div class="product-back">
-                                                            <a href="product-page(left-sidebar).html">
-                                                                <img src="../assets/images/layout-2/product/a1.jpg" class="img-fluid  " alt="product">
-                                                            </a>
-                                                        </div>--}}
                                                         <div class="product-icon icon-inline">
-                                                            <button  onclick="openCart()" class="tooltip-top w-100" data-tippy-content="Add to cart" >
+                                                            <button class="tooltip-top w-100 add-to-cart" data-id="{{ $product->id }}">
                                                                 <i data-feather="shopping-cart"></i>
                                                             </button>
                                                         </div>
@@ -253,9 +243,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
                                             @endif
                                         @endforeach
-                                    </div>
                                 </div>
                             </div>
                             @endforeach
@@ -267,6 +257,30 @@
     </section>
     <!-- slider tab end -->
 
+@endsection
+@section("myjs")
+    <script>
+        const url = "{{ Route('addCart') }}"
 
-
+        $(document).ready(function() {
+            $('.add-to-cart').click(function(e) {
+                e.preventDefault(); // bỏ tác dụng của link
+                let pid = $(this).data("id"); // lấy id từ data-id
+                // let quantity = $('input[name="product-quatity"]').val();
+                let quantity = 1;
+                // dùng jquery ajax gửi request về server
+                $.ajax({
+                    type: 'post',
+                    url: url,     // url?pid=3&quantity=1&_token=23423
+                    data: {
+                        pid: pid,
+                        quantity: quantity,
+                        _token: '{{ csrf_token() }}',
+                    }, success: function(data) {
+                        alert('add product to cart successful.');
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
