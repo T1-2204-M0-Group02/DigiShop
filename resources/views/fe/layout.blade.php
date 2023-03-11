@@ -192,9 +192,9 @@
                           @php
                           $cart = 0;
                             if(Session::has('cart')) {
-                                $cart = Session('cart');
+                                $cart = count(Session::get('cart'));
                             }
-                           echo count($cart);
+                           echo $cart;
                           @endphp
                       </div>
                   </li>
