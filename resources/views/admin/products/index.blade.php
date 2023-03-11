@@ -70,7 +70,9 @@
                                             <td class="jsgrid-cell jsgrid-align-right" style="width: 30px;">{{ $item->sale }}</td>
                                             <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;">{{ $item->price }}</td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">
-                                                <a href="{{ Route('admin.products.edit',$item->id) }}" class="jsgrid-button jsgrid-edit-button"><i data-feather="edit"></i></a>
+                                                <a href="{{ Route('admin.products.edit',$item->id) }}">
+                                                    <button  class="jsgrid-button jsgrid-edit-button" type="edit"></button>
+                                                </a>
                                                 <form action="{{ Route('admin.products.destroy', $item->id) }}" method="post" style="display:inline-block">
                                                     @csrf
                                                     @method("delete")

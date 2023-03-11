@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class ProductsController extends Controller
 {
@@ -38,8 +40,9 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->hasFile('photo'));
         $product = $request->all();
-        $product['slug'] = \Str::slug($request->name);
+        $product['slug'] = Str::slug($request->name);
         if($request->hasFile('photo'))
         {
             $file=$request->file('photo');
@@ -102,7 +105,7 @@ class ProductsController extends Controller
             $extension = $file->getClientOriginalExtension();
             if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
             {
-                return view('admin.products.create')
+                return Redirect::back()
                     ->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
             }
             $imageName = $file->getClientOriginalName();
@@ -110,7 +113,8 @@ class ProductsController extends Controller
         }
         else
         {
-            $imageName = null;  
+            $imageName = $product->image;
+
         }
         $request['image'] = $imageName;
         $product->update($request->all());
