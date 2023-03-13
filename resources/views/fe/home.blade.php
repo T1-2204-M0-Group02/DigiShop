@@ -277,7 +277,8 @@
                         quantity: quantity,
                         _token: '{{ csrf_token() }}',
                     }, success: function(data) {
-                        alert('add product to cart successful.');
+                        // alert('add product to cart successful.');
+                        location.reload();
                     }
                 });
             });

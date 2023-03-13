@@ -48,8 +48,6 @@
                               <td>
                                   <div class="d-flex">
                                       <img src="{{ asset('assets/images/layout-1/product/1.jpg')}}" alt="" class="img-fluid img-30 me-2 ">
-                                      <img src="{{ asset('assets/images/layout-1/product/2.jpg')}}" alt="" class="img-fluid img-30 me-2 ">
-                                      <img src="{{ asset('assets/images/layout-1/product/3.jpg')}}" alt="" class="img-fluid img-30 me-2 ">
                                   </div>
                               </td>
                               <td><span class="badge badge-secondary">Cash On Delivery</span></td>

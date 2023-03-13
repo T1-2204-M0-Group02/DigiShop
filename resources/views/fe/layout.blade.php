@@ -78,7 +78,7 @@
             <div class="language-block">
               <ul>
                 @if (Auth::user())
-                    <li><a href="javascript:void(0)">Hi, {{ Auth::user()->name }}</a></li>
+                    <li><a href="{{ Route('profile.edit') }}">Hi, {{ Auth::user()->name }}</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="post">@csrf<input class="logout" type="submit" value="Logout"></form>
                     </li>
