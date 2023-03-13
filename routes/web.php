@@ -67,9 +67,7 @@ Route::post('/change-cart-item', [CartController::class, 'changeCartItem'])->nam
 Route::post('/remove-cart-item', [CartController::class, 'removeCartItem'])->name('removeCart');
 
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function() {
-
     Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::resource('/dashboard', DashboardController::class);
     Route::resource('/categories', CategoryController::class);
     Route::resource('/products', ProductsController::class);
     Route::resource('/orders', OrdersController::class);
