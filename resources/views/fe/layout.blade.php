@@ -265,7 +265,7 @@
                     <a class="dark-menu-item" href="{{ Route('home') }}">Home</a>
                   </li>
                   <li>
-                    <a class="dark-menu-item" href="{{ Route('shop') }}">Shop</a>
+                    <a class="dark-menu-item" href="{{ Route('products') }}">Products</a>
                   </li>
                   <li>
                     <a class="dark-menu-item" href="{{ Route('cart') }}">Cart</a>

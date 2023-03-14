@@ -8,11 +8,11 @@
       <div class="col">
         <div class="breadcrumb-contain">
           <div>
-            <h2>Product</h2>
+            <h2>Shop</h2>
             <ul>
-              <li><a href="index.html">home</a></li>
+              <li><a href="{{ Route('home') }}">home</a></li>
               <li><i class="fa fa-angle-double-right"></i></li>
-              <li><a href="javascript:void(0)">Product</a></li>
+              <li><a href="javascript:void(0)">Shop</a></li>
             </ul>
           </div>
         </div>
@@ -37,33 +37,19 @@
               <h3 class="collapse-block-title mt-0">brand</h3>
               <div class="collection-collapse-block-content">
                 <div class="collection-brand-filter">
+                  @if ($categories->isEmpty())
+                    No Category
+                  @else
+                  @foreach ($categories as $category)
                   <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
-                    <input type="checkbox" class="custom-control-input form-check-input" id="zara">
-                    <label class="custom-control-label form-check-label" for="zara">Iphone</label>
+                    <input type="checkbox" class="custom-control-input form-check-input" id="category_{{ $category->id }}">
+                    <label class="custom-control-label form-check-label" for="category_{{ $category->name }}">{{ $category->name }}</label>
                   </div>
-                  <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
-                    <input type="checkbox" class="custom-control-input form-check-input" id="vera-moda">
-                    <label class="custom-control-label form-check-label" for="vera-moda">SamSung</label>
-                  </div>
-                  <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
-                    <input type="checkbox" class="custom-control-input form-check-input" id="forever-21">
-                    <label class="custom-control-label form-check-label" for="forever-21">Xiomi</label>
-                  </div>
-                  <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
-                    <input type="checkbox" class="custom-control-input form-check-input" id="roadster">
-                    <label class="custom-control-label form-check-label" for="roadster">Google Pixel</label>
-                  </div>
-                  <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
-                    <input type="checkbox" class="custom-control-input form-check-input" id="only">
-                    <label class="custom-control-label form-check-label" for="only">only</label>
-                  </div>
+                  @endforeach
+                  @endif
                 </div>
               </div>
             </div>
-            
-          
-
-
             <!-- price filter start here -->
             <div class="collection-collapse-block border-0 open">
               <h3 class="collapse-block-title">price</h3>
@@ -74,16 +60,12 @@
               </div>
             </div>
           </div>
-         
-          <!-- side-bar single product slider end -->
-      
-
+          <!-- silde-bar colleps block end here -->
         </div>
         <div class="collection-content col">
           <div class="page-main-content">
             <div class="row">
               <div class="col-sm-12">
-               
                 <div class="collection-product-wrapper">
                   <div class="product-top-filter">
                     <div class="row">
@@ -91,249 +73,43 @@
                         <div class="filter-main-btn"><span class="filter-btn  "><i class="fa fa-filter" aria-hidden="true"></i> Filter</span></div>
                       </div>
                     </div>
-                   
-                        
+                  </div>
                   <div class="product-wrapper-grid category-6 product">
                     <div class="row">
+                      @if ($products->isEmpty())
+                        No product found
+                      @else
+                      @foreach ($products as $product)
                       <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
                         <div class="product-box">
                           <div class="product-imgbox">
                             <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/r7.jpg') }}" class="img-fluid  " alt="product"> </a>
+                              <a href="{{ Route('product.details', $product->slug) }}"> <img src="{{ asset('images/'.$product->image) }}" class="img-fluid  " alt="{{ $product->name }}"></a>
                             </div>
-                            <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/r7.jpg') }}" class="img-fluid  " alt="product"> </a>
-                            </div>
-
-
                           </div>
                           <div class="product-detail detail-center detail-inverse">
                             <div class="detail-title">
                               <div class="detail-left">
-                                <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                <a href="product-page(left-sidebar).html">
+                                <a href="{{ Route('product.details', $product->slug) }}">
                                   <h6 class="price-title">
-                                    realme not 7
+                                    {{ $product->name }}
                                   </h6> </a>
                               </div>
                               <div class="detail-right">
-                                <div class="check-price"> $60.21 </div>
+                                <div class="check-price"> {{ $product->price }} </div>
                                 <div class="price">
-                                  <div class="price"> $50.05 </div>
+                                  <div class="price"> {{ $product->price }} </div>
                                 </div>
                               </div>
                             </div>
                             <div class="icon-detail">
-                               <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                              <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                              <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                              <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
+                               <a class="tooltip-top add-cartnoty w-100" href="{{ Route('addCart') }}"> <i  data-feather="shopping-cart"></i> </a>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
-                        <div class="product-box">
-                          <div class="product-imgbox">
-                            <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/13.jpg')}}" class="img-fluid  " alt="product"> </a>
-                            </div>
-                            <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/13.jpg')}}" class="img-fluid  " alt="product"> </a>
-                            </div>
-
-
-                          </div>
-                          <div class="product-detail detail-center detail-inverse">
-                            <div class="detail-title">
-                              <div class="detail-left">
-                                <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                <a href="product-page(left-sidebar).html">
-                                  <h6 class="price-title">
-                                  13 ProMax
-                                  </h6> </a>
-                              </div>
-                              <div class="detail-right">
-                                <div class="check-price"> $56.21 </div>
-                                <div class="price">
-                                  <div class="price"> $ 24.05 </div>
-                                </div>
-                              </div>
-                            </div>
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                               <div class="icon-detail">
-                               <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                              <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                              <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                              <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
-                        <div class="product-box">
-                          <div class="product-imgbox">
-                            <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/ss.jpg')}}" class="img-fluid  " alt="product"> </a>
-                            </div>
-                            <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/ss.jpg')}}" class="img-fluid  " alt="product"> </a>
-                            </div>
-                          </div>
-                          <div class="product-detail detail-center detail-inverse">
-                            <div class="detail-title">
-                              <div class="detail-left">
-                                <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                <a href="product-page(left-sidebar).html">
-                                  <h6 class="price-title">
-                                    SamSUng Glaxy 21
-                                  </h6> </a>
-                              </div>
-                              <div class="detail-right">
-                                <div class="check-price"> $90.21 </div>
-                                <div class="price">
-                                  <div class="price"> $70.05 </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="icon-detail">
-                               <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                              <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                              <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                              <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
-                        <div class="product-box">
-                          <div class="product-imgbox">
-                            <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/sn.jpg')}}" class="img-fluid  " alt="product"> </a>
-                            </div>
-                            <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/sn.jpg')}}" class="img-fluid  " alt="product"> </a>
-                            </div>
-
-                          </div>
-                          <div class="product-detail detail-center detail-inverse">
-                            <div class="detail-title">
-                              <div class="detail-left">
-                                <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                <a href="product-page(left-sidebar).html">
-                                  <h6 class="price-title">
-                                    Sony Xp
-                                  </h6> </a>
-                              </div>
-                              <div class="detail-right">
-                                <div class="check-price"> $ 70.21 </div>
-                                <div class="price">
-                                  <div class="price"> $ 44.05 </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="icon-detail">
-                               <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                              <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                              <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                              <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
-                        <div class="product-box">
-                          <div class="product-imgbox">
-                            <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/14.jpg')}}" class="img-fluid  " alt="product"> </a>
-                            </div>
-                            <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/14.jpg')}}" class="img-fluid  " alt="product"> </a>
-                            </div>
-
-
-                          </div>
-                          <div class="product-detail detail-center detail-inverse">
-                            <div class="detail-title">
-                              <div class="detail-left">
-                                <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                <a href="product-page(left-sidebar).html">
-                                  <h6 class="price-title">
-                                   Iphone 14ProMAx
-                                  </h6> </a>
-                              </div>
-                              <div class="detail-right">
-                                <div class="check-price"> $ 56.21 </div>
-                                <div class="price">
-                                  <div class="price"> $ 24.05 </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="icon-detail">
-                               <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                              <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                              <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                              <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
-                        <div class="product-box">
-                          <div class="product-imgbox">
-                            <div class="product-front">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/px.jpg')}}" class="img-fluid  " alt="product"> </a>
-                            </div>
-                            <div class="product-back">
-                              <a href="product-page(left-sidebar).html"> <img src="{{asset('assets/images/layout-4/product/px.jpg')}}" class="img-fluid  " alt="product"> </a>
-                            </div>
-
-
-                          </div>
-                          <div class="product-detail detail-center detail-inverse">
-                            <div class="detail-title">
-                              <div class="detail-left">
-                                <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                <a href="product-page(left-sidebar).html">
-                                  <h6 class="price-title">
-                                     Pixel 7
-                                  </h6> </a>
-                              </div>
-                              <div class="detail-right">
-                                <div class="check-price"> $ 57.21 </div>
-                                <div class="price">
-                                  <div class="price"> $ 30.05 </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="icon-detail">
-                               <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                              <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                              <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                              <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    
-                      
-                     
-                     
-                    
-                      
+                      @endforeach
+                      @endif
                     </div>
                   </div>
                   <div class="product-pagination">

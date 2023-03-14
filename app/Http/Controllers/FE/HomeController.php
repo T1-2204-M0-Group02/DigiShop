@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Category;
+
 class HomeController extends Controller
 {
     public function index()
@@ -14,4 +15,6 @@ class HomeController extends Controller
         $products = Product::all();
         return view('fe.home', compact('categories', 'products'));
     }
+
+
 }

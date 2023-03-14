@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\UsersController;
@@ -11,35 +10,18 @@ use App\Http\Controllers\Auth\ProviderController;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Cart\CartController;
-
+use App\Http\Controllers\FE\ShopController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/shop', function () {
-    return view('fe.shop.index');
-})->name('shop');
+Route::get('/products', [ShopController::class, 'index'])->name('products');
 
-Route::get('/detail', function () {
-  return view('fe.shop.detail');
-})->name('detail')->name('shop');
+Route::get('/product/{slug}', [ShopController::class, 'product'])->name('product.details');
 
 Route::get('/cart', function () {
     return view('fe.cart');
 })->name('cart');
-
-
 
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
