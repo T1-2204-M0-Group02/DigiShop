@@ -90,12 +90,15 @@
                                                         </button>
                                                     </form>
                                                 </td>
-
                                             </tr>
-                                            @endforeach
-                                            </tbody>
+                                        </tbody>
+                                        @endforeach
+                                        
                                         </table>
                                     </div>
+                                    @if(Session::has('message'))
+                                        <div class="text-end">{{ Session::get('message') }}</div>
+                                    @endif
                                 </div>
                             </div>
 

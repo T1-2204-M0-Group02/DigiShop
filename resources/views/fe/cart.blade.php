@@ -68,19 +68,26 @@
                                                 <div class="col-xs-3">
                                                     <h2 class="td-color">${{ $item->product->price }}</h2></div>
                                                 <div class="col-xs-3">
-                                                    <h2 class="td-color"><a href="javascript:void(0)" class="icon"><i class="ti-close"></i></a></h2></div>
+                                                    <h2 class="td-color">
+                                                        <div class="delete">
+                                                            <button id="{{ $item->product->id }}" onclick="removeItem(this.id)">X</button>
+                                                            {{-- <a href="#" class="btn btn-delete" title="" data-id="{{ $item->product->id }}">
+                                                                <i class="ti-close"></i>
+                                                            </a> --}}
+                                                        </div>
+                                                    </h2></div>
                                             </div>
                                         </td>
                                         <td>
-                                            <script type="text/javascript">
+                                            {{-- <script type="text/javascript">
                                                 jQuery(function($) {
-                                                    // $('#product-total-price').text(parseInt($('#quantity').val()) * parseInt($('#price').text().slice(1)));
+                                                    $('#product-total-price').text(parseInt($('#quantity').val()) * parseInt($('#price').text().slice(1)));
                                                     
-                                                    // $('#quantity').on('input', function() {
-                                                    //     $('#product-total-price').text(parseInt($('#quantity').val()) * parseInt($('#price').text().slice(1)));
-                                                    // });
+                                                    $('#quantity').on('input', function() {
+                                                        $('#product-total-price').text(parseInt($('#quantity').val()) * parseInt($('#price').text().slice(1)));
+                                                    });
                                                 });
-                                            </script>
+                                            </script> --}}
                                             <h2 id="price">${{ $item->product->price }}</h2>
                                         </td>
                                         <td>
@@ -93,7 +100,15 @@
                                                 {{-- </div> --}}
                                             {{-- </div> --}}
                                         </td>
-                                        <td><a href="javascript:void(0)" class="icon"><i class="ti-close"></i></a></td>
+                                        <td>
+                                            <div class="delete">
+                                                <button id="{{ $item->product->id }}" onclick="removeItem(this.id)">X</button>
+
+                                                {{-- <a href="#" class="btn btn-delete" title="" data-id="{{ $item->product->id }}">
+                                                    <i class="ti-close"></i>
+                                                </a> --}}
+                                              </div>
+                                        </td>
                                         <td>
                                             <h2 id="product-total-price" class="td-color">${{ $item->product->price * $item->quantity }}</h2>
                                         </td>
@@ -162,4 +177,22 @@
 <!--section end-->
 
 
+@endsection
+
+@section('myjs')
+<script>
+    function removeItem(pid) {
+        $.ajax({
+            type: 'post',
+            url: "{{ Route('removeCart') }}",     // url?pid=3&quantity=1&_token=23423
+            data: {
+                pid: pid, 
+                _token: '{{ csrf_token() }}',
+            }, success: function(data) {
+                // alert('update cart success.')
+                location.reload();
+            }
+        });
+    }
+</script>
 @endsection

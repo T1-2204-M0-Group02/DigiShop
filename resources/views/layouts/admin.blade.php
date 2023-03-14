@@ -58,7 +58,7 @@
     <!-- Page Header Start-->
     <div class="page-main-header">
         <div class="main-header-left">
-            <div class="logo-wrapper"><a href="{{ Route('home') }}"><img class="blur-up lazyloaded" src="{{ asset('assets/images/layout-2/logo/logo1.png') }}" width="100px" alt=""></a></div>
+            <div class="logo-wrapper"><a href="{{ Route('admin.index') }}"><img class="blur-up lazyloaded" src="{{ asset('assets/images/layout-2/logo/logo1.png') }}" width="100px" alt=""></a></div>
         </div>
         <div class="main-header-right ">
             <div class="mobile-sidebar">
@@ -95,7 +95,7 @@
                 </div>
 
                 <ul class="sidebar-menu">
-                    <li><a class="sidebar-header" href="{{ Route('admin.dashboard.index') }}"><i data-feather="home"></i><span>Dashboard</span></a></li>
+                    <li><a class="sidebar-header" href="{{ Route('admin.index') }}"><i data-feather="home"></i><span>Dashboard</span></a></li>
                     <li><a class="sidebar-header" href="{{ Route('admin.categories.index') }}"><i data-feather="grid"></i><span>Categories</span></a></li>
                     <li><a class="sidebar-header" href="javascript:void(0)"><i data-feather="box"></i> <span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
@@ -139,7 +139,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 footer-copyright">
-                        <p class="mb-0">Copyright 2019 © DigiShop All rights reserved.</p>
+                        <p class="mb-0">Copyright 2023 © DigiShop All rights reserved.</p>
                     </div>
                     <div class="col-md-6">
                         <p class="pull-right mb-0">Hand crafted & made with<i class="fa fa-heart"></i></p>
@@ -185,7 +185,6 @@
 
 <!--script admin-->
 <script src="{{ asset('assets/js/admin-script.js') }}"></script>
-
 
 </body>
 </html>

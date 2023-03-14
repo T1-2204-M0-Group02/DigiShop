@@ -1,30 +1,25 @@
-<x-admin-layout>\
+<x-admin-layout>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <div class="page-header">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="page-header-left">
-                        <h3>ADD Product
+                        <h3>Edit Product
                             <small>Digishop Admin panel</small>
                         </h3>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <ol class="breadcrumb pull-right">
-                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item">Digital</li>
-                        <li class="breadcrumb-item active">Add Product</li>
+                        <li class="breadcrumb-item"><a href="{{ Route('admin.index') }}"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ Route('admin.products.index') }}">Product List</a></li>
+                        <li class="breadcrumb-item active">Edit Product</li>
                     </ol>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                          <i class="fas fa-minus"></i>
-                        </button>
-                      </div>    
                 </div>
             </div>
         </div>
-        <form action="{{ Route('admin.products.update',$product->id) }}" method="post" class=" card-body">
+        <form action="{{ Route('admin.products.update',$product->id) }}" method="post" enctype="multipart/form-data" class="row product-adding">
             @csrf
             @method('put')  
             <div class="col-xl-6">
@@ -40,34 +35,57 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label"><span>*</span> Categories</label>
-                                <select id="category_id" value="{{ $product->category }}" name="category_id"class="custom-select form-control" required="">
+                                <select id="category_id" name="category_id"class="custom-select form-control" required="">
                                     <option value="">--Select--</option>
-                                   @foreach ($category as $item )
-                                
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                         
-                                   @endforeach
-                                        </select>
-                    </div>
+                                    @foreach ($category as $category )
+                                    <option value="{{ $category->id }}" selected="{{ $product->category_id === $category }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         
                             <div class="form-group">
                                 <label for="validationCustom02" class="col-form-label"><span>*</span> Product Price</label>
                                 <input name="price" class="form-control" id="validationCustom02" value="{{ $product->price }}"  type="number" required="">
                             </div>
+
                             <div class="form-group">
-                                <label for="validationCustom02" class="col-form-label"><span>*</span> Sale(%)</label>
+                                <label for="validationCustom02" class="col-form-label">Sale(%)</label>
                                 <input name="sale" class="form-control" id="validationCustom03" value="{{ $product->sale }}" type="number" required="">
                             </div>
-                        
-                            <label class="col-form-label pt-0"> Product Upload</label>
-                            <input type="file" value="{{ $product->image }}" name="images">
                             
+                            <div class="form-group">
+                                <label for="photo" class="col-form-label">Product Image</label>
+                                <br>
+                                <img src="{{ asset('images/'.$product->image) }}" alt="{{ $product->image }}" width="60px" class="mb-2">
+                                <input id="photo" name="photo" type="file" class="form-control">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <input type="submit" value="Update" class="btn btn-success">
-            
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Add Description</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="digital-add needs-validation mb-5">
+                            <div class="form-group mb-0">
+                                <div class="description-sm">
+                                    <textarea id="editor1" name="description" cols="10" rows="4">
+                                        {{ $product->description }}    
+                                    </textarea> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-0">
+                            <div class="product-buttons text-center">
+                                <button type="submit" class="btn btn-success">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
     <!-- Container-fluid Ends-->

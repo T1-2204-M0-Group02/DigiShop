@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
@@ -103,7 +105,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
-        return redirect()->route('admin.categories.index');
+        $products = Product::where('category_id', $category->id)->count();
+        if ($products > 0) {
+            return Redirect::back()->with('message', 'Something went wrong');
+        } else {
+            $category->delete();
+            return Redirect::back()->with('message', 'Category Deleted');
+        }
     }
 }
