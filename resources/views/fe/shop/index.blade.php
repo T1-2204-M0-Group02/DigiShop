@@ -8,11 +8,11 @@
       <div class="col">
         <div class="breadcrumb-contain">
           <div>
-            <h2>Product</h2>
+            <h2>Shop</h2>
             <ul>
-              <li><a href="index.html">home</a></li>
+              <li><a href="{{ Route('home') }}">home</a></li>
               <li><i class="fa fa-angle-double-right"></i></li>
-              <li><a href="javascript:void(0)">Product</a></li>
+              <li><a href="javascript:void(0)">Shop</a></li>
             </ul>
           </div>
         </div>
@@ -33,27 +33,24 @@
             <!-- brand filter start -->
             <div class="collection-mobile-back">
               <span class="filter-back"><i class="fa fa-angle-left" aria-hidden="true"></i> back</span></div>
-              <div class="collection-collapse-block open">  
-                <div class="collapse-block-title mt-0">brand</div>
-                <div class="collection-collapse-block-content">
-                  <div class="collection-brand-filter">
-                    
-                    @foreach ($categories as $category )
-                    <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
-                      <input  type="checkbox" class="custom-control-input form-check-input" id="category-id">
-                      <label class="custom-control-label form-check-label" for="category-id">{{ $category->name }}</label>
-                    </div>
-                    @endforeach
-              
+            <div class="collection-collapse-block open">
+              <h3 class="collapse-block-title mt-0">brand</h3>
+              <div class="collection-collapse-block-content">
+                <div class="collection-brand-filter">
+                  @if ($categories->isEmpty())
+                    No Category
+                  @else
+                  @foreach ($categories as $category)
+                  <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
+                    <input type="checkbox" class="custom-control-input form-check-input" id="category_{{ $category->id }}">
+                    <label class="custom-control-label form-check-label" for="category_{{ $category->name }}">{{ $category->name }}</label>
                   </div>
+                  @endforeach
+                  @endif
                 </div>
               </div>
-                
-              
-              
-              
-              
-              <!-- price filter start here -->
+            </div>
+            <!-- price filter start here -->
             <div class="collection-collapse-block border-0 open">
               <h3 class="collapse-block-title">price</h3>
               <div class="collection-collapse-block-content">
@@ -63,18 +60,12 @@
               </div>
             </div>
           </div>
-         
-          <!-- side-bar single product slider end -->
-
-          
-      
-
+          <!-- silde-bar colleps block end here -->
         </div>
         <div class="collection-content col">
           <div class="page-main-content">
             <div class="row">
               <div class="col-sm-12">
-               
                 <div class="collection-product-wrapper">
                   <div class="product-top-filter">
                     <div class="row">
@@ -82,51 +73,45 @@
                         <div class="filter-main-btn"><span class="filter-btn  "><i class="fa fa-filter" aria-hidden="true"></i> Filter</span></div>
                       </div>
                     </div>
-                   
+                  </div>
                   <div class="product-wrapper-grid category-6 product">
                     <div class="row">
-                      @foreach ($products as $item)
+                      @if ($products->isEmpty())
+                        No product found
+                      @else
+                      @foreach ($products as $product)
                       <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
                         <div class="product-box">
                           <div class="product-imgbox">
                             <div class="product-front">
-                              <a href="{{ Route('product.details', $item->slug) }}"> <img src="{{asset('images/') .$item->image }}" class="img-fluid  " alt="product"> </a>
+                              <a href="{{ Route('product.details', $product->slug) }}"> <img src="{{ asset('images/'.$product->image) }}" class="img-fluid  " alt="{{ $product->name }}"></a>
                             </div>
-                            <div class="product-back">
-                              <a href="{{ Route('product.details', $item->slug) }}"> <img src="{{asset('images/') .$item->image    }}" class="img-fluid  " alt="product"> </a>
-                            </div>
-                          </div>  
+                          </div>
                           <div class="product-detail detail-center detail-inverse">
                             <div class="detail-title">
                               <div class="detail-left">
-                                <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                <a href="product-page(left-sidebar).html">
+                                <a href="{{ Route('product.details', $product->slug) }}">
                                   <h6 class="price-title">
-                                    realme not 7
+                                    {{ $product->name }}
                                   </h6> </a>
                               </div>
                               <div class="detail-right">
-                                <div class="check-price"> $60.21 </div>
+                                <div class="check-price"> {{ $product->price }} </div>
                                 <div class="price">
-                                  <div class="price"> $50.05 </div>
+                                  <div class="price"> {{ $product->price }} </div>
                                 </div>
                               </div>
                             </div>
                             <div class="icon-detail">
-                               <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                              <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                              <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                              <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
+                               <a class="tooltip-top add-cartnoty w-100" href="{{ Route('addCart') }}"> <i  data-feather="shopping-cart"></i> </a>
                             </div>
                           </div>
                         </div>
                       </div>
-                          
                       @endforeach
+                      @endif
                     </div>
                   </div>
-
                   <div class="product-pagination">
                     <div class="theme-paggination-block">
                       <div class="row">
