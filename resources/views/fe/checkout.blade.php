@@ -38,19 +38,19 @@
 
                                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                         <label>First Name</label>
-                                        <input type="text" name="field-name" value="" placeholder="">
+                                        <input required type="text" name="field-name" value="" placeholder="First Name">
                                     </div>
                                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                         <label>Last Name</label>
-                                        <input type="text" name="field-name" value="" placeholder="">
+                                        <input required type="text" name="field-name" value="" placeholder="Last Name">
                                     </div>
                                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                         <label class="field-label">Phone</label>
-                                        <input type="text" name="field-name" value="" placeholder="">
+                                        <input required pattern="[0-9]{10}" type="text" name="field-name" value="" placeholder="Phone Number">
                                     </div>
                                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                         <label class="field-label">Email Address</label>
-                                        <input type="text" name="field-name" value="" placeholder="">
+                                        <input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="text" name="field-name" value="" placeholder="Email Address">
                                     </div>
                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                         <label class="field-label">Country</label>
@@ -64,24 +64,26 @@
                                     </div>
                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                         <label class="field-label">Address</label>
-                                        <input type="text" name="field-name" value="" placeholder="Street address">
+                                        <input required type="text" name="field-name" value="" placeholder="Street address">
                                     </div>
                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <label class="field-label">Town/City</label>
-                                        <input type="text" name="field-name" value="" placeholder="">
+                                        <label class="field-label">Town / City</label>
+                                        <input required type="text" name="field-name" value="" placeholder="Town / City">
                                     </div>
                                     <div class="form-group col-md-12 col-sm-6 col-xs-12">
                                         <label class="field-label">State / County</label>
-                                        <input type="text" name="field-name" value="" placeholder="">
+                                        <input required type="text" name="field-name" value="" placeholder="State / County">
                                     </div>
                                     <div class="form-group col-md-12 col-sm-6 col-xs-12">
                                         <label class="field-label">Postal Code</label>
-                                        <input type="text" name="field-name" value="" placeholder="">
+                                        <input required type="text" name="field-name" value="" placeholder="Postal Code">
                                     </div>
                                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <input type="checkbox" name="shipping-option" id="account-option"> &ensp;
                                         <label for="account-option">Create An Account?</label>
                                     </div>
+
+                                    <input type="submit" value="Continue to checkout" class="btn">
                                 </div>
                             </div>
                         </div>
@@ -89,14 +91,32 @@
                             <div class="checkout-details theme-form  section-big-mt-space">
                                 <div class="order-box">
                                     <div class="title-box">
-                                        <div>Product <span>Total</span></div>
+                                        <div>Product <span>Price</span></div>
                                     </div>
                                     <ul class="qty">
-                                        <li>Pink Slim Shirt × 1 <span>$25.10</span></li>
-                                        <li>SLim Fit Jeans × 1 <span>$555.00</span></li>
+                                        {{-- <li>Pink Slim Shirt × 1 <span>$25.10</span></li> --}}
+                                        {{-- <li>SLim Fit Jeans × 1 <span>$555.00</span></li> --}}
+                                        <?php
+                                        $total = 0;
+
+                                        if (Session::has('cart')) {
+                                            foreach(Session::get('cart') as $item) {
+                                                $total += $item->quantity * $item->product->price;
+                                                ?>
+                                                <li>{{$item->product->name}} x {{ $item->quantity }} <span>${{ $item->product->price }}</span></li>
+                                                <?php
+                                            }
+                                        } else {
+                                            ?>
+
+                                            <li>No products</li>
+                                            <?php
+
+                                        }
+                                        ?>
                                     </ul>
                                     <ul class="sub-total">
-                                        <li>Subtotal <span class="count">$380.10</span></li>
+                                        <li>Subtotal <span class="count">${{ $total }}</span></li>
                                         <li>Shipping
                                             <div class="shipping">
                                                 <div class="shopping-option">
@@ -111,7 +131,7 @@
                                         </li>
                                     </ul>
                                     <ul class="total">
-                                        <li>Total <span class="count">$620.00</span></li>
+                                        <li>Total <span class="count">${{ $total }}</span></li>
                                     </ul>
                                 </div>
                                 <div class="payment-box">
