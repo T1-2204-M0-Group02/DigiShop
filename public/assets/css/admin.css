@@ -20014,7 +20014,7 @@ input:focus {
           -ms-flex-align: center;
               align-items: center; }
       .page-wrapper .page-main-header .main-header-left .logo-wrapper img {
-        width: 75%; }
+        width: 200px; }
 
 .page-wrapper .page-body-wrapper .page-body {
   min-height: calc(100vh - 80px);

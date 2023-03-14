@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
@@ -14,7 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index');
+        $categories = Category::all();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -35,7 +39,28 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = $request->all();
+
+        if($request->hasFile('photo'))
+        {
+            $file=$request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
+            {
+                return view('admin.product.create')
+                    ->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
+            }
+            $imageName = $file->getClientOriginalName();
+            $file->move("images",$imageName);
+        }
+        else
+        {
+            $imageName = null;
+        }
+        $category['image'] = $imageName;
+        Category::create($category);
+
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -78,8 +103,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $products = Product::where('category_id', $category->id)->count();
+        if ($products > 0) {
+            return Redirect::back()->with('message', 'Something went wrong');
+        } else {
+            $category->delete();
+            return Redirect::back()->with('message', 'Category Deleted');
+        }
     }
 }

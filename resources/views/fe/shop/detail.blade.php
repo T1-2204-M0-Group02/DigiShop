@@ -30,10 +30,10 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="product-right-slick">
-                        <div><img src="../assets/images/product-sidebar/001.jpg" alt="" class="img-fluid  image_zoom_cls-0"></div>
-                        <div><img src="../assets/images/product-sidebar/002.jpg" alt="" class="img-fluid  image_zoom_cls-1"></div>
-                        <div><img src="../assets/images/product-sidebar/003.jpg" alt="" class="img-fluid  image_zoom_cls-2"></div>
-                        <div><img src="../assets/images/product-sidebar/004.jpg" alt="" class="img-fluid  image_zoom_cls-3"></div>
+                        <div><img src="{{ asset('assets/images/product-sidebar/001.jpg')}}" alt="" class="img-fluid  image_zoom_cls-0"></div>
+                        <div><img src="{{ asset('assets/images/product-sidebar/002.jpg')}}" alt="" class="img-fluid  image_zoom_cls-1"></div>
+                        <div><img src="{{ asset('assets/images/product-sidebar/003.jpg')}}" alt="" class="img-fluid  image_zoom_cls-2"></div>
+                        <div><img src="{{ asset('assets/images/product-sidebar/004.jpg')}}" alt="" class="img-fluid  image_zoom_cls-3"></div>
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -44,11 +44,11 @@
                             <li>$70</li>
                             <li><span>mrp $140</span></li>
                             <li>50% off</li>
-                          </ul>                                   
-                         
+                          </ul>
+
                         <div class="pro-group ">
                           <h6 class="product-title">Description</h6>
-                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum laboriosam fuga minus doloremque ullam, omnis laudantium itaque molestiae distinctio? Voluptates error, blanditiis, eos expedita fugiat inventore consequatur autem adipisci nulla iste, assumenda cum? Voluptate, laudantium quos fugit libero sint recusandae illum dolorem quaerat aut facilis asperiores eligendi in tempora dicta corrupti blanditiis minus eum consequatur ratione tenetur quia minima temporibus alias aspernatur. Nostrum exercitationem sit impedit cum eveniet ex est modi, eos soluta consectetur consequatur quia. Dolorem porro, ipsam voluptatibus explicabo reprehenderit quisquam, in delectus laborum quam aspernatur aut officia corrupti dolore, ex doloribus dolor deserunt. Nisi dignissimos necessitatibus repellat.</p>                                                                     
+                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum laboriosam fuga minus doloremque ullam, omnis laudantium itaque molestiae distinctio? Voluptates error, blanditiis, eos expedita fugiat inventore consequatur autem adipisci nulla iste, assumenda cum? Voluptate, laudantium quos fugit libero sint recusandae illum dolorem quaerat aut facilis asperiores eligendi in tempora dicta corrupti blanditiis minus eum consequatur ratione tenetur quia minima temporibus alias aspernatur. Nostrum exercitationem sit impedit cum eveniet ex est modi, eos soluta consectetur consequatur quia. Dolorem porro, ipsam voluptatibus explicabo reprehenderit quisquam, in delectus laborum quam aspernatur aut officia corrupti dolore, ex doloribus dolor deserunt. Nisi dignissimos necessitatibus repellat.</p>
                         </div>
                         <div class="pro-group">
                           <h6 class="product-title">Quantity</h6>
@@ -87,7 +87,7 @@
                     </div>
                 </div>
               </div>
-              
+
                 </div>
             </div>
         </div>
@@ -106,13 +106,13 @@
                       <li class="nav-item"><a class="nav-link active" id="top-home-tab" data-bs-toggle="tab" href="#top-home" role="tab" aria-selected="true">Review</a>
                           <div class="material-border"></div>
                       </li>
-                      
+
                       <li class="nav-item"><a class="nav-link" id="review-top-tab" data-bs-toggle="tab" href="#top-review" role="tab" aria-selected="false">Write Review</a>
                           <div class="material-border"></div>
                       </li>
                   </ul>
                   <div class="tab-content nav-material" id="top-tabContent">
-                      
+
                       <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="contact-top-tab">
                           <div class="mt-4 text-center">
                               <iframe width="560" height="315" src="https://www.youtube.com/embed/BUWzX78Ye_8" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -121,7 +121,7 @@
                       <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
                           <form class="theme-form">
                               <div class="row">
-                                 
+
                                   <div class="col-md-6">
                                       <label >Name</label>
                                       <input type="text" class="form-control"  placeholder="Enter Your name" required>
@@ -168,12 +168,12 @@
               <div class="product-imgbox">
                 <div class="product-front">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/1.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/1.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-back">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/a1.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/a1.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-icon icon-inline">
@@ -227,18 +227,18 @@
               <div class="product-imgbox">
                 <div class="product-front">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/3.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/3.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-back">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/a3.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/a3.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-icon icon-inline">
-                  <button data-bs-toggle="modal" data-bs-target="#addtocart" class="tooltip-top" data-tippy-content="Add to cart" >
+                  <a href="#" class="tooltip-top">
                     <i  data-feather="shopping-cart"></i>
-                  </button>
+                  </a>
                   <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist">
                     <i  data-feather="heart"></i>
                   </a>
@@ -286,12 +286,12 @@
               <div class="product-imgbox">
                 <div class="product-front">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/4.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/4.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-back">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/a4.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/a4.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-icon icon-inline">
@@ -344,12 +344,12 @@
               <div class="product-imgbox">
                 <div class="product-front">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/5.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/5.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-back">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/a5.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/a5.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-icon icon-inline">
@@ -402,12 +402,12 @@
               <div class="product-imgbox">
                 <div class="product-front">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/6.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/6.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-back">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/a6.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/a6.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-icon icon-inline">
@@ -460,12 +460,12 @@
               <div class="product-imgbox">
                 <div class="product-front">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/7.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/7.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-back">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/a7.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/a7.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-icon icon-inline">
@@ -518,12 +518,12 @@
               <div class="product-imgbox">
                 <div class="product-front">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/8.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/8.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-back">
                   <a href="product-page(left-sidebar).html">
-                    <img src="../assets/images/layout-2/product/a8.jpg" class="img-fluid  " alt="product">
+                    <img src="{{ asset('assets/images/layout-2/product/a8.jpg')}}" class="img-fluid  " alt="product">
                   </a>
                 </div>
                 <div class="product-icon icon-inline">
