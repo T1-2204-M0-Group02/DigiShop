@@ -6,10 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\WishListItem;
-use App\Models\CartItem;
-use App\Models\Order;
-use App\Models\OrderDetail;
 
 class HomeController extends Controller
 {
