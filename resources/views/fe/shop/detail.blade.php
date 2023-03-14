@@ -236,9 +236,9 @@
                   </a>
                 </div>
                 <div class="product-icon icon-inline">
-                  <button data-bs-toggle="modal" data-bs-target="#addtocart" class="tooltip-top" data-tippy-content="Add to cart" >
+                  <a href="#" class="tooltip-top">
                     <i  data-feather="shopping-cart"></i>
-                  </button>
+                  </a>
                   <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist">
                     <i  data-feather="heart"></i>
                   </a>
