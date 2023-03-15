@@ -2864,22 +2864,22 @@ $('.tap-top').on('click', function() {
      23. Tooltip js
     ===============*/
     tippy('.tooltip-top', {
-      content: 'My tooltip!',
+      content: 'add to cart',
       placement: 'top',
     });
 
     tippy('.tooltip-left', {
-      content: 'My tooltip!',
+      content: 'add to cart',
       placement: 'left',
     });
 
     tippy('.tooltip-right', {
-      content: 'My tooltip!',
+      content: 'add to cart',
       placement: 'right',
     });
 
     tippy('.tooltip-bottom', {
-      content: 'My tooltip!',
+      content: 'add to cart',
       placement: 'bottom',
     });
 

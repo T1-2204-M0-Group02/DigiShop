@@ -58,7 +58,7 @@
     <!-- Page Header Start-->
     <div class="page-main-header">
         <div class="main-header-left">
-            <div class="logo-wrapper"><a href="{{ Route('admin.index') }}"><img class="blur-up lazyloaded" src="{{ asset('assets/images/layout-2/logo/logo1.png') }}" width="100px" alt=""></a></div>
+            <div class="logo-wrapper"><a href="{{ Route('admin.index') }}"><img class="blur-up lazyloaded" src="{{ asset('images/logo/logo1.png') }}" width="100px" alt=""></a></div>
         </div>
         <div class="main-header-right ">
             <div class="mobile-sidebar">

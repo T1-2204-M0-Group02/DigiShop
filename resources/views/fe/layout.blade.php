@@ -110,7 +110,7 @@
                 </li>
                       @if($categories)
                           @foreach($categories as $category)
-                              <li> <a href="#"><img src="{{ asset('images/' .$category->image) }}" alt="category-product" width="50px" height="50px"> {{ $category->name }}</a></li>
+                              <li> <a href="#"><img src="{{ asset('images/categories/' .$category->image) }}" alt="{{ $category->name }}" width="50px" height="50px"> {{ $category->name }}</a></li>
                           @endforeach
                       @endif
               </ul>
@@ -118,7 +118,7 @@
             <div class="brand-logo logo-sm-center">
               <a href="{{ Route('home') }}">
 
-                <img src="{{ asset('assets/images/layout-2/logo/logo1.png') }}" class="img-fluid  " alt="logo" width="216px">
+                <img src="{{ asset('images/logo/logo1.png') }}" class="img-fluid  " alt="logo" width="216px">
 
               </a>
             </div>
@@ -176,7 +176,7 @@
                       </svg>
                   </a>
                 </li>
-                  <li class="mobile-cart item-count d-block">
+                  <li class="mobile-cart item-count d-inline-block d-md-block">
                       <a href="{{ Route('cart') }}">
                           <div class="cart-block">
                               <div class="cart-icon">
@@ -229,7 +229,7 @@
             <div class="logo-block">
               <div class="brand-logo logo-sm-center">
                 <a href="index.html">
-                  <img src="{{ asset('assets/images/layout-2/logo/logo1.png') }}" class="img-fluid  " alt="logo">
+                  <img src="{{ asset('images/logo/logo1.png') }}" class="img-fluid  " alt="logo">
                 </a>
               </div>
             </div>
@@ -247,7 +247,7 @@
                   <ul class="nav-cat title-font">
                       @if($categories)
                       @foreach($categories as $category)
-                          <li> <a href="#"><img src="{{ asset('images/' .$category->image) }}" alt="category-product" width="50px" height="50px"> {{ $category->name }}</a></li>
+                          <li> <a href="#"><img src="{{ asset('images/categories/' .$category->image) }}" alt="{{ $category->name }}" width="50px" height="50px"> {{ $category->name }}</a></li>
                       @endforeach
                       @endif
                   </ul>
@@ -374,7 +374,7 @@
               <div class="footer-contant">
                 <div class="footer-logo">
                   <a href="{{ Route('home') }}">
-                    <img src="{{ asset('assets/images/layout-2/logo/logo1.png') }}" class="img-fluid" alt="logo">
+                    <img src="{{ asset('images/logo/logo1.png') }}" class="img-fluid" alt="logo">
                   </a>
                 </div>
                 <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
