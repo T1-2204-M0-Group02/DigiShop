@@ -30,36 +30,36 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="product-right-slick">
-                        <div><img src="{{ asset('images/' . $prod->image) }}" alt="{{ $prod->name }}" class="img-fluid  image_zoom_cls-0"></div>
-                        <div><img src="{{ asset('images/' . $prod->image) }}" alt="{{ $prod->name }}" class="img-fluid  image_zoom_cls-1"></div>
-                        <div><img src="{{ asset('images/' . $prod->image) }}" alt="{{ $prod->name }}" class="img-fluid  image_zoom_cls-2"></div>
-                        <div><img src="{{ asset('images/' . $prod->image) }}" alt="{{ $prod->name }}" class="img-fluid  image_zoom_cls-3"></div>
+                        <div><img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid  image_zoom_cls-0"></div>
+                        <div><img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid  image_zoom_cls-1"></div>
+                        <div><img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid  image_zoom_cls-2"></div>
+                        <div><img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid  image_zoom_cls-3"></div>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="product-right product-description-box ">
                         <div class="pro-group">
-                          <h2>{{ $prod->name }}</h2>
+                          <h2>{{ $product->name }}</h2>
                           <ul class="pro-price">
                             <li>
                                 @php
                                     $currentPrice = 0;
-                                    if ($prod->sale >0) {
-                                        $currentPrice = $prod->price - ($prod->price * $prod->sale) / 100;
+                                    if ($product->sale >0) {
+                                        $currentPrice = $product->price - ($product->price * $product->sale) / 100;
                                     } else {
-                                        $currentPrice = $prod->price;
+                                        $currentPrice = $product->price;
                                     }
                                 @endphp
                                 $ {{ $currentPrice }}
                             </li>
-                            <li><span>{{ $prod->price }}</span></li>
-                            <li>{{ $prod->sale }} %off</li>
+                            <li><span>{{ $product->price }}</span></li>
+                            <li>{{ $product->sale }} %off</li>
                           </ul>
 
                         <div class="pro-group ">
                           <h6 class="product-title">Description</h6>
                             <div>
-                                {!! $prod->description !!}
+                                {!! $product->description !!}
                             </div>
 
                         </div>
@@ -75,9 +75,9 @@
                         </div>
                         <div class="pro-group mb-0">
                           <div class="modal-btn">
-                            <a href="{{ Route('cart') }}" class="btn btn-solid btn-sm">
+                            <button  class="btn btn-solid btn-sm add-to-cart" id="product_{{ $product->id }}">
                               add to cart
-                            </a>
+                            </button>
                           </div>
                         </div>
                         <div class="pro-group">
@@ -127,15 +127,28 @@
                   <div class="tab-content nav-material" id="top-tabContent">
 
                       <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="contact-top-tab">
-                          <div class="mt-4 text-center">
-                              Reviews
+                          <div class="mt-4">
+                              @if($reviews->isEmpty())
+                              This product has no reviews
+                              @else
+                              @foreach ($reviews as $review)
+                              <div class="card">
+                                <div class="card-body">
+                                  <p class="p-0"><strong>{{ App\Models\User::find($review->user_id)->name }}: </strong>{{ $review->review }}</p>
+                                </div>
+                              </div>
+                              @endforeach
+                              @endif
                           </div>
                       </div>
                       <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
-                          <form class="theme-form pt-2">
+                          <form class="theme-form pt-2" action="{{ Route('review') }}" method="POST">
+                              @csrf
+                              <input type="hidden" name="product_id" value="{{ $product->id }}">
+                              <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
                               <div class="row">
                                   <div class="col-md-12">
-                                      <textarea class="form-control" placeholder="Wrire Your Review Here"  rows="6"></textarea>
+                                      <textarea id="review" name="review" class="form-control" placeholder="Wrire Your Review Here"  rows="6"></textarea>
                                   </div>
                                   <div class="col-md-12">
                                       <button class="btn btn-normal" type="submit">Submit Your Review</button>
@@ -162,58 +175,49 @@
     <div class="row">
       <div class="col-12 product">
         <div class="product-slide-6 product-m no-arrow">
+          @if($relatedProducts->isEmpty())
+          No Related Products
+          @else
+          @foreach($relatedProducts as $relatedProduct)
           <div>
             <div class="product-box">
               <div class="product-imgbox">
                 <div class="product-front">
                   <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/1.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-back">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/a1.jpg')}}" class="img-fluid  " alt="product">
+                    <img src="{{ asset('images/'.$relatedProduct->image)}}" class="img-fluid  " alt="{{ $relatedProduct->name }}">
                   </a>
                 </div>
                 <div class="product-icon icon-inline">
-                  <button data-bs-toggle="modal" data-bs-target="#addtocart"   class="tooltip-top" data-tippy-content="Add to cart" >
+                  <button class="tooltip-top w-100" type="submit" >
                     <i  data-feather="shopping-cart"></i>
                   </button>
-                  <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" >
-                    <i  data-feather="heart"></i>
-                  </a>
-                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View">
-                    <i  data-feather="eye"></i>
-                  </a>
-                  <a href="compare.html" class="tooltip-top" data-tippy-content="Compare">
-                    <i  data-feather="refresh-cw"></i>
-                  </a>
                 </div>
 
               </div>
               <div class="product-detail detail-inline ">
                 <div class="detail-title">
                   <div class="detail-left">
-                    <div class="rating-star">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <a href="product-page(left-sidebar).html">
+                    <a href="{{ Route('product.details', $relatedProduct->slug) }}">
                       <h6 class="price-title">
-                        sony xperia m5
+                        {{ $relatedProduct->name }}
                       </h6>
                     </a>
                   </div>
                   <div class="detail-right">
                     <div class="check-price">
-                      $ 56.21
+                      {{ $relatedProduct->price }}
                     </div>
                     <div class="price">
                       <div class="price">
-                        $ 24.05
+                        @php
+                                    $currentPrice = 0;
+                                    if ($relatedProduct->sale >0) {
+                                        $currentPrice = $relatedProduct->price - ($relatedProduct->price * $relatedProduct->sale) / 100;
+                                    } else {
+                                        $currentPrice = $relatedProduct->price;
+                                    }
+                                @endphp
+                                $ {{ $currentPrice }}
                       </div>
                     </div>
                   </div>
@@ -221,6 +225,8 @@
               </div>
             </div>
           </div>
+          @endforeach
+          @endif
         </div>
       </div>
     </div>
@@ -233,7 +239,29 @@
 
 @section("myjs")
     <script>
-        const pid = "{{ $prod->id }}"
+        const pid = "product_{{ $product->id }}"
+        const url = "{{ Route('addCart') }}"
 
+$(document).ready(function() {
+    $('.add-to-cart').click(function(e) {
+        e.preventDefault(); // bỏ tác dụng của link
+        // let pid = $(this).data("id"); // lấy id từ data-id
+        // let quantity = $('input[name="product-quatity"]').val();
+        let quantity = 1;
+        // dùng jquery ajax gửi request về server
+        $.ajax({
+            type: 'post',
+            url: url,     // url?pid=3&quantity=1&_token=23423
+            data: {
+                pid: pid,
+                quantity: quantity,
+                _token: '{{ csrf_token() }}',
+            }, success: function(data) {
+                // alert('add product to cart successful.');
+                location.reload();
+            }
+        });
+    });
+});
     </script>
 @endsection

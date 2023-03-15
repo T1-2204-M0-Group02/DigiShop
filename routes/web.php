@@ -60,6 +60,8 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/ordersuccess', function () {
         return view('fe.order.success');
     })->name('ordersuccess');
+
+    Route::post('/review', [ShopController::class, 'review'])->name('review');
 });
 
 require __DIR__.'/auth.php';
