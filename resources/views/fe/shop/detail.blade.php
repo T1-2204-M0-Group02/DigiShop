@@ -30,25 +30,38 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="product-right-slick">
-                        <div><img src="{{ asset('assets/images/product-sidebar/001.jpg')}}" alt="" class="img-fluid  image_zoom_cls-0"></div>
-                        <div><img src="{{ asset('assets/images/product-sidebar/002.jpg')}}" alt="" class="img-fluid  image_zoom_cls-1"></div>
-                        <div><img src="{{ asset('assets/images/product-sidebar/003.jpg')}}" alt="" class="img-fluid  image_zoom_cls-2"></div>
-                        <div><img src="{{ asset('assets/images/product-sidebar/004.jpg')}}" alt="" class="img-fluid  image_zoom_cls-3"></div>
+                        <div><img src="{{ asset('images/' . $prod->image) }}" alt="{{ $prod->name }}" class="img-fluid  image_zoom_cls-0"></div>
+                        <div><img src="{{ asset('images/' . $prod->image) }}" alt="{{ $prod->name }}" class="img-fluid  image_zoom_cls-1"></div>
+                        <div><img src="{{ asset('images/' . $prod->image) }}" alt="{{ $prod->name }}" class="img-fluid  image_zoom_cls-2"></div>
+                        <div><img src="{{ asset('images/' . $prod->image) }}" alt="{{ $prod->name }}" class="img-fluid  image_zoom_cls-3"></div>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="product-right product-description-box ">
                         <div class="pro-group">
-                          <h2>Women Pink Shirt</h2>
+                          <h2>{{ $prod->name }}</h2>
                           <ul class="pro-price">
-                            <li>$70</li>
-                            <li><span>mrp $140</span></li>
-                            <li>50% off</li>
+                            <li>
+                                @php
+                                    $currentPrice = 0;
+                                    if ($prod->sale >0) {
+                                        $currentPrice = $prod->price - ($prod->price * $prod->sale) / 100;
+                                    } else {
+                                        $currentPrice = $prod->price;
+                                    }
+                                @endphp
+                                $ {{ $currentPrice }}
+                            </li>
+                            <li><span>{{ $prod->price }}</span></li>
+                            <li>{{ $prod->sale }} %off</li>
                           </ul>
 
                         <div class="pro-group ">
                           <h6 class="product-title">Description</h6>
-                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum laboriosam fuga minus doloremque ullam, omnis laudantium itaque molestiae distinctio? Voluptates error, blanditiis, eos expedita fugiat inventore consequatur autem adipisci nulla iste, assumenda cum? Voluptate, laudantium quos fugit libero sint recusandae illum dolorem quaerat aut facilis asperiores eligendi in tempora dicta corrupti blanditiis minus eum consequatur ratione tenetur quia minima temporibus alias aspernatur. Nostrum exercitationem sit impedit cum eveniet ex est modi, eos soluta consectetur consequatur quia. Dolorem porro, ipsam voluptatibus explicabo reprehenderit quisquam, in delectus laborum quam aspernatur aut officia corrupti dolore, ex doloribus dolor deserunt. Nisi dignissimos necessitatibus repellat.</p>
+                            <div>
+                                {!! $prod->description !!}
+                            </div>
+
                         </div>
                         <div class="pro-group">
                           <h6 class="product-title">Quantity</h6>
@@ -97,7 +110,7 @@
 
 
 <!-- product-tab starts -->
-<section class="tab-product tab-exes  ">
+<section class="tab-product tab-exes mb-5 ">
   <div class="custom-container">
       <div class="row">
           <div class="col-sm-12 col-lg-12">
@@ -115,31 +128,17 @@
 
                       <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="contact-top-tab">
                           <div class="mt-4 text-center">
-                              <iframe width="560" height="315" src="https://www.youtube.com/embed/BUWzX78Ye_8" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                              Reviews
                           </div>
                       </div>
                       <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
-                          <form class="theme-form">
+                          <form class="theme-form pt-2">
                               <div class="row">
-
-                                  <div class="col-md-6">
-                                      <label >Name</label>
-                                      <input type="text" class="form-control"  placeholder="Enter Your name" required>
-                                  </div>
-                                  <div class="col-md-6">
-                                      <label >Email</label>
-                                      <input type="text" class="form-control"  placeholder="Email" required>
+                                  <div class="col-md-12">
+                                      <textarea class="form-control" placeholder="Wrire Your Review Here"  rows="6"></textarea>
                                   </div>
                                   <div class="col-md-12">
-                                      <label >Review Title</label>
-                                      <input type="text" class="form-control"  placeholder="Enter your Review Subjects" required>
-                                  </div>
-                                  <div class="col-md-12">
-                                      <label >Review Title</label>
-                                      <textarea class="form-control" placeholder="Wrire Your Testimonial Here"  rows="6"></textarea>
-                                  </div>
-                                  <div class="col-md-12">
-                                      <button class="btn btn-normal" type="submit">Submit YOur Review</button>
+                                      <button class="btn btn-normal" type="submit">Submit Your Review</button>
                                   </div>
                               </div>
                           </form>
@@ -222,355 +221,6 @@
               </div>
             </div>
           </div>
-          <div>
-            <div class="product-box">
-              <div class="product-imgbox">
-                <div class="product-front">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/3.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-back">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/a3.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-icon icon-inline">
-                  <a href="#" class="tooltip-top">
-                    <i  data-feather="shopping-cart"></i>
-                  </a>
-                  <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist">
-                    <i  data-feather="heart"></i>
-                  </a>
-                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View">
-                    <i  data-feather="eye"></i>
-                  </a>
-                  <a href="compare.html" class="tooltip-top" data-tippy-content="Compare">
-                    <i  data-feather="refresh-cw"></i>
-                  </a>
-                </div>
-
-              </div>
-              <div class="product-detail detail-inline">
-                <div class="detail-title">
-                  <div class="detail-left">
-                    <div class="rating-star">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <a href="product-page(left-sidebar).html">
-                      <h6 class="price-title">
-                        woman hande bag
-                      </h6>
-                    </a>
-                  </div>
-                  <div class="detail-right">
-                    <div class="check-price">
-                      $ 56.21
-                    </div>
-                    <div class="price">
-                      <div class="price">
-                        $ 24.05
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="product-box">
-              <div class="product-imgbox">
-                <div class="product-front">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/4.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-back">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/a4.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-icon icon-inline">
-                  <button data-bs-toggle="modal" data-bs-target="#addtocart"   class="tooltip-top" data-tippy-content="Add to cart" >
-                    <i  data-feather="shopping-cart"></i>
-                  </button>
-                  <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" >
-                    <i  data-feather="heart"></i>
-                  </a>
-                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View">
-                    <i  data-feather="eye"></i>
-                  </a>
-                  <a href="compare.html" class="tooltip-top" data-tippy-content="Compare">
-                    <i  data-feather="refresh-cw"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-detail detail-inline">
-                <div class="detail-title">
-                  <div class="detail-left">
-                    <div class="rating-star">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <a href="product-page(left-sidebar).html">
-                      <h6 class="price-title">
-                        nikon camera
-                      </h6>
-                    </a>
-                  </div>
-                  <div class="detail-right">
-                    <div class="check-price">
-                      $ 60.21
-                    </div>
-                    <div class="price">
-                      <div class="price">
-                        $ 20.05
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="product-box">
-              <div class="product-imgbox">
-                <div class="product-front">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/5.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-back">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/a5.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-icon icon-inline">
-                  <button data-bs-toggle="modal" data-bs-target="#addtocart"   class="tooltip-top" data-tippy-content="Add to cart" >
-                    <i  data-feather="shopping-cart"></i>
-                  </button>
-                  <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" >
-                    <i  data-feather="heart"></i>
-                  </a>
-                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View">
-                    <i  data-feather="eye"></i>
-                  </a>
-                  <a href="compare.html" class="tooltip-top" data-tippy-content="Compare">
-                    <i  data-feather="refresh-cw"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-detail detail-inline">
-                <div class="detail-title">
-                  <div class="detail-left">
-                    <div class="rating-star">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <a href="product-page(left-sidebar).html">
-                      <h6 class="price-title">
-                        lenovo laptop
-                      </h6>
-                    </a>
-                  </div>
-                  <div class="detail-right">
-                    <div class="check-price">
-                      $ 70.21
-                    </div>
-                    <div class="price">
-                      <div class="price">
-                        $ 30.05
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="product-box">
-              <div class="product-imgbox">
-                <div class="product-front">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/6.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-back">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/a6.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-icon icon-inline">
-                  <button data-bs-toggle="modal" data-bs-target="#addtocart"   class="tooltip-top" data-tippy-content="Add to cart" >
-                    <i  data-feather="shopping-cart"></i>
-                  </button>
-                  <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" >
-                    <i  data-feather="heart"></i>
-                  </a>
-                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View">
-                    <i  data-feather="eye"></i>
-                  </a>
-                  <a href="compare.html" class="tooltip-top" data-tippy-content="Compare">
-                    <i  data-feather="refresh-cw"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-detail detail-inline">
-                <div class="detail-title">
-                  <div class="detail-left">
-                    <div class="rating-star">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <a href="product-page(left-sidebar).html">
-                      <h6 class="price-title">
-                        earphone Pouch Bag
-                      </h6>
-                    </a>
-                  </div>
-                  <div class="detail-right">
-                    <div class="check-price">
-                      $ 100.21
-                    </div>
-                    <div class="price">
-                      <div class="price">
-                        $ 80.05
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="product-box">
-              <div class="product-imgbox">
-                <div class="product-front">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/7.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-back">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/a7.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-icon icon-inline">
-                  <button data-bs-toggle="modal" data-bs-target="#addtocart"   class="tooltip-top" data-tippy-content="Add to cart" >
-                    <i  data-feather="shopping-cart"></i>
-                  </button>
-                  <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" >
-                    <i  data-feather="heart"></i>
-                  </a>
-                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View">
-                    <i  data-feather="eye"></i>
-                  </a>
-                  <a href="compare.html" class="tooltip-top" data-tippy-content="Compare">
-                    <i  data-feather="refresh-cw"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-detail detail-inline">
-                <div class="detail-title">
-                  <div class="detail-left">
-                    <div class="rating-star">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <a href="product-page(left-sidebar).html">
-                      <h6 class="price-title">
-                        wooden table
-                      </h6>
-                    </a>
-                  </div>
-                  <div class="detail-right">
-                    <div class="check-price">
-                      $ 90.21
-                    </div>
-                    <div class="price">
-                      <div class="price">
-                        $ 28.05
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="product-box">
-              <div class="product-imgbox">
-                <div class="product-front">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/8.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-back">
-                  <a href="product-page(left-sidebar).html">
-                    <img src="{{ asset('assets/images/layout-2/product/a8.jpg')}}" class="img-fluid  " alt="product">
-                  </a>
-                </div>
-                <div class="product-icon icon-inline">
-                  <button data-bs-toggle="modal" data-bs-target="#addtocart"   class="tooltip-top" data-tippy-content="Add to cart" >
-                    <i  data-feather="shopping-cart"></i>
-                  </button>
-                  <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" >
-                    <i  data-feather="heart"></i>
-                  </a>
-                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View">
-                    <i  data-feather="eye"></i>
-                  </a>
-                  <a href="compare.html" class="tooltip-top" data-tippy-content="Compare">
-                    <i  data-feather="refresh-cw"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-detail detail-inline">
-                <div class="detail-title">
-                  <div class="detail-left">
-                    <div class="rating-star">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <a href="product-page(left-sidebar).html">
-                      <h6 class="price-title">
-                        Wireless Optical Mouse
-                      </h6>
-                    </a>
-                  </div>
-                  <div class="detail-right">
-                    <div class="check-price">
-                      $ 80.21
-                    </div>
-                    <div class="price">
-                      <div class="price">
-                        $ 28.05
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -579,4 +229,11 @@
 <!-- related products -->
 
 
+@endsection
+
+@section("myjs")
+    <script>
+        const pid = "{{ $prod->id }}"
+
+    </script>
 @endsection

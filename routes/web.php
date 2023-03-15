@@ -26,6 +26,8 @@ Route::get('/cart', function () {
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
+
+
 Route::post('/add-cart', [CartController::class, 'addCart'])->name('addCart');
 
 Route::get('/view-cart', [CartController::class, 'viewCart'])->name('viewCart');
