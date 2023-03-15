@@ -15,6 +15,9 @@ class HomeController extends Controller
         $products = Product::all();
         return view('fe.home', compact('categories', 'products'));
     }
-
-
+    public function product($slug)
+    {
+        $prod = Product::where('slug', $slug)->first();
+        return view('fe.shop.detail', compact('prod'));
+    }
 }

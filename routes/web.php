@@ -26,6 +26,8 @@ Route::get('/cart', function () {
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
+
+
 Route::post('/add-cart', [CartController::class, 'addCart'])->name('addCart');
 
 Route::get('/view-cart', [CartController::class, 'viewCart'])->name('viewCart');
@@ -58,6 +60,8 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/ordersuccess', function () {
         return view('fe.order.success');
     })->name('ordersuccess');
+
+    Route::post('/review', [ShopController::class, 'review'])->name('review');
 });
 
 require __DIR__.'/auth.php';
