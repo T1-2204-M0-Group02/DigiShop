@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Review;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -33,4 +32,15 @@ class ShopController extends Controller
         return Redirect::back();
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $searchProducts = Product::query()
+            ->select('products.id', 'products.slug', 'products.name', 'products.description', 'products.price', 'products.image', 'products.sale')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->where('products.name', 'LIKE', "%{$search}%")
+            ->orWhere('categories.name', 'LIKE', "%{$search}%")
+            ->get();
+        return view('fe.search', compact('searchProducts'));
+    }
 }
