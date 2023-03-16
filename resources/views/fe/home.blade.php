@@ -188,7 +188,7 @@
                     <div class="theme-tab product mb--5">
                         <div class="tab-content-cls ">
                             @foreach($categories as $category)
-                            <div id="tab-{{ $category->id }}" class="tab-content {{ $category->id == $categories[0]->id ? 'active default' : '' }}">
+                            <div id="tab-{{ $category->id }}" class="tab-content">
                                 <div class="product-slide-6 product-m no-arrow">
                                         @foreach($products as $product)
                                             @if($product->category_id == $category->id)

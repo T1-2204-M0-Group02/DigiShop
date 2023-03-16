@@ -2134,7 +2134,7 @@ $('.feature-slide').slick({
 
   // media product slide 5
 
-  $("#tab-7").css("display", "Block");
+/*   $("#tab-7").css("display", "Block");
   $(".default").css("display", "Block");
   $(".tabs li a").on('click', function () {
     event.preventDefault();
@@ -2187,7 +2187,7 @@ $('.feature-slide').slick({
     ]
   });
   });
-
+ */
 
 
 

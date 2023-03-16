@@ -8,8 +8,8 @@
   <meta name="description" content="big-deal">
   <meta name="keywords" content="big-deal">
   <meta name="author" content="big-deal">
-  <link rel="icon" href="{{ asset('assets/images/favicon/favicon.png') }}" type="image/x-icon">
-  <link rel="shortcut icon" href="{{ asset('assets/images/favicon/favicon.png') }}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
 
   <!--Google font-->
   <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
