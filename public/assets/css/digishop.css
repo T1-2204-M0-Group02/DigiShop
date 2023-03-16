@@ -20,7 +20,7 @@
 }
 
 .theme-slider .slider-banner .slider-img {
-    background-image: url("../images/layout-1/slider/1.5.jpg");
+    background-image: url("../../images/banners/banner_bg_4.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -31,4 +31,13 @@
     align-items: center;
     padding-right: 1rem;
     padding-left: 1rem;
+}
+
+.theme-slider .slider-banner .slider-banner-contain h4,
+.theme-slider .slider-banner .slider-banner-contain h1 {
+    color: #00baf2;
+}
+
+.theme-slider .slider-banner .slider-banner-contain h2 {
+    color: #ffffff;
 }
