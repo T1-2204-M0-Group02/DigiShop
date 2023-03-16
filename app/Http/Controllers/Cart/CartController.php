@@ -112,10 +112,12 @@ class CartController extends Controller
     {
         if ($request->session()->has('cart')) {
             $cart = $request->all();
-            // $cart['order_date'] = date('Y-m-d', time());
-            $cart['shipping_time'] = date('Y-m-d', time());
-            // $cart['user_id'] = $request->session()->get('user')->id;
-            $cart['user_id'] = 1;
+            $cart['shipping_time'] = date_add(date_create(date('Y-m-d', time())),date_interval_create_from_date_string("40 days"));
+            $cart['shipping_name'] = $request->name;
+            $cart['shipping_phone'] = $request->phone;
+            $cart['shipping_email'] = $request->email;
+            $cart['shipping_address'] = $request->address;
+            $cart['user_id'] = Auth()->user()->id;
             $cart['status'] = 0;
             $ord = Order::create($cart);
             //dd($ord);
