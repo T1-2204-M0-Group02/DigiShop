@@ -45,6 +45,8 @@ Route::middleware('auth', 'verified')->group(function () {
         return view('fe.checkout');
     })->name('checkout');
 
+    Route::post('/process-checkout', [CartController::class, 'processCheckout'])->name('processCheckout');
+
     Route::get('/orders', function () {
         return view('fe.order.list');
     })->name('orders');
