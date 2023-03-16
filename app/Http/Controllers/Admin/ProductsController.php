@@ -40,7 +40,6 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->hasFile('photo'));
         $product = $request->all();
         $product['slug'] = Str::slug($request->name);
         if($request->hasFile('photo'))
@@ -53,7 +52,7 @@ class ProductsController extends Controller
                     ->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
             }
             $imageName = $file->getClientOriginalName();
-            $file->move("images",$imageName);
+            $file->move("images/products",$imageName);
         }
         else
         {
@@ -109,7 +108,7 @@ class ProductsController extends Controller
                     ->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
             }
             $imageName = $file->getClientOriginalName();
-            $file->move("images",$imageName);
+            $file->move("images/products",$imageName);
         }
         else
         {
@@ -132,5 +131,5 @@ class ProductsController extends Controller
         $product->delete();
         return redirect()->route('admin.products.index');
     }
-    }
+}
 

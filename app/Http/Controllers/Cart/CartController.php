@@ -44,7 +44,7 @@ class CartController extends Controller
 
     public function viewCart(Request $request) 
     {
-        return view('fe.viewCart');
+        return view('fe.cart');
     }
 
     public function clearCart(Request $request) 

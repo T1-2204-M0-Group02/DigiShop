@@ -17,9 +17,9 @@
                                 <div class="slider-banner-contain">
                                     <div>
                                         <h4>the best</h4>
-                                        <h1>loffer shoes</h1>
+                                        <h1>laptop</h1>
                                         <h2>minimum 30% off</h2>
-                                        <a href="product-page(left-sidebar).html" class="btn btn-normal">Shop Now</a>
+                                        <a href="{{ Route('products') }}" class="btn btn-normal">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                         <h4>cinema festival</h4>
                                         <h1>reflex camera</h1>
                                         <h2>minimum 40% off</h2>
-                                        <a href="product-page(left-sidebar).html" class="btn btn-normal">Shop Now</a>
+                                        <a href="{{ Route('products') }}" class="btn btn-normal">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                                         <h4>march special</h4>
                                         <h1>leather bag</h1>
                                         <h2>minimum 60% off</h2>
-                                        <a href="#" class="btn btn-normal">Shop Now</a>
+                                        <a href="{{ Route('products') }}" class="btn btn-normal">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -99,8 +99,10 @@
                                 <div class="product-box">
                                     <div class="product-imgbox">
                                         <div class="product-front">
-                                            <a href="product-page(left-sidebar).html">
-                                                <img src="{{ asset('images/'.$product->image) }}" class="img-fluid  " alt="product">
+                                            <a href="{{ Route('product.details', $product->slug) }}">
+                                              <div class="image-wrapper">
+                                                <img src="{{ asset('images/products/'.$product->image) }}" class="img-fluid" alt="{{ $product->name }}" >
+                                              </div>
                                             </a>
                                         </div>
                                         <div class="product-icon icon-inline ">
@@ -119,8 +121,7 @@
                                     <div class="product-detail detail-inline ">
                                         <div class="detail-title">
                                             <div class="detail-left">
-
-                                                <a href="product-page(left-sidebar).html">
+                                                <a href="{{ Route('product.details', $product->slug) }}">
                                                     <h6 class="price-title">
                                                         {{ $product->name }}
                                                     </h6>
@@ -129,7 +130,7 @@
                                             <div class="detail-right">
                                                 @if($product->sale > 0)
                                                     <div class="check-price">
-                                                        {{ $product->price }}
+                                                        $ {{ $product->price }}
                                                     </div>
                                                 @endif
 
@@ -195,8 +196,10 @@
                                             <div class="product-box">
                                                     <div class="product-imgbox">
                                                         <div class="product-front">
-                                                            <a href="#">
-                                                                <img src="{{ asset('images/'.$product->image) }}" class="img-fluid" alt="{{ $product->name }}">
+                                                            <a href="{{ Route('product.details', $product->slug) }}">
+                                                                <div class="image-wrapper">
+                                                                    <img src="{{ asset('images/products/'.$product->image) }}" class="img-fluid" alt="{{ $product->name }}">
+                                                                </div>
                                                             </a>
                                                         </div>
                                                         <div class="product-icon icon-inline">
@@ -213,7 +216,7 @@
                                                     <div class="product-detail detail-inline ">
                                                         <div class="detail-title">
                                                             <div class="detail-left">
-                                                                <a href="product-page(left-sidebar).html">
+                                                                <a href="{{ Route('product.details', $product->slug) }}">
                                                                     <h6 class="price-title">
                                                                         {{$product->name}}
                                                                     </h6>
@@ -222,7 +225,7 @@
                                                             <div class="detail-right">
                                                                 @if($product->sale > 0)
                                                                     <div class="check-price">
-                                                                        {{ $product->price }}
+                                                                        $ {{ $product->price }}
                                                                     </div>
                                                                 @endif
                                                                 <div class="price">

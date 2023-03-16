@@ -36,7 +36,6 @@
                                     <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Name</label>
                                     <input name="name" class="form-control" id="validationCustom01" type="text" required="">
                                 </div>
-
                                 <div class="form-group">
                                     <label class="col-form-label"><span>*</span> Categories</label>
                                     <select id="category_id" name="category_id"class="custom-select form-control" required="">
@@ -49,12 +48,12 @@
                             
                                 <div class="form-group">
                                     <label for="validationCustom02" class="col-form-label"><span>*</span> Product Price</label>
-                                    <input name="price" class="form-control" id="validationCustom02" type="number" required="">
+                                    <input name="price" class="form-control" id="validationCustom02" type="number" required="" step="any" min="0">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="validationCustom02" class="col-form-label">Sale(%)</label>
-                                    <input name="sale" class="form-control" id="validationCustom03" type="number" required="">
+                                    <input name="sale" class="form-control" id="validationCustom03" type="number" required="" step="any" min="0">
                                 </div>
 
                                 <div class="form-group">
