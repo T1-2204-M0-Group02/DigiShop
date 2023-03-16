@@ -11,7 +11,7 @@
                             <div class="slider-banner">
                                 <div class="slider-img">
                                     <ul class="layout2-slide-1">
-                                        <li id="img-1"><img src="{{ asset('assets/images/layout-1/slider/2.2.jpg') }}" class="img-fluid" alt="slider"></li>
+                                        <li id="img-1"><img src="{{ asset('images/banners/banner2.jpg') }}" class="img-fluid" alt="slider"></li>
                                     </ul>
                                 </div>
                                 <div class="slider-banner-contain">
@@ -28,13 +28,13 @@
                             <div class="slider-banner">
                                 <div class="slider-img">
                                     <ul class="layout2-slide-2">
-                                        <li id="img-2"><img src="{{ asset('assets/images/layout-1/slider/2.2.jpg') }}" class="img-fluid" alt="slider"></li>
+                                        <li id="img-2"><img src="{{ asset('images/banners/banner1.jpg') }}" class="img-fluid" alt="slider"></li>
                                     </ul>
                                 </div>
                                 <div class="slider-banner-contain">
                                     <div>
-                                        <h4>cinema festival</h4>
-                                        <h1>reflex camera</h1>
+                                        <h4>holiday festival</h4>
+                                        <h1>new iphone</h1>
                                         <h2>minimum 40% off</h2>
                                         <a href="{{ Route('products') }}" class="btn btn-normal">Shop Now</a>
                                     </div>
@@ -45,13 +45,13 @@
                             <div class="slider-banner">
                                 <div class="slider-img">
                                     <ul class="layout2-slide-3">
-                                        <li id="img-3"><img src="{{ asset('assets/images/layout-1/slider/2.2.jpg') }}" class="img-fluid" alt="slider"></li>
+                                        <li id="img-3"><img src="{{ asset('images/banners/banner3.jpg') }}" class="img-fluid" alt="slider"></li>
                                     </ul>
                                 </div>
                                 <div class="slider-banner-contain">
                                     <div>
                                         <h4>march special</h4>
-                                        <h1>leather bag</h1>
+                                        <h1>smart watch</h1>
                                         <h2>minimum 60% off</h2>
                                         <a href="{{ Route('products') }}" class="btn btn-normal">Shop Now</a>
                                     </div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-xl-2 col-sm-3 pl-0 offer-banner">
                     <div class="offer-banner-img">
-                        <img src="{{ asset('assets/images/layout-1/slider/3.1.jpg') }}" alt="offer-banner" class="img-fluid h-100" >
+                        <img src="{{ asset('images/banners/subbanner.jpg') }}" alt="offer-banner" class="img-fluid h-100" >
                     </div>
                     <div class="banner-contain">
                         <div>
@@ -188,7 +188,7 @@
                     <div class="theme-tab product mb--5">
                         <div class="tab-content-cls ">
                             @foreach($categories as $category)
-                            <div id="tab-{{ $category->id }}" class="tab-content {{ $category->id == $categories[0]->id ? 'active default' : '' }}">
+                            <div id="tab-{{ $category->id }}" class="tab-content">
                                 <div class="product-slide-6 product-m no-arrow">
                                         @foreach($products as $product)
                                             @if($product->category_id == $category->id)

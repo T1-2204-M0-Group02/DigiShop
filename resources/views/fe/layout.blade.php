@@ -8,8 +8,8 @@
   <meta name="description" content="big-deal">
   <meta name="keywords" content="big-deal">
   <meta name="author" content="big-deal">
-  <link rel="icon" href="{{ asset('assets/images/favicon/favicon.png') }}" type="image/x-icon">
-  <link rel="shortcut icon" href="{{ asset('assets/images/favicon/favicon.png') }}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
 
   <!--Google font-->
   <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
@@ -338,7 +338,7 @@
               <div class="contact-block">
                 <div>
                   <i class="fa fa-volume-control-phone"></i>
-                  <span>call us<span>123-456-76890</span></span>
+                  <a class="text-white" href="tel:123-456-76890">call us<span>123-456-76890</span></a>
                 </div>
               </div>
             </div>
@@ -391,9 +391,9 @@
                 </div>
                 <div class="footer-contant">
                     <ul class="contact-list">
-                        <li><i class="fa fa-map-marker"></i>Digi Shop store <br> </li>
-                        <li><i class="fa fa-phone"></i>call us: <span>123-456-7898</span></li>
-                        <li><i class="fa fa-envelope-o"></i>email us: dighop@gmail.com</li>
+                        <li><a href="{{ Route('products') }}"><i class="fa fa-map-marker"></i>Digi Shop store <br> </a></li>
+                        <li><a href="tel:123-456-7898"><i class="fa fa-phone"></i>call us: <span>123-456-7898</span></a></li>
+                        <li><a href="mailto:digishop@gmail.com"><i class="fa fa-envelope-o"></i>email us: digishop@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
