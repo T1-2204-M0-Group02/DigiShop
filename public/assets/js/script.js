@@ -2134,7 +2134,7 @@ $('.feature-slide').slick({
 
   // media product slide 5
 
-  $("#tab-7").css("display", "Block");
+/*   $("#tab-7").css("display", "Block");
   $(".default").css("display", "Block");
   $(".tabs li a").on('click', function () {
     event.preventDefault();
@@ -2187,7 +2187,7 @@ $('.feature-slide').slick({
     ]
   });
   });
-
+ */
 
 
 
@@ -2864,22 +2864,22 @@ $('.tap-top').on('click', function() {
      23. Tooltip js
     ===============*/
     tippy('.tooltip-top', {
-      content: 'My tooltip!',
+      content: 'add to cart',
       placement: 'top',
     });
 
     tippy('.tooltip-left', {
-      content: 'My tooltip!',
+      content: 'add to cart',
       placement: 'left',
     });
 
     tippy('.tooltip-right', {
-      content: 'My tooltip!',
+      content: 'add to cart',
       placement: 'right',
     });
 
     tippy('.tooltip-bottom', {
-      content: 'My tooltip!',
+      content: 'add to cart',
       placement: 'bottom',
     });
 

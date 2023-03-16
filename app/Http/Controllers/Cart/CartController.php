@@ -44,7 +44,7 @@ class CartController extends Controller
 
     public function viewCart(Request $request) 
     {
-        return view('fe.viewCart');
+        return view('fe.cart');
     }
 
     public function clearCart(Request $request) 
@@ -112,8 +112,11 @@ class CartController extends Controller
     {
         if ($request->session()->has('cart')) {
             $cart = $request->all();
-            $cart['order_date'] = date('Y-m-d', time());
-            $cart['user_id'] = $request->session()->get('user')->id;
+            // $cart['order_date'] = date('Y-m-d', time());
+            $cart['shipping_time'] = date('Y-m-d', time());
+            // $cart['user_id'] = $request->session()->get('user')->id;
+            $cart['user_id'] = 1;
+            $cart['status'] = 0;
             $ord = Order::create($cart);
             //dd($ord);
             // lưu order detail
@@ -129,6 +132,6 @@ class CartController extends Controller
 
             $request->session()->forget('cart');
         }
-        return view('fe.thankyou');
+        return view('fe.order.success');
     }
 }

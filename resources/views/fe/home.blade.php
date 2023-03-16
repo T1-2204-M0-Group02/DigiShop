@@ -11,15 +11,15 @@
                             <div class="slider-banner">
                                 <div class="slider-img">
                                     <ul class="layout2-slide-1">
-                                        <li id="img-1"><img src="{{ asset('assets/images/layout-1/slider/2.2.jpg') }}" class="img-fluid" alt="slider"></li>
+                                        <li id="img-1"><img src="{{ asset('images/banners/banner2.jpg') }}" class="img-fluid" alt="slider"></li>
                                     </ul>
                                 </div>
                                 <div class="slider-banner-contain">
                                     <div>
                                         <h4>the best</h4>
-                                        <h1>loffer shoes</h1>
+                                        <h1>laptop</h1>
                                         <h2>minimum 30% off</h2>
-                                        <a href="product-page(left-sidebar).html" class="btn btn-normal">Shop Now</a>
+                                        <a href="{{ Route('products') }}" class="btn btn-normal">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -28,15 +28,15 @@
                             <div class="slider-banner">
                                 <div class="slider-img">
                                     <ul class="layout2-slide-2">
-                                        <li id="img-2"><img src="{{ asset('assets/images/layout-1/slider/2.2.jpg') }}" class="img-fluid" alt="slider"></li>
+                                        <li id="img-2"><img src="{{ asset('images/banners/banner1.jpg') }}" class="img-fluid" alt="slider"></li>
                                     </ul>
                                 </div>
                                 <div class="slider-banner-contain">
                                     <div>
-                                        <h4>cinema festival</h4>
-                                        <h1>reflex camera</h1>
+                                        <h4>holiday festival</h4>
+                                        <h1>new iphone</h1>
                                         <h2>minimum 40% off</h2>
-                                        <a href="product-page(left-sidebar).html" class="btn btn-normal">Shop Now</a>
+                                        <a href="{{ Route('products') }}" class="btn btn-normal">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -45,15 +45,15 @@
                             <div class="slider-banner">
                                 <div class="slider-img">
                                     <ul class="layout2-slide-3">
-                                        <li id="img-3"><img src="{{ asset('assets/images/layout-1/slider/2.2.jpg') }}" class="img-fluid" alt="slider"></li>
+                                        <li id="img-3"><img src="{{ asset('images/banners/banner3.jpg') }}" class="img-fluid" alt="slider"></li>
                                     </ul>
                                 </div>
                                 <div class="slider-banner-contain">
                                     <div>
                                         <h4>march special</h4>
-                                        <h1>leather bag</h1>
+                                        <h1>smart watch</h1>
                                         <h2>minimum 60% off</h2>
-                                        <a href="#" class="btn btn-normal">Shop Now</a>
+                                        <a href="{{ Route('products') }}" class="btn btn-normal">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-xl-2 col-sm-3 pl-0 offer-banner">
                     <div class="offer-banner-img">
-                        <img src="{{ asset('assets/images/layout-1/slider/3.1.jpg') }}" alt="offer-banner" class="img-fluid h-100" >
+                        <img src="{{ asset('images/banners/subbanner.jpg') }}" alt="offer-banner" class="img-fluid h-100" >
                     </div>
                     <div class="banner-contain">
                         <div>
@@ -99,8 +99,10 @@
                                 <div class="product-box">
                                     <div class="product-imgbox">
                                         <div class="product-front">
-                                            <a href="product-page(left-sidebar).html">
-                                                <img src="{{ asset('images/'.$product->image) }}" class="img-fluid  " alt="product">
+                                            <a href="{{ Route('product.details', $product->slug) }}">
+                                              <div class="image-wrapper">
+                                                <img src="{{ asset('images/products/'.$product->image) }}" class="img-fluid" alt="{{ $product->name }}" >
+                                              </div>
                                             </a>
                                         </div>
                                         <div class="product-icon icon-inline ">
@@ -119,8 +121,7 @@
                                     <div class="product-detail detail-inline ">
                                         <div class="detail-title">
                                             <div class="detail-left">
-
-                                                <a href="product-page(left-sidebar).html">
+                                                <a href="{{ Route('product.details', $product->slug) }}">
                                                     <h6 class="price-title">
                                                         {{ $product->name }}
                                                     </h6>
@@ -129,7 +130,7 @@
                                             <div class="detail-right">
                                                 @if($product->sale > 0)
                                                     <div class="check-price">
-                                                        {{ $product->price }}
+                                                        $ {{ $product->price }}
                                                     </div>
                                                 @endif
 
@@ -187,7 +188,7 @@
                     <div class="theme-tab product mb--5">
                         <div class="tab-content-cls ">
                             @foreach($categories as $category)
-                            <div id="tab-{{ $category->id }}" class="tab-content {{ $category->id == $categories[0]->id ? 'active default' : '' }}">
+                            <div id="tab-{{ $category->id }}" class="tab-content">
                                 <div class="product-slide-6 product-m no-arrow">
                                         @foreach($products as $product)
                                             @if($product->category_id == $category->id)
@@ -195,8 +196,10 @@
                                             <div class="product-box">
                                                     <div class="product-imgbox">
                                                         <div class="product-front">
-                                                            <a href="#">
-                                                                <img src="{{ asset('images/'.$product->image) }}" class="img-fluid" alt="{{ $product->name }}">
+                                                            <a href="{{ Route('product.details', $product->slug) }}">
+                                                                <div class="image-wrapper">
+                                                                    <img src="{{ asset('images/products/'.$product->image) }}" class="img-fluid" alt="{{ $product->name }}">
+                                                                </div>
                                                             </a>
                                                         </div>
                                                         <div class="product-icon icon-inline">
@@ -213,7 +216,7 @@
                                                     <div class="product-detail detail-inline ">
                                                         <div class="detail-title">
                                                             <div class="detail-left">
-                                                                <a href="product-page(left-sidebar).html">
+                                                                <a href="{{ Route('product.details', $product->slug) }}">
                                                                     <h6 class="price-title">
                                                                         {{$product->name}}
                                                                     </h6>
@@ -222,7 +225,7 @@
                                                             <div class="detail-right">
                                                                 @if($product->sale > 0)
                                                                     <div class="check-price">
-                                                                        {{ $product->price }}
+                                                                        $ {{ $product->price }}
                                                                     </div>
                                                                 @endif
                                                                 <div class="price">

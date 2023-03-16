@@ -77,7 +77,7 @@
                                                 <td class="jsgrid-cell" style="width: 50px;">{{ $category->id }}</td>
                                                 <td class="jsgrid-cell" style="width: 50px;">
                                                     @if (!empty($category->image))
-                                                        <img src="{{ asset('images/' .$category->image) }}" alt="{{ $category->name }}" style="width:100px; height:auto;">
+                                                        <img src="{{ asset('images/categories/' .$category->image) }}" alt="{{ $category->name }}" style="width:100px; height:auto;">
                                                     @endif
                                                 </td>
                                                 <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{ $category->name }}</td>

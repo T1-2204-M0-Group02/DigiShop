@@ -48,10 +48,10 @@
                                 <td>{{$item->id  }}</td>
                                 <td>
                                     @if (!empty($item->image))
-                                    <img src="{{ asset('images/' .$item->image) }}" alt="{{ $item->name }}" style="height: 50px; width: 50px;">
+                                    <img src="{{ asset('images/products/' .$item->image) }}" alt="{{ $item->name }}" style="height: 50px; width: 50px;">
                                     @endif
                                 </td>
-                                <td>{{$item->name }}</td>
+                                <td>{{ $item->name }}</td>
                                 <td>{{ $item->sale }}</td>
                                 <td>{{ $item->price }}</td>
                                 <td>

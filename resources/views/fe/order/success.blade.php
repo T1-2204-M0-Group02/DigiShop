@@ -27,50 +27,52 @@
                 <div class="product-order">
                     <h3>your order details</h3>
                     <div class="row product-order-detail">
-                        <div class="col-3"><img src="../assets/images/layout-4/product/1.jpg" alt="" class="img-fluid "></div>
-                        <div class="col-3 order_detail">
-                            <div>
-                                <h4>product name</h4>
-                                <h5>cotton shirt</h5></div>
-                        </div>
-                        <div class="col-3 order_detail">
-                            <div>
-                                <h4>quantity</h4>
-                                <h5>1</h5></div>
-                        </div>
-                        <div class="col-3 order_detail">
-                            <div>
-                                <h4>price</h4>
-                                <h5>$555.00</h5></div>
-                        </div>
-                    </div>
-                    <div class="row product-order-detail">
-                        <div class="col-3"><img src="../assets/images/layout-4/product/2.jpg" alt="" class="img-fluid "></div>
-                        <div class="col-3 order_detail">
-                            <div>
-                                <h4>product name</h4>
-                                <h5>cotton shirt</h5></div>
-                        </div>
-                        <div class="col-3 order_detail">
-                            <div>
-                                <h4>quantity</h4>
-                                <h5>1</h5></div>
-                        </div>
-                        <div class="col-3 order_detail">
-                            <div>
-                                <h4>price</h4>
-                                <h5>$555.00</h5></div>
-                        </div>
+                        <?php
+                            $total = 0;
+
+                            if (Session::has('cart')) {
+                                foreach(Session::get('cart') as $item) {
+                                    $total += $item->quantity * $item->product->price;
+                                    ?>
+                                        <div class="row product-order-detail">
+                                            <div class="col-3"><img src="../assets/images/layout-4/product/2.jpg" alt="" class="img-fluid "></div>
+                                            <div class="col-3 order_detail">
+                                                <div>
+                                                    <h4>product name</h4>
+                                                    <h5>{{$item->product->name}}</h5></div>
+                                            </div>
+                                            <div class="col-3 order_detail">
+                                                <div>
+                                                    <h4>quantity</h4>
+                                                    <h5>{{$item->quantity}}</h5></div>
+                                            </div>
+                                            <div class="col-3 order_detail">
+                                                <div>
+                                                    <h4>price</h4>
+                                                    <h5>${{$item->product->price}}</h5></div>
+                                            </div>
+                                        </div>
+                                    <?php
+                                }
+                            } else {
+                                ?>
+
+                                <li>No products</li>
+                                <?php
+
+                            }
+                        ?>
+
                     </div>
                     <div class="total-sec">
                         <ul>
-                            <li>subtotal <span>$55.00</span></li>
-                            <li>shipping <span>$12.00</span></li>
-                            <li>tax(GST) <span>$10.00</span></li>
+                            <li>subtotal <span>${{$total}}</span></li>
+                            <li>shipping <span>$0</span></li>
+                            <li>tax(GST) <span>$0</span></li>
                         </ul>
                     </div>
                     <div class="final-total">
-                        <h3>total <span>$77.00</span></h3></div>
+                        <h3>total <span>${{$total}}</span></h3></div>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -80,7 +82,7 @@
                         <ul class="order-detail">
                             <li>order ID: 5563853658932</li>
                             <li>Order Date: October 22, 2018</li>
-                            <li>Order Total: $907.28</li>
+                            <li>Order Total: ${{$total}}</li>
                         </ul>
                     </div>
                     <div class="col-sm-6">

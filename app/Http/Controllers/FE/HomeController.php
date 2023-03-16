@@ -16,5 +16,4 @@ class HomeController extends Controller
         return view('fe.home', compact('categories', 'products'));
     }
 
-
 }

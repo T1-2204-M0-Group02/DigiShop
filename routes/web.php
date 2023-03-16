@@ -16,21 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/products', [ShopController::class, 'index'])->name('products');
-
 Route::get('/product/{slug}', [ShopController::class, 'product'])->name('product.details');
-
-Route::get('/cart', function () {
-    return view('fe.cart');
-})->name('cart');
+Route::get('/search/', [ShopController::class, 'search'])->name('search');
 
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
+Route::get('/cart', [CartController::class, 'viewCart'])->name('viewCart');
 Route::post('/add-cart', [CartController::class, 'addCart'])->name('addCart');
-
-Route::get('/view-cart', [CartController::class, 'viewCart'])->name('viewCart');
 Route::get('/clear-cart', [CartController::class, 'clearCart'])->name('clearCart');
-
 Route::post('/change-cart-item', [CartController::class, 'changeCartItem'])->name('changeCart');
 Route::post('/remove-cart-item', [CartController::class, 'removeCartItem'])->name('removeCart');
 
@@ -51,6 +45,8 @@ Route::middleware('auth', 'verified')->group(function () {
         return view('fe.checkout');
     })->name('checkout');
 
+    Route::post('/process-checkout', [CartController::class, 'processCheckout'])->name('processCheckout');
+
     Route::get('/orders', function () {
         return view('fe.order.list');
     })->name('orders');
@@ -58,6 +54,8 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/ordersuccess', function () {
         return view('fe.order.success');
     })->name('ordersuccess');
+
+    Route::post('/review', [ShopController::class, 'review'])->name('review');
 });
 
 require __DIR__.'/auth.php';

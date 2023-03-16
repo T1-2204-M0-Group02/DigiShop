@@ -51,7 +51,7 @@ class CategoryController extends Controller
                     ->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
             }
             $imageName = $file->getClientOriginalName();
-            $file->move("images",$imageName);
+            $file->move("images/categories",$imageName);
         }
         else
         {
