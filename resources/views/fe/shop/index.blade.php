@@ -8,11 +8,11 @@
       <div class="col">
         <div class="breadcrumb-contain">
           <div>
-            <h2>Shop</h2>
+            <h2>Products</h2>
             <ul>
               <li><a href="{{ Route('home') }}">home</a></li>
               <li><i class="fa fa-angle-double-right"></i></li>
-              <li><a href="javascript:void(0)">Shop</a></li>
+              <li><a href="javascript:void(0)">Products</a></li>
             </ul>
           </div>
         </div>
