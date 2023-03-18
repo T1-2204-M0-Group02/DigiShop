@@ -127,7 +127,7 @@ class CartController extends Controller
                 $od->save();
             }
 
-            $request->session()->forget('cart');
+            // $request->session()->forget('cart');
         }
         return view('fe.thankyou');
     }
