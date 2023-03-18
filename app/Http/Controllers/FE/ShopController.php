@@ -13,7 +13,8 @@ class ShopController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $productsShown = 12;
+        $products = Product::latest()->paginate($productsShown);
         $categories = Category::all();
         return view('fe.shop.index',compact('products', 'categories'));
     }

@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
@@ -15,31 +16,26 @@ class CartController extends Controller
     {
         $pid = $request->pid;
         $quantity = $request->quantity;
-
         $prod = Product::find($pid);
         $cartItem = new CartItem($prod, $quantity);
-
         if ($request->session()->has('cart')) {
             $cart = $request->session()->get('cart');
         } else {
             $cart = [];
         }
-
-        // xử lý cộng dồn nếu trùng product id
         for ($i = 0; $i < count($cart); $i++) {
             if ($cart[$i]->product->id == $pid) {
                 break;
             }
         }
-
         if ($i < count($cart)) {
-            // trường hợp product đã có trong cart => cộng dồn quantity
             $cart[$i]->quantity += $quantity;
         } else {
             $cart[] = $cartItem;
         }
-
         $request->session()->put('cart', $cart);
+
+        return $cart;
     }
 
     public function viewCart(Request $request) 
@@ -50,6 +46,7 @@ class CartController extends Controller
     public function clearCart(Request $request) 
     {
         $request->session()->forget('cart');
+        return Redirect::back();
     }
 
     public function changeCartItem(Request $request)

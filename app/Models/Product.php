@@ -18,4 +18,11 @@ class Product extends Model
         'image',
         'sale'
     ];
+
+    public function getCurrentPrice() {
+        $price = $this->price;
+        $sale = $this->sale;
+        $currentPrice = $price - ($price * $sale) / 100;
+        return number_format($currentPrice, 2);
+    }
 }

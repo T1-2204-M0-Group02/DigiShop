@@ -73,7 +73,7 @@
                                                 <div class="col-xs-3">
                                                     <h2 class="td-color">
                                                         <div class="delete">
-                                                            <button id="{{ $item->product->id }}" onclick="removeItem(this.id)">X</button>
+                                                            <button  class="btn btn-delete" id="{{ $item->product->id }}" onclick="removeItem(this.id)"><i class="ti-close"></i></button>
                                                         </div>
                                                     </h2></div>
                                             </div>
@@ -121,8 +121,11 @@
           </div>
       </div>
       <div class="row cart-buttons">
-          <div class="col-12"><a href="{{ Route('products') }}" class="btn btn-normal">continue shopping</a>
-            <a href="{{ Route('checkout') }}" class="btn btn-normal ms-3">check out</a></div>
+          <div class="col-12">
+            <a href="{{ Route('clearCart') }}" class="btn btn-normal me-3">Clear Cart</a>
+            <a href="{{ Route('products') }}" class="btn btn-normal">continue shopping</a>
+            <a href="{{ Route('checkout') }}" class="btn btn-normal ms-3">check out</a>
+        </div>
       </div>
   </div>
 </section>
@@ -140,7 +143,7 @@
                 pid: pid, 
                 _token: '{{ csrf_token() }}',
             }, success: function(data) {
-              location.reload();
+                location.reload();
             }
         });
     }
@@ -160,7 +163,7 @@
                 _token: '{{ csrf_token() }}'
             },
             success: function (data) {
-              location.reload();
+            //   location.reload();
             }
         });
     })
