@@ -29,8 +29,8 @@
     height: 280px;
     display: flex;
     align-items: center;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
 }
 
 .theme-slider .slider-banner .slider-banner-contain h4,

@@ -30,35 +30,47 @@
         <div class="col-sm-3 collection-filter category-page-side">
           <!-- side-bar colleps block stat -->
           <div class="collection-filter-block creative-card creative-inner category-side">
-            <!-- brand filter start -->
-            <div class="collection-mobile-back">
-              <span class="filter-back"><i class="fa fa-angle-left" aria-hidden="true"></i> back</span></div>
-            <div class="collection-collapse-block open">
-              <h3 class="collapse-block-title mt-0">brand</h3>
-              <div class="collection-collapse-block-content">
-                <div class="collection-brand-filter">
-                  @if ($categories->isEmpty())
-                    No Category
-                  @else
-                  @foreach ($categories as $category)
-                  <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
-                    <input type="checkbox" class="custom-control-input form-check-input" id="category_{{ $category->id }}">
-                    <label class="custom-control-label form-check-label" for="category_{{ $category->name }}">{{ $category->name }}</label>
-                  </div>
-                  @endforeach
-                  @endif
+            {{-- <form action="{{ Route('filter') }}" method="GET"> --}}
+                <!-- brand filter start -->
+                <div class="collection-mobile-back">
+                    <span class="filter-back"><i class="fa fa-angle-left" aria-hidden="true"></i> back</span></div>
+                    <div class="collection-collapse-block open">
+                    <h3 class="collapse-block-title mt-0">brand</h3>
+                    <div class="collection-collapse-block-content">
+                        <div class="collection-brand-filter">
+                        @if ($categories->isEmpty())
+                            No Category
+                        @else
+                        @foreach ($categories as $category)
+                        <div class="custom-control custom-checkbox  form-check collection-filter-checkbox">
+                            <input  type="checkbox" 
+                                    name="category" 
+                                    value="{{ $category->id }}" 
+                                    class="custom-control-input form-check-input" 
+                                    id="category_{{ $category->id }}"
+                                    @if (in_array($category->id, explode(',', request()->input('filter.category'))))
+                                    checked
+                                    @endif
+                                    >
+                            <label class="custom-control-label form-check-label" for="category_{{ $category->id }}">{{ $category->name }}</label>
+                        </div>
+                        @endforeach
+                        @endif
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <!-- price filter start here -->
-            <div class="collection-collapse-block border-0 open">
-              <h3 class="collapse-block-title">price</h3>
-              <div class="collection-collapse-block-content">
-                <div class="filter-slide">
-                  <input class="js-range-slider" type="text" name="my_range" value="" data-type="double"/>
+                <!-- price filter start here -->
+                <div class="collection-collapse-block border-0 open">
+                    <h3 class="collapse-block-title">price</h3>
+                    <div class="collection-collapse-block-content">
+                        <div class="filter-slide">
+                        <input id="price" class="js-range-slider" type="text" name="price" value="" data-type="double"/>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <button id="filter" class="btn btn-normal" >Filter</button>
+                </div>
           </div>
           <!-- silde-bar colleps block end here -->
         </div>
@@ -119,7 +131,6 @@
                     </div>
                   </div>
                   {{ $products->links('vendor\pagination\custom') }}
-                  
                 </div>
               </div>
             </div>
@@ -153,6 +164,53 @@
                     }
                 });
             });
+        });
+
+        function getIds(checkboxName) {
+            let checkBoxes = document.getElementsByName(checkboxName);
+            let ids = Array.prototype.slice.call(checkBoxes)
+                            .filter(ch => ch.checked==true)
+                            .map(ch => ch.value);
+            return ids;
+        }
+
+        function filterResults () {
+            let catagoryIds = getIds("category");
+            let price = document.getElementById("price").value.split(';');
+            let href = 'products?';
+            
+            if(price.length) {
+                href += 'filter[price_between]=' + price;
+            }
+
+            if(catagoryIds.length) {
+                href += '&filter[category]=' + catagoryIds;
+            }
+
+            $(".js-range-slider").ionRangeSlider({
+                type: "double",
+                grid: true,
+                min: 0,
+                max: 2000,
+                from: 200,
+                to: 1800,
+                prefix: "$"
+            });
+            document.location.href=href;
+        }
+
+        document.getElementById("filter").addEventListener("click", filterResults);
+
+        let price$ = "{{ request()->input('filter.price_between') }}".split(',');
+        console.log(price$);
+        $(".js-range-slider").ionRangeSlider({
+            type: "double",
+            grid: true,
+            min: 0,
+            max: 2500,
+            from: price$[0] || 200,
+            to: price$[1] || 2300,
+            prefix: "$"
         });
     </script>
 @endsection
