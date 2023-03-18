@@ -20,6 +20,11 @@ class Product extends Model
         'sale'
     ];
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
     public function getCurrentPrice() {
         $price = $this->price;
         $sale = $this->sale;

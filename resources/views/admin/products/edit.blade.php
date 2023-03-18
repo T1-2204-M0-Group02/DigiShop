@@ -38,19 +38,24 @@
                                 <select id="category_id" name="category_id"class="custom-select form-control" required="">
                                     <option value="">--Select--</option>
                                     @foreach ($category as $category )
-                                    <option value="{{ $category->id }}" selected="{{ $product->category_id === $category }}">{{ $category->name }}</option>
+                                    <option 
+                                        value="{{ $category->id }}" 
+                                        @if ($product->category_id === $category->id)
+                                        selected
+                                        @endif
+                                    >{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         
                             <div class="form-group">
                                 <label for="validationCustom02" class="col-form-label"><span>*</span> Product Price</label>
-                                <input name="price" class="form-control" id="validationCustom02" value="{{ $product->price }}"  type="number" required="">
+                                <input name="price" class="form-control" id="validationCustom02" value="{{ $product->price }}"  type="number" step="any" required="">
                             </div>
 
                             <div class="form-group">
-                                <label for="validationCustom02" class="col-form-label">Sale(%)</label>
-                                <input name="sale" class="form-control" id="validationCustom03" value="{{ $product->sale }}" type="number" required="">
+                                <label for="validationCustom03" class="col-form-label">Sale(%)</label>
+                                <input name="sale" class="form-control" id="validationCustom03" value="{{ $product->sale }}" type="number" step="any" min="0" max="100">
                             </div>
                             
                             <div class="form-group">

@@ -52,8 +52,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="validationCustom02" class="col-form-label">Sale(%)</label>
-                                    <input name="sale" class="form-control" id="validationCustom03" type="number" required="" step="any" min="0">
+                                    <label for="validationCustom03" class="col-form-label">Sale(%)</label>
+                                    <input name="sale" class="form-control" id="validationCustom03" type="number" step="any" min="0" max="100">
                                 </div>
 
                                 <div class="form-group">

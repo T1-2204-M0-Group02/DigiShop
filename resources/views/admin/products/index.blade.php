@@ -35,6 +35,7 @@
                           <thead>
                           <tr>
                               <th>Product Id</th>
+                              <th>Product Category</th>
                               <th>Product Image</th>
                               <th>Product Name</th>
                               <th>Created At</th>
@@ -45,9 +46,10 @@
                           </tr>
                           </thead>
                           <tbody>
-                          @foreach ($prods as $item )
+                          @foreach ($prods as $item)
                             <tr>
-                                <td>{{$item->id  }}</td>
+                                <td>{{ $item->id  }}</td>
+                                <td>{{ $item->category->name }}</td>
                                 <td>
                                     @if (!empty($item->image))
                                     <img src="{{ asset('images/products/' .$item->image) }}" alt="{{ $item->name }}" style="height: 50px; width: 50px;">
