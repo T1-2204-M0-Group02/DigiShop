@@ -48,7 +48,7 @@ class CategoryController extends Controller
             if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
             {
                 return view('admin.product.create')
-                    ->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
+                    ->with('errors','Only accept jpg,png,jpeg file');
             }
             $imageName = $file->getClientOriginalName();
             $file->move("images/categories",$imageName);

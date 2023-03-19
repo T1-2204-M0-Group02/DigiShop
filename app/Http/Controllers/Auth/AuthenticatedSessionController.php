@@ -17,7 +17,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        $backURL = back()->getTargetUrl();
+        $appURL = getenv('APP_URL');
+        $adminURL = $appURL.'/admin';
+        if ($backURL ===  $adminURL ) return view('auth.login');
+        return view('fe.login');
     }
 
     /**

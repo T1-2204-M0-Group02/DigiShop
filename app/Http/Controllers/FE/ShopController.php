@@ -8,13 +8,23 @@ use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
 
 class ShopController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $productsShown = 12;
         $categories = Category::all();
+        $products = QueryBuilder::for(Product::class)
+            ->allowedFilters([
+                AllowedFilter::exact('category', 'category_id'),
+                AllowedFilter::scope('price_between'),
+            ])
+            ->paginate($productsShown)
+            ->appends(request()->query());
+        // $products = Product::latest()->paginate($productsShown);
         return view('fe.shop.index',compact('products', 'categories'));
     }
 
@@ -42,5 +52,10 @@ class ShopController extends Controller
             ->orWhere('categories.name', 'LIKE', "%{$search}%")
             ->get();
         return view('fe.search', compact('searchProducts'));
+    }
+
+    public function filter(Request $request)
+    {
+        dd($request);
     }
 }

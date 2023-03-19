@@ -37,10 +37,11 @@
                               <th>Name</th>
                               <th>Phone</th>
                               <th>Email</th>
+                              <th>Email Verified At</th>
                               <th>Address</th>
                               <th>Provider</th>
                               <th>Role</th>
-                              <th>Date</th>
+                              <th>Created At</th>
                           </tr>
                           </thead>
                           <tbody>
@@ -50,6 +51,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->email_verified_at }}</td>
                                     <td>{{ $user->address }}</td>
                                     <td>{{ $user->provider }}</td>
                                     <td>{{ $user->is_admin ? 'Admin' : 'User'}}</td>

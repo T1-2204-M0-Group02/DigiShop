@@ -121,7 +121,7 @@ jQuery('.bg-img').each(function() {
   var qtyIncs = document.querySelectorAll(".qty-plus");
   qtyDecs.forEach((qtyDec) => {
     qtyDec.addEventListener("click",function(e){
-      if(e.target.nextElementSibling.value > 0){
+      if(e.target.nextElementSibling.value > 1){
         e.target.nextElementSibling.value--;
       } else {
         // delete the item, etc

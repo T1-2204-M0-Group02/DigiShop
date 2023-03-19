@@ -12,8 +12,7 @@
                 </div>
                 <div class="col-lg-6">
                     <ol class="breadcrumb pull-right">
-                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item">Digital</li>
+                        <li class="breadcrumb-item"><a href="{{ Route('admin.index') }}"><i data-feather="home"></i></a></li>
                         <li class="breadcrumb-item active">Add Product</li>
                     </ol>
                 </div>
@@ -52,8 +51,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="validationCustom02" class="col-form-label">Sale(%)</label>
-                                    <input name="sale" class="form-control" id="validationCustom03" type="number" required="" step="any" min="0">
+                                    <label for="validationCustom03" class="col-form-label">Sale(%)</label>
+                                    <input name="sale" class="form-control" id="validationCustom03" type="number" step="any" min="0" max="100">
                                 </div>
 
                                 <div class="form-group">

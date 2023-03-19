@@ -29,8 +29,8 @@
     height: 280px;
     display: flex;
     align-items: center;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
 }
 
 .theme-slider .slider-banner .slider-banner-contain h4,
@@ -40,4 +40,15 @@
 
 .theme-slider .slider-banner .slider-banner-contain h2 {
     color: #ffffff;
+}
+
+.form-footer .social li {
+    padding: 10px;
+    border-radius: 100%;
+    border: 1px solid #00baf2;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
 }

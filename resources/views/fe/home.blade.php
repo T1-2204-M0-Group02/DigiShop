@@ -106,7 +106,7 @@
                                             </a>
                                         </div>
                                         <div class="product-icon icon-inline ">
-                                            <button class="tooltip-top w-100 add-to-cart" data-id="{{ $product->id }}">
+                                            <button class="tooltip-top w-100 add-to-cart cartEffect" data-id="{{ $product->id }}">
                                                 <i data-feather="shopping-cart"></i>
                                             </button>
 
@@ -203,7 +203,7 @@
                                                             </a>
                                                         </div>
                                                         <div class="product-icon icon-inline">
-                                                            <button class="tooltip-top w-100 add-to-cart" data-id="{{ $product->id }}">
+                                                            <button class="tooltip-top w-100 add-to-cart cartEffect" data-id="{{ $product->id }}">
                                                                 <i data-feather="shopping-cart"></i>
                                                             </button>
                                                         </div>
@@ -264,24 +264,21 @@
 @section("myjs")
     <script>
         const url = "{{ Route('addCart') }}"
-
         $(document).ready(function() {
             $('.add-to-cart').click(function(e) {
-                e.preventDefault(); // bỏ tác dụng của link
-                let pid = $(this).data("id"); // lấy id từ data-id
+                e.preventDefault();
+                let pid = $(this).data("id");
                 // let quantity = $('input[name="product-quatity"]').val();
                 let quantity = 1;
-                // dùng jquery ajax gửi request về server
                 $.ajax({
                     type: 'post',
-                    url: url,     // url?pid=3&quantity=1&_token=23423
+                    url: url,   
                     data: {
                         pid: pid,
                         quantity: quantity,
                         _token: '{{ csrf_token() }}',
                     }, success: function(data) {
-                        // alert('add product to cart successful.');
-                        location.reload();
+                        $('.item-count-contain')[0].innerHTML = data.length;
                     }
                 });
             });

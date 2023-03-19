@@ -35,25 +35,31 @@
                           <thead>
                           <tr>
                               <th>Product Id</th>
+                              <th>Product Category</th>
                               <th>Product Image</th>
                               <th>Product Name</th>
-                              <th>Sale(%)</th>
+                              <th>Created At</th>
                               <th>Price</th>
+                              <th>Sale(%)</th>
+                              <th>Current Price</th>
                               <th>Action</th>
                           </tr>
                           </thead>
                           <tbody>
-                          @foreach ($prods as $item )
+                          @foreach ($prods as $item)
                             <tr>
-                                <td>{{$item->id  }}</td>
+                                <td>{{ $item->id  }}</td>
+                                <td>{{ $item->category->name }}</td>
                                 <td>
                                     @if (!empty($item->image))
                                     <img src="{{ asset('images/products/' .$item->image) }}" alt="{{ $item->name }}" style="height: 50px; width: 50px;">
                                     @endif
                                 </td>
                                 <td>{{ $item->name }}</td>
-                                <td>{{ $item->sale }}</td>
+                                <td>{{ $item->created_at }}</td>
                                 <td>{{ $item->price }}</td>
+                                <td>{{ $item->sale }}</td>
+                                <td>{{ $item->getCurrentPrice() }}</td>
                                 <td>
                                     <a href="{{ Route('admin.products.edit',$item->id) }}">
                                         <button  class="jsgrid-button jsgrid-edit-button" type="edit"></button>

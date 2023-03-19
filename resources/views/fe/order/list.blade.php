@@ -12,11 +12,11 @@
             <div class="col">
                 <div class="breadcrumb-contain">
                     <div>
-                        <h2>order-list</h2>
+                        <h2>orders</h2>
                         <ul>
                             <li><a href="{{ Route('home') }}">home</a></li>
                             <li><i class="fa fa-angle-double-right"></i></li>
-                            <li><a href="{{ Route('orders') }}">order-list</a></li>
+                            <li><a href="{{ Route('orders') }}">orders</a></li>
                         </ul>
                     </div>
                 </div>
@@ -41,119 +41,44 @@
                         <th scope="col">status</th>
                     </tr>
                     </thead>
+                    @if($orders->isEmpty())
                     <tbody>
+                        <tr>
+                            <td>No Orders yet, go <a href="{{ Route('products') }}">shop</a> now!</td>
+                        </tr>
+                    </tbody>
+                    @else
+                    @foreach ($orders as $order)
+                    <tbody>
+                    @foreach ($order->details as $detail)
                     <tr>
                         <td>
-                            <a href="javascript:void(0)"><img src="../assets/images/product-sidebar/001.jpg" alt="product" class="img-fluid  "></a>
+                            <a href="{{ Route('product.details', $detail->product->slug) }}"><img src="{{ asset('images/products/'.$detail->product->image) }}" alt="product" class="img-fluid  "></a>
                         </td>
-                        <td><a href="javascript:void(0)">order no: <span class="dark-data">15454841</span> <br>cotton shirt</a>
-                            <div class="mobile-cart-content row">
-                                <div class="col-xs-3">
-                                    <div class="qty-box">
-                                        <div class="input-group">
-                                            <input type="text" name="quantity" class="form-control input-number" value="1">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-3">
-                                    <h4 class="td-color">$63.00</h4></div>
-                                <div class="col-xs-3">
-                                    <h2 class="td-color"><a href="javascript:void(0)" class="icon"><i class="ti-close"></i></a></h2></div>
-                            </div>
+                        <td><a href="{{ Route('product.details', $detail->product->slug) }}">order no: <span class="dark-data">{{ $order->id }}</span> <br>{{ $detail->product->name }}</a>
                         </td>
                         <td>
-                            <h4>$63.00</h4></td>
+                            <h4>$ {{ $detail->price }}</h4></td>
                         <td>
-                            <span>Size: L</span>
-                            <br>
-                            <span>Quntity: 1</span>
+                            <span>Quantity: {{ $detail->quantity }}</span>
                         </td>
                         <td>
                             <div class="responsive-data">
-                                <h4 class="price">$63.00</h4>
-                                <span>Size: L</span>|<span>Quntity: 1</span>
+                                <h4 class="price">$ {{ $detail->price }}</h4>
+                                <span>Quantity: {{ $detail->quantity }}</span>
                             </div>
-                            <span class="dark-data">Delivered</span> (jul 01, 2019)
+                            <span class="dark-data">{{ $order->getStatusString($order->status) }}</span> {{ $order->shipping_time->format('M d, Y') }}
                         </td>
                     </tr>
+                    @endforeach
                     </tbody>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <a href="javascript:void(0)"><img src="../assets/images/product-sidebar/002.jpg" alt="product" class="  img-fluid"></a>
-                        </td>
-                        <td><a href="javascript:void(0)">order no: <span class="dark-data">15454841</span> <br>cotton shirt</a>
-                            <div class="mobile-cart-content row">
-                                <div class="col-xs-3">
-                                    <div class="qty-box">
-                                        <div class="input-group">
-                                            <input type="text" name="quantity" class="form-control input-number" value="1">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-3">
-                                    <h4 class="td-color">$63.00</h4></div>
-                                <div class="col-xs-3">
-                                    <h2 class="td-color"><a href="javascript:void(0)" class="icon"><i class="ti-close"></i></a></h2></div>
-                            </div>
-                        </td>
-                        <td>
-                            <h4>$63.00</h4></td>
-                        <td>
-                            <span>Size: L</span>
-                            <br>
-                            <span>Quntity: 1</span>
-                        </td>
-                        <td>
-                            <div class="responsive-data">
-                                <h4 class="price">$63.00</h4>
-                                <span>Size: L</span>|<span>Quntity: 1</span>
-                            </div>
-                            <span class="dark-data">Delivered</span> (jul 01, 2019)
-                        </td>
-                    </tr>
-                    </tbody>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <a href="javascript:void(0)"><img src="../assets/images/product-sidebar/001.jpg" alt="product" class="  img-fluid"></a>
-                        </td>
-                        <td><a href="javascript:void(0)">order no: <span class="dark-data">15454841</span> <br>cotton shirt</a>
-                            <div class="mobile-cart-content row">
-                                <div class="col-xs-3">
-                                    <div class="qty-box">
-                                        <div class="input-group">
-                                            <input type="text" name="quantity" class="form-control input-number" value="1">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-3">
-                                    <h4 class="td-color">$63.00</h4></div>
-                                <div class="col-xs-3">
-                                    <h2 class="td-color"><a href="javascript:void(0)" class="icon"><i class="ti-close"></i></a></h2></div>
-                            </div>
-                        </td>
-                        <td>
-                            <h4>$63.00</h4></td>
-                        <td>
-                            <span>Size: L</span>
-                            <br>
-                            <span>Quntity: 1</span>
-                        </td>
-                        <td>
-                            <div class="responsive-data">
-                                <h4 class="price">$63.00</h4>
-                                <span>Size: L</span>|<span>Quntity: 1</span>
-                            </div>
-                            <span class="dark-data">Delivered</span> (jul 01, 2019)
-                        </td>
-                    </tr>
-                    </tbody>
+                    @endforeach
+                    @endif
                 </table>
             </div>
         </div>
         <div class="row cart-buttons">
-            <div class="col-12 pull-right"><a href="javascript:void(0)" class="btn btn-normal btn-sm">show all orders</a></div>
+            <div class="col-12 pull-right"><a href="{{ Route('products') }}" class="btn btn-normal btn-sm">shop more</a></div>
         </div>
     </div>
 </section>
