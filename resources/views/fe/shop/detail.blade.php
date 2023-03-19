@@ -39,15 +39,7 @@
                           <h2>{{ $product->name }}</h2>
                           <ul class="pro-price">
                             <li>
-                                @php
-                                    $currentPrice = 0;
-                                    if ($product->sale >0) {
-                                        $currentPrice = $product->price - ($product->price * $product->sale) / 100;
-                                    } else {
-                                        $currentPrice = $product->price;
-                                    }
-                                @endphp
-                                $ {{ $currentPrice }}
+                                $ {{ $product->getCurrentPrice() }}
                             </li>
                             <li><span>$ {{ $product->price }}</span></li>
                             <li>{{ $product->sale }} %off</li>
@@ -65,14 +57,14 @@
                           <div class="qty-box">
                             <div class="input-group">
                               <button class="qty-minus"></button>
-                              <input class="qty-adj form-control" type="number" value="1"/>
+                              <input class="qty-adj form-control" name="product-quatity" type="number" value="1"/>
                               <button class="qty-plus"></button>
                             </div>
                           </div>
                         </div>
                         <div class="pro-group mb-0">
                           <div class="modal-btn">
-                            <button  class="btn btn-solid btn-sm add-to-cart" id="product_{{ $product->id }}">
+                            <button  class="btn btn-solid btn-sm add-to-cart cartEffect" id="product_{{ $product->id }}">
                               add to cart
                             </button>
                           </div>
@@ -183,7 +175,7 @@
                   </a>
                 </div>
                 <div class="product-icon icon-inline">
-                  <button class="tooltip-top w-100" type="submit" >
+                  <button class="tooltip-top w-100 add-to-cart cartEffect" type="submit" >
                     <i  data-feather="shopping-cart"></i>
                   </button>
                 </div>
@@ -204,15 +196,7 @@
                     </div>
                     <div class="price">
                       <div class="price">
-                        @php
-                            $currentPrice = 0;
-                            if ($relatedProduct->sale >0) {
-                                $currentPrice = $relatedProduct->price - ($relatedProduct->price * $relatedProduct->sale) / 100;
-                            } else {
-                                $currentPrice = $relatedProduct->price;
-                            }
-                        @endphp
-                        $ {{ $currentPrice }}
+                        $ {{ $product->getCurrentPrice() }}
                       </div>
                     </div>
                   </div>
@@ -241,8 +225,7 @@
             $('.add-to-cart').click(function(e) {
                 e.preventDefault(); // bỏ tác dụng của link
                 // let pid = $(this).data("id"); // lấy id từ data-id
-                // let quantity = $('input[name="product-quatity"]').val();
-                let quantity = 1;
+                let quantity = $('input[name="product-quatity"]').val();
                 // dùng jquery ajax gửi request về server
                 $.ajax({
                     type: 'post',
@@ -252,8 +235,7 @@
                         quantity: quantity,
                         _token: '{{ csrf_token() }}',
                     }, success: function(data) {
-                        // alert('add product to cart successful.');
-                        location.reload();
+                        $('.item-count-contain')[0].innerHTML = data.length;
                     }
                 });
             });

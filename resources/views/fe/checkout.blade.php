@@ -38,20 +38,20 @@
                                 <div class="row check-out ">
 
                                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <label>Name</label>
-                                        <input required type="text" name="name" autocomplete="name" value="{{ old('name', Auth()->user()->name) }}" placeholder="Name">
+                                        <label>Shipping Name</label>
+                                        <input required type="text" name="shipping_name" autocomplete="name" value="{{ old('name', Auth()->user()->name) }}" placeholder="Name">
                                     </div>
                                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <label class="field-label">Phone number</label>
-                                        <input required pattern="[0-9]{10}" id="phone" type="text" name="phone" autocomplete="phone" value="{{ old('phone', Auth()->user()->phone) }}" placeholder="Phone Number">
+                                        <label class="field-label">Shipping Phone</label>
+                                        <input required pattern="[0-9]{10}" id="shipping_phone" type="text" name="shipping_phone" autocomplete="phone" value="{{ old('phone', Auth()->user()->phone) }}" placeholder="Phone Number">
                                     </div>
                                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <label class="field-label">Email</label>
-                                        <input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email" type="text" name="email" value="{{ old('email', Auth()->user()->email) }}" autocomplete="email" placeholder="Email Address">
+                                        <label class="field-label">Shipping Email</label>
+                                        <input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="shipping_email" type="text" name="shipping_email" value="{{ old('email', Auth()->user()->email) }}" autocomplete="email" placeholder="Email Address">
                                     </div>
                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <label class="field-label">Address</label>
-                                        <input required type="text" id="address" name="address" value="{{ old('address', Auth()->user()->address) }}" autocomplete="address" placeholder="Shipping address">
+                                        <label class="field-label">Shipping Address</label>
+                                        <input required type="text" id="shipping_address" name="shipping_address" value="{{ old('address', Auth()->user()->address) }}" autocomplete="address" placeholder="Shipping address">
                                     </div>
                                 </div>
                             </div>
@@ -67,9 +67,9 @@
                                         $total = 0;
                                         if (Session::has('cart')) {
                                             foreach(Session::get('cart') as $item) {
-                                                $total += $item->quantity * $item->product->price;
+                                                $total += $item->quantity * $item->product->getCurrentPrice();
                                                 ?>
-                                                <li>{{$item->product->name}} x {{ $item->quantity }} <span>${{ $item->product->price }}</span></li>
+                                                <li>{{$item->product->name}} x {{ $item->quantity }} <span>$ {{ number_format($item->product->getCurrentPrice() * $item->quantity, 2) }}</span></li>
                                                 <?php
                                             }
                                         } else {
@@ -81,10 +81,10 @@
                                         ?>
                                     </ul>
                                     <ul class="sub-total">
-                                        <li>Subtotal <span class="count">${{ $total }}</span></li>
+                                        <li>Subtotal <span class="count">$ {{ number_format($total, 2) }}</span></li>
                                     </ul>
                                     <ul class="total">
-                                        <li>Total <span class="count">${{ $total }}</span></li>
+                                        <li>Total <span class="count">$ {{ number_format($total, 2) }}</span></li>
                                     </ul>
                                 </div>
                                 <div class="payment-box">

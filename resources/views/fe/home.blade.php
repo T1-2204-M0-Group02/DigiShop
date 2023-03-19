@@ -106,7 +106,7 @@
                                             </a>
                                         </div>
                                         <div class="product-icon icon-inline ">
-                                            <button class="tooltip-top w-100 add-to-cart" data-id="{{ $product->id }}">
+                                            <button class="tooltip-top w-100 add-to-cart cartEffect" data-id="{{ $product->id }}">
                                                 <i data-feather="shopping-cart"></i>
                                             </button>
 
@@ -203,7 +203,7 @@
                                                             </a>
                                                         </div>
                                                         <div class="product-icon icon-inline">
-                                                            <button class="tooltip-top w-100 add-to-cart" data-id="{{ $product->id }}">
+                                                            <button class="tooltip-top w-100 add-to-cart cartEffect" data-id="{{ $product->id }}">
                                                                 <i data-feather="shopping-cart"></i>
                                                             </button>
                                                         </div>

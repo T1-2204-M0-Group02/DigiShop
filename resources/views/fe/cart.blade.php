@@ -45,15 +45,14 @@
                                 </thead>
                             <?php
                             foreach(Session::get('cart') as $item) {
-                                $currentPrice = $item->product->price - ($item->product->price * $item->product->sale) / 100;
-                                $total += $item->quantity * $currentPrice;
+                                $total += $item->quantity * $item->product->getCurrentPrice();
                                 ?>
-                                    <tbody>
+                                    <tbody id="tbody_{{ $item->product->id }}">
                                     <tr>
                                         <td>
-                                            <a href="javascript:void(0)"><img src="{{ asset('images/products/'.$item->product->image) }}" alt="cart"  class=" "></a>
+                                            <a href="{{ Route('product.details', $item->product->slug) }}"><img src="{{ asset('images/products/'.$item->product->image) }}" alt="{{ $item->product->name }}"  class=" "></a>
                                         </td>
-                                        <td><a href="javascript:void(0)">{{ $item->product->name }}</a>
+                                        <td><a href="{{ Route('product.details', $item->product->slug) }}">{{ $item->product->name }}</a>
                                             <div class="mobile-cart-content flex-column">
                                                 <div class="col-xs-3">
                                                     <div class="qty-box">
@@ -61,7 +60,7 @@
                                                             <div class="qty-box qty-input">
                                                                 <div class="input-group">
                                                                 <button class="qty-minus qty-btn"></button>
-                                                                <input class="qty-adj form-control" type="number" name="product-quantity" data-id="{{ $item->product->id }}" class="form-control input-number" min="0" value="{{ $item->quantity }}"/>
+                                                                <input class="qty-adj form-control" type="number" name="product-quantity" data-id="{{ $item->product->id }}" class="form-control input-number" min="1" value="{{ $item->quantity }}" disabled/>
                                                                 <button class="qty-plus qty-btn"></button>
                                                                 </div>
                                                             </div>
@@ -69,23 +68,25 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-3">
-                                                    <h2 class="td-color">${{ $currentPrice }}</h2></div>
+                                                    <h2 class="td-color">$ {{ number_format($item->product->getCurrentPrice(), 2) }}</h2>
+                                                </div>
                                                 <div class="col-xs-3">
                                                     <h2 class="td-color">
                                                         <div class="delete">
                                                             <button  class="btn btn-delete" id="{{ $item->product->id }}" onclick="removeItem(this.id)"><i class="ti-close"></i></button>
                                                         </div>
-                                                    </h2></div>
+                                                    </h2>
+                                                </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <h2 id="price">${{ $currentPrice }}</h2>
+                                            <h2>$ <span id="price">{{ number_format($item->product->getCurrentPrice(), 2) }}</span></h2>
                                         </td>
                                         <td>
                                             <div class="qty-box">
                                                 <div class="input-group qty-input">
                                                     <button class="qty-minus qty-btn"></button>
-                                                    <input class="qty-adj form-control" type="number" name="product-quantity" class="form-control input-number" min="0" value="{{ $item->quantity }}" data-id="{{ $item->product->id }}"/>
+                                                    <input class="qty-adj form-control" type="number" name="product-quantity" class="form-control input-number" min="1" value="{{ $item->quantity }}" data-id="{{ $item->product->id }}" disabled/>
                                                     <button class="qty-plus qty-btn"></button>
                                                 </div>
                                             </div>
@@ -96,7 +97,7 @@
                                               </div>
                                         </td>
                                         <td>
-                                            <h2 id="product-total-price" class="td-color">${{ $currentPrice * $item->quantity }}</h2>
+                                            <h2 class="td-color">$ <span class="product-total-price">{{ number_format($item->product->getCurrentPrice() * $item->quantity, 2) }}</span></h2>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -114,7 +115,7 @@
                   <tr>
                       <td>total price :</td>
                       <td>
-                          <h2>${{ $total }}</h2></td>
+                          <h2 >$ <span id="total-price">{{ number_format($total, 2) }}</span></h2></td>
                   </tr>
                   </tfoot>
               </table>
@@ -143,7 +144,9 @@
                 pid: pid, 
                 _token: '{{ csrf_token() }}',
             }, success: function(data) {
-                location.reload();
+                $('.item-count-contain')[0].innerHTML = data.cart.length;
+                $(`#tbody_${pid}`).remove();
+                $('#total-price')[0].innerHTML = formatNumber(data.total);
             }
         });
     }
@@ -154,6 +157,7 @@
             _input = _this.siblings('input[name=product-quantity]');
         let pid = _input.data('id');
         let quantity = _input.val();
+        
         $.ajax({
             type: 'post',
             url: "{{ Route('changeCart') }}",
@@ -163,9 +167,23 @@
                 _token: '{{ csrf_token() }}'
             },
             success: function (data) {
-            //   location.reload();
+                $(`#tbody_${pid} .product-total-price`)[0].innerHTML = formatNumber(data.subtotal);
+                $('#total-price')[0].innerHTML = formatNumber(data.total);
             }
         });
     })
+
+    function formatNumber(number)
+    {
+        number = number.toFixed(2) + '';
+        x = number.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+    }
 </script>
 @endsection

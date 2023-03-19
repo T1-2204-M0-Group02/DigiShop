@@ -29,7 +29,7 @@ class Product extends Model
         $price = $this->price;
         $sale = $this->sale;
         $currentPrice = $price - ($price * $sale) / 100;
-        return number_format($currentPrice, 2);
+        return $currentPrice;
     }
 
     public function scopePriceBetween(Builder $query, ...$dates) : Builder

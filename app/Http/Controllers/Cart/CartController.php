@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Cart;
 
+use App\Enums\OrderStatusEnum;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -52,22 +53,27 @@ class CartController extends Controller
     public function changeCartItem(Request $request)
     {
         if ($request->session()->has('cart')) {
-            $cart = $request->session()->get('cart');
-            
-            $pid = $request->pid;
-            $quantity = $request->quantity;
+            try {
+                $cart = $request->session()->get('cart');
 
-            for ($i = 0; $i < count($cart); $i++) {
-                if ($cart[$i]->product->id == $pid) {
-                    break;
+                $pid = $request->pid;
+                $quantity = $request->quantity;
+
+                $total = 0;
+                $subtotal = 0;
+                for ($i = 0; $i < count($cart); $i++) {
+                    if ($cart[$i]->product->id == $pid) {
+                        $cart[$i]->quantity = $quantity;
+                        $subtotal = $cart[$i]->quantity * $cart[$i]->product->getCurrentPrice();
+                    }
+                    $total += $cart[$i]->quantity * $cart[$i]->product->getCurrentPrice();
                 }
-            }
 
-            if ($i < count($cart)) {
-                $cart[$i]->quantity = $quantity;
+                $request->session()->put('cart', $cart);
+            } catch (\Throwable $th) {
+                echo($cart) ;
             }
-
-            $request->session()->put('cart', $cart);
+            return array("total" => $total, "subtotal" => $subtotal);
         }
     }
 
@@ -78,9 +84,12 @@ class CartController extends Controller
             
             $pid = $request->pid;
 
+            $total = 0;
             for ($i = 0; $i < count($cart); $i++) {
                 if ($cart[$i]->product->id == $pid) {
-                    break;
+                    unset($cart[$i]);
+                }else {
+                    $total += $cart[$i]->quantity * $cart[$i]->product->getCurrentPrice();
                 }
             }
 
@@ -89,6 +98,8 @@ class CartController extends Controller
             }
 
             $request->session()->put('cart', $cart);
+
+            return array("cart" => $cart, "total" => $total);
         }
     }
 
@@ -109,28 +120,29 @@ class CartController extends Controller
     {
         if ($request->session()->has('cart')) {
             $cart = $request->all();
-            $cart['shipping_time'] = date_add(date_create(date('Y-m-d', time())),date_interval_create_from_date_string("40 days"));
-            $cart['shipping_name'] = $request->name;
-            $cart['shipping_phone'] = $request->phone;
-            $cart['shipping_email'] = $request->email;
-            $cart['shipping_address'] = $request->address;
+            $cart['shipping_time'] = date_add(date_create(date('Y-m-d', time())),date_interval_create_from_date_string("7 days"));
             $cart['user_id'] = Auth()->user()->id;
-            $cart['status'] = 0;
+            $cart['status'] = OrderStatusEnum::New;
             $ord = Order::create($cart);
-            //dd($ord);
-            // lưu order detail
             $cart = $request->session()->get('cart');
             foreach ($cart as $item) {
                 $od = new OrderDetail();
                 $od->order_id = $ord->id;
                 $od->product_id = $item->product->id;
-                $od->price = $item->product->price;
+                $od->price = $item->product->getCurrentPrice();
                 $od->quantity = $item->quantity;
                 $od->save();
             }
 
             $request->session()->forget('cart');
+            return view('fe.order.success', compact('ord'));
         }
-        return view('fe.order.success');
+        return Redirect::back();
+    }
+
+    public function orders()
+    {
+        $orders = Order::latest()->get();
+        return view('fe.order.list', compact('orders'));
     }
 }

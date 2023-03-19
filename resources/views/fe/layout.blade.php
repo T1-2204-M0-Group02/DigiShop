@@ -415,6 +415,9 @@
 </footer>
 <!-- footer end -->
 
+<div class="added-notification bg-info">
+    <h3>Added to cart</h3>
+</div>
 
 
 <!-- latest jquery-->

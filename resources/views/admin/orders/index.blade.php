@@ -40,6 +40,7 @@
                             <th>Shipping Email</th>
                             <th>Shipping Address</th>
                             <th>Order Status</th>
+                            <th>Total</th>
                             <th>Date</th>
                         </tr>
                         </thead>
@@ -58,7 +59,8 @@
                                 <td>{{ $order->shipping_phone }}</td>
                                 <td>{{ $order->shipping_email }}</td>
                                 <td>{{ $order->shipping_address }}</td>
-                                <td>{{ $order->status->value }}</td>
+                                <td>{{ $order->getStatusString($order->status) }}</td>
+                                <td>{{ $order->total() }}</td>
                                 <td>{{ $order->created_at }}</td>
                             </tr>   
                             @endforeach

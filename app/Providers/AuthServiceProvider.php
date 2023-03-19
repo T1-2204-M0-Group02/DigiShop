@@ -30,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         ResetPassword::createUrlUsing(function ($user, string $token) {
-            return 'http://localhost/digishop/public/' . $token;
+            return 'http://localhost/digishop/public/reset-password/' . $token;
         });
 
         VerifyEmail::toMailUsing(function ($notifiable, $url) {

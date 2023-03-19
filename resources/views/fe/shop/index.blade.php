@@ -119,7 +119,7 @@
                               </div>
                             </div>
                             <div class="icon-detail">
-                               <button class="tooltip-top w-100 add-to-cart" data-id="{{ $product->id }}">
+                               <button class="tooltip-top w-100 add-to-cart cartEffect" data-id="{{ $product->id }}">
                                     <i data-feather="shopping-cart"></i>
                                 </button>
                             </div>
@@ -187,29 +187,19 @@
                 href += '&filter[category]=' + catagoryIds;
             }
 
-            $(".js-range-slider").ionRangeSlider({
-                type: "double",
-                grid: true,
-                min: 0,
-                max: 2000,
-                from: 200,
-                to: 1800,
-                prefix: "$"
-            });
             document.location.href=href;
         }
 
         document.getElementById("filter").addEventListener("click", filterResults);
 
         let price$ = "{{ request()->input('filter.price_between') }}".split(',');
-        console.log(price$);
         $(".js-range-slider").ionRangeSlider({
             type: "double",
             grid: true,
             min: 0,
             max: 2500,
-            from: price$[0] || 200,
-            to: price$[1] || 2300,
+            from: price$[0] || 0,
+            to: price$[1] || 2500,
             prefix: "$"
         });
     </script>
