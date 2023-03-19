@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
@@ -15,31 +16,26 @@ class CartController extends Controller
     {
         $pid = $request->pid;
         $quantity = $request->quantity;
-
         $prod = Product::find($pid);
         $cartItem = new CartItem($prod, $quantity);
-
         if ($request->session()->has('cart')) {
             $cart = $request->session()->get('cart');
         } else {
             $cart = [];
         }
-
-        // xử lý cộng dồn nếu trùng product id
         for ($i = 0; $i < count($cart); $i++) {
             if ($cart[$i]->product->id == $pid) {
                 break;
             }
         }
-
         if ($i < count($cart)) {
-            // trường hợp product đã có trong cart => cộng dồn quantity
             $cart[$i]->quantity += $quantity;
         } else {
             $cart[] = $cartItem;
         }
-
         $request->session()->put('cart', $cart);
+
+        return $cart;
     }
 
     public function viewCart(Request $request) 
@@ -50,6 +46,7 @@ class CartController extends Controller
     public function clearCart(Request $request) 
     {
         $request->session()->forget('cart');
+        return Redirect::back();
     }
 
     public function changeCartItem(Request $request)
@@ -112,8 +109,13 @@ class CartController extends Controller
     {
         if ($request->session()->has('cart')) {
             $cart = $request->all();
-            $cart['order_date'] = date('Y-m-d', time());
-            $cart['user_id'] = $request->session()->get('user')->id;
+            $cart['shipping_time'] = date_add(date_create(date('Y-m-d', time())),date_interval_create_from_date_string("40 days"));
+            $cart['shipping_name'] = $request->name;
+            $cart['shipping_phone'] = $request->phone;
+            $cart['shipping_email'] = $request->email;
+            $cart['shipping_address'] = $request->address;
+            $cart['user_id'] = Auth()->user()->id;
+            $cart['status'] = 0;
             $ord = Order::create($cart);
             //dd($ord);
             // lưu order detail
@@ -129,6 +131,6 @@ class CartController extends Controller
 
             // $request->session()->forget('cart');
         }
-        return view('fe.thankyou');
+        return view('fe.order.success');
     }
 }

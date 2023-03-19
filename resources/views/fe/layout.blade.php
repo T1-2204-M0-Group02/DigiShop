@@ -110,7 +110,7 @@
                 </li>
                       @if($categories)
                           @foreach($categories as $category)
-                              <li> <a href="#"><img src="{{ asset('images/categories/' .$category->image) }}" alt="{{ $category->name }}" width="50px" height="50px"> {{ $category->name }}</a></li>
+                              <li> <a href="{{ Route('products').'?filter[category]='.$category->id }}"><img src="{{ asset('images/categories/' .$category->image) }}" alt="{{ $category->name }}" width="50px" height="50px"> {{ $category->name }}</a></li>
                           @endforeach
                       @endif
               </ul>
@@ -250,7 +250,7 @@
                   <ul class="nav-cat title-font">
                       @if($categories)
                       @foreach($categories as $category)
-                          <li> <a href="#"><img src="{{ asset('images/categories/' .$category->image) }}" alt="{{ $category->name }}" width="50px" height="50px"> {{ $category->name }}</a></li>
+                          <li> <a href="{{ Route('products').'?filter[category]='.$category->id }}"><img src="{{ asset('images/categories/' .$category->image) }}" alt="{{ $category->name }}" width="50px" height="50px"> {{ $category->name }}</a></li>
                       @endforeach
                       @endif
                   </ul>

@@ -18,7 +18,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $prods = Product::all();
+        $prods = Product::latest()->get();
         return view('admin.products.index',compact('prods'));
     }
 
@@ -49,7 +49,7 @@ class ProductsController extends Controller
             if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
             {
                 return view('admin.products.create')
-                    ->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
+                    ->with('errors','Only accept jpg,png,jpeg file');
             }
             $imageName = $file->getClientOriginalName();
             $file->move("images/products",$imageName);
@@ -105,7 +105,7 @@ class ProductsController extends Controller
             if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
             {
                 return Redirect::back()
-                    ->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
+                    ->with('errors','Only accept jpg,png,jpeg file');
             }
             $imageName = $file->getClientOriginalName();
             $file->move("images/products",$imageName);

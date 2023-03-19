@@ -17,7 +17,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/products', [ShopController::class, 'index'])->name('products');
 Route::get('/product/{slug}', [ShopController::class, 'product'])->name('product.details');
-Route::get('/search/', [ShopController::class, 'search'])->name('search');
+Route::get('/products/search', [ShopController::class, 'search'])->name('search');
+Route::get('/products/filter', [ShopController::class, 'filter'])->name('filter');
 
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('socialLogin');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
@@ -44,6 +45,8 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/checkout', function () {
         return view('fe.checkout');
     })->name('checkout');
+
+    Route::post('/process-checkout', [CartController::class, 'processCheckout'])->name('processCheckout');
 
     Route::get('/orders', function () {
         return view('fe.order.list');

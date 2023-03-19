@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label for="photo" class="col-form-label">Product Image</label>
                                 <br>
-                                <img src="{{ asset('images/'.$product->image) }}" alt="{{ $product->image }}" width="60px" class="mb-2">
+                                <img src="{{ asset('images/products/'.$product->image) }}" alt="{{ $product->image }}" width="60px" class="mb-2">
                                 <input id="photo" name="photo" type="file" class="form-control">
                             </div>
                         </div>

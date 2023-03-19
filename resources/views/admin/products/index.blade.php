@@ -37,8 +37,10 @@
                               <th>Product Id</th>
                               <th>Product Image</th>
                               <th>Product Name</th>
-                              <th>Sale(%)</th>
+                              <th>Created At</th>
                               <th>Price</th>
+                              <th>Sale(%)</th>
+                              <th>Current Price</th>
                               <th>Action</th>
                           </tr>
                           </thead>
@@ -52,8 +54,10 @@
                                     @endif
                                 </td>
                                 <td>{{ $item->name }}</td>
-                                <td>{{ $item->sale }}</td>
+                                <td>{{ $item->created_at }}</td>
                                 <td>{{ $item->price }}</td>
+                                <td>{{ $item->sale }}</td>
+                                <td>{{ $item->getCurrentPrice() }}</td>
                                 <td>
                                     <a href="{{ Route('admin.products.edit',$item->id) }}">
                                         <button  class="jsgrid-button jsgrid-edit-button" type="edit"></button>
