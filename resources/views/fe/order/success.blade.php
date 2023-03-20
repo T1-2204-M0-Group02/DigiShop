@@ -34,7 +34,7 @@
                                 foreach($ord->details as $item) {
                                     ?>
                                         <div class="row product-order-detail">
-                                            <div class="col-3"><img src="{{ asset('images/products').$item->product->image }}" alt="{{ $item->product->name }}" class="img-fluid "></div>
+                                            <div class="col-3"><img src="{{ asset('images/products/'.$item->product->image ) }}" alt="{{ $item->product->name }}" class="img-fluid "></div>
                                             <div class="col-3 order_detail">
                                                 <div>
                                                     <h4>product name</h4>

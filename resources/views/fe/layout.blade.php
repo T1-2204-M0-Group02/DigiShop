@@ -415,9 +415,9 @@
 </footer>
 <!-- footer end -->
 
-<div class="added-notification bg-info">
+<a href="{{ Route('viewCart') }}" class="added-notification bg-info">
     <h3>Added to cart</h3>
-</div>
+</a>
 
 
 <!-- latest jquery-->
