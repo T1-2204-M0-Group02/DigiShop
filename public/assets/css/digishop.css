@@ -26,11 +26,8 @@
 }
 
 .image-wrapper {
-    height: 280px;
-    display: flex;
-    align-items: center;
-    padding-right: 2rem;
-    padding-left: 2rem;
+    display: inline-block;
+    padding: 3rem 1.2rem;
 }
 
 .theme-slider .slider-banner .slider-banner-contain h4,
